@@ -2,22 +2,16 @@
 <html lang="en" class="scroll-smooth">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Sree Sahithi Kantamneni | Portfolio</title>
-  <meta name="description" content="Software Engineer | Python, Java, SQL | Portfolio" />
+  <meta name="description" content="Software Engineer portfolio. Projects, experience, and certifications." />
 
-  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
-          fontFamily: {
-            sans: ["ui-sans-serif", "system-ui", "Segoe UI", "Roboto", "Arial"]
-          },
-          boxShadow: {
-            soft: "0 18px 60px rgba(0,0,0,.35)"
-          }
+          boxShadow: { soft: "0 20px 60px rgba(0,0,0,.35)" }
         }
       }
     }
@@ -25,352 +19,281 @@
 </head>
 
 <body class="bg-slate-950 text-slate-100">
-  <!-- Background glow -->
+  <!-- subtle background -->
   <div class="pointer-events-none fixed inset-0 -z-10">
-    <div class="absolute -top-24 left-10 h-80 w-80 rounded-full bg-violet-500/20 blur-3xl"></div>
-    <div class="absolute -top-28 right-10 h-80 w-80 rounded-full bg-emerald-400/15 blur-3xl"></div>
-    <div class="absolute bottom-0 left-1/3 h-72 w-72 rounded-full bg-cyan-400/10 blur-3xl"></div>
+    <div class="absolute -top-24 left-10 h-72 w-72 rounded-full bg-violet-500/15 blur-3xl"></div>
+    <div class="absolute top-20 right-10 h-72 w-72 rounded-full bg-cyan-400/10 blur-3xl"></div>
+    <div class="absolute bottom-0 left-1/3 h-72 w-72 rounded-full bg-emerald-400/10 blur-3xl"></div>
   </div>
 
-  <!-- Top Nav -->
-  <header class="sticky top-0 z-50 border-b border-white/10 bg-slate-950/70 backdrop-blur">
-    <div class="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3">
-      <a href="#top" class="flex items-center gap-3 font-semibold tracking-tight">
-        <span class="h-3 w-3 rounded-full bg-gradient-to-br from-violet-400 to-emerald-300 shadow-[0_0_0_6px_rgba(139,92,246,.14)]"></span>
-        <span>SSK</span>
+  <div class="mx-auto max-w-6xl px-4 py-6">
+    <!-- Top bar -->
+    <header class="flex flex-wrap items-center justify-between gap-3">
+      <a href="#top" class="flex items-center gap-3">
+        <span class="h-10 w-10 rounded-2xl bg-white/5 border border-white/10 grid place-items-center shadow-soft">
+          <span class="text-sm font-bold">SSK</span>
+        </span>
+        <div class="leading-tight">
+          <div class="font-semibold">Sree Sahithi Kantamneni</div>
+          <div class="text-sm text-slate-400">Software Engineer</div>
+        </div>
       </a>
 
-      <nav class="hidden flex-wrap items-center gap-2 sm:flex">
-        <a class="rounded-full border border-white/10 px-3 py-1 text-sm text-slate-300 hover:border-white/20 hover:text-white" href="#about">About</a>
-        <a class="rounded-full border border-white/10 px-3 py-1 text-sm text-slate-300 hover:border-white/20 hover:text-white" href="#skills">Skills</a>
-        <a class="rounded-full border border-white/10 px-3 py-1 text-sm text-slate-300 hover:border-white/20 hover:text-white" href="#projects">Projects</a>
-        <a class="rounded-full border border-white/10 px-3 py-1 text-sm text-slate-300 hover:border-white/20 hover:text-white" href="#experience">Experience</a>
-        <a class="rounded-full border border-white/10 px-3 py-1 text-sm text-slate-300 hover:border-white/20 hover:text-white" href="#certs">Certifications</a>
-        <a class="rounded-full border border-white/10 px-3 py-1 text-sm text-slate-300 hover:border-white/20 hover:text-white" href="#contact">Contact</a>
+      <nav class="flex flex-wrap gap-2 text-sm">
+        <a class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-slate-200 hover:border-white/20" href="#projects">Projects</a>
+        <a class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-slate-200 hover:border-white/20" href="#experience">Experience</a>
+        <a class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-slate-200 hover:border-white/20" href="#certs">Certifications</a>
+        <a class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-slate-200 hover:border-white/20" href="#contact">Contact</a>
       </nav>
+    </header>
 
-      <a class="rounded-xl bg-gradient-to-br from-violet-500 to-emerald-400 px-3 py-2 text-sm font-semibold text-white shadow-soft hover:opacity-95"
-         href="#contact">
-        Hire / Connect
-      </a>
-    </div>
-  </header>
-
-  <main id="top" class="mx-auto max-w-6xl px-4">
-    <!-- Hero -->
-    <section class="py-12 sm:py-16">
-      <div class="inline-flex items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-400/10 px-3 py-1 text-sm text-emerald-200">
-        <span class="h-2 w-2 rounded-full bg-emerald-300"></span>
-        Open to opportunities
-      </div>
-
-      <h1 class="mt-4 text-4xl font-bold tracking-tight sm:text-6xl">
-        Sree Sahithi Kantamneni
-      </h1>
-
-      <p class="mt-4 max-w-3xl text-lg leading-relaxed text-slate-300">
-        Full stack software engineer focused on reliable backend systems, SQL driven workflows, and production debugging.
-        Built and supported consumer facing apps and services used at scale.
-      </p>
-
-      <div class="mt-6 flex flex-wrap gap-3">
-        <!-- Update these 3 links -->
-        <a class="rounded-xl bg-gradient-to-br from-violet-500 to-emerald-400 px-4 py-2 font-semibold shadow-soft hover:opacity-95"
-           href="#projects">
-          View Projects
-        </a>
-        <a class="rounded-xl border border-white/10 bg-white/5 px-4 py-2 font-semibold text-slate-100 hover:border-white/20"
-           href="resume.pdf" target="_blank" rel="noreferrer">
-          Resume
-        </a>
-        <a class="rounded-xl border border-white/10 bg-white/5 px-4 py-2 font-semibold text-slate-100 hover:border-white/20"
-           href="https://github.com/sahithik156" target="_blank" rel="noreferrer">
-          GitHub
-        </a>
-        <a class="rounded-xl border border-white/10 bg-white/5 px-4 py-2 font-semibold text-slate-100 hover:border-white/20"
-           href="https://www.linkedin.com/in/sree-sahithi-k" target="_blank" rel="noreferrer">
-          LinkedIn
-        </a>
-      </div>
-
-      <!-- Stats -->
-      <div class="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-        <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
-          <div class="text-2xl font-bold">10K+</div>
-          <div class="mt-1 text-sm text-slate-300">Users supported</div>
-        </div>
-        <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
-          <div class="text-2xl font-bold">40%</div>
-          <div class="mt-1 text-sm text-slate-300">API latency reduced</div>
-        </div>
-        <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
-          <div class="text-2xl font-bold">28%</div>
-          <div class="mt-1 text-sm text-slate-300">Reporting accuracy improved</div>
-        </div>
-        <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
-          <div class="text-2xl font-bold">500GB+</div>
-          <div class="mt-1 text-sm text-slate-300">Telemetry analyzed</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- About -->
-    <section id="about" class="border-t border-white/10 py-12">
-      <p class="text-xs font-semibold uppercase tracking-widest text-slate-400">About</p>
-      <h2 class="mt-2 text-3xl font-bold tracking-tight">What I do</h2>
-
-      <div class="mt-6 grid gap-4 lg:grid-cols-3">
-        <div class="lg:col-span-2 rounded-2xl border border-white/10 bg-white/5 p-6">
-          <p class="text-slate-300 leading-relaxed">
-            I build and operate web applications end to end: backend services, REST APIs, data pipelines, and user facing experiences.
-            I care about performance, reliability, and clean debugging workflows.
-          </p>
-
-          <div class="mt-4 flex flex-wrap gap-2">
-            <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm">Backend</span>
-            <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm">APIs</span>
-            <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm">SQL</span>
-            <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm">Automation</span>
-            <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm">Production debugging</span>
+    <main id="top" class="mt-6 grid gap-6 lg:grid-cols-[320px_1fr]">
+      <!-- Left column (profile card) -->
+      <aside class="h-fit rounded-3xl border border-white/10 bg-white/5 p-5 shadow-soft lg:sticky lg:top-6">
+        <div class="flex items-start justify-between gap-3">
+          <div>
+            <div class="text-sm text-slate-400">Open to roles</div>
+            <div class="mt-1 text-xl font-semibold tracking-tight">Backend • Full stack • Data</div>
           </div>
+          <span class="rounded-full border border-emerald-400/25 bg-emerald-400/10 px-3 py-1 text-xs text-emerald-200">
+            Available
+          </span>
         </div>
 
-        <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
-          <p class="text-sm font-semibold text-slate-200">Quick info</p>
-          <ul class="mt-3 space-y-2 text-slate-300">
-            <li><span class="text-slate-400">Location:</span> United States</li>
-            <li><span class="text-slate-400">Email:</span> sahithik156@gmail.com</li>
-            <li><span class="text-slate-400">Role:</span> Software Developer</li>
-            <li><span class="text-slate-400">MS CS:</span> University of South Florida</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- Skills -->
-    <section id="skills" class="border-t border-white/10 py-12">
-      <p class="text-xs font-semibold uppercase tracking-widest text-slate-400">Skills</p>
-      <h2 class="mt-2 text-3xl font-bold tracking-tight">Stack</h2>
-
-      <div class="mt-6 grid gap-4 md:grid-cols-2">
-        <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
-          <div class="flex items-start justify-between gap-3">
-            <p class="font-semibold">Languages</p>
-            <p class="text-sm text-slate-300">Python · JavaScript · SQL · C# · Java</p>
-          </div>
-        </div>
-        <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
-          <div class="flex items-start justify-between gap-3">
-            <p class="font-semibold">Backend</p>
-            <p class="text-sm text-slate-300">REST · Auth · Microservices · Caching · Cron jobs</p>
-          </div>
-        </div>
-        <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
-          <div class="flex items-start justify-between gap-3">
-            <p class="font-semibold">Databases</p>
-            <p class="text-sm text-slate-300">MySQL · PostgreSQL · SQL Server · MongoDB</p>
-          </div>
-        </div>
-        <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
-          <div class="flex items-start justify-between gap-3">
-            <p class="font-semibold">Cloud & Tools</p>
-            <p class="text-sm text-slate-300">AWS · Azure · Docker · Git · CI/CD · Splunk</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Projects -->
-    <section id="projects" class="border-t border-white/10 py-12">
-      <p class="text-xs font-semibold uppercase tracking-widest text-slate-400">Projects</p>
-      <h2 class="mt-2 text-3xl font-bold tracking-tight">Selected work</h2>
-
-      <div class="mt-6 grid gap-4 lg:grid-cols-2">
-        <!-- Project Card -->
-        <article class="rounded-2xl border border-white/10 bg-white/5 p-6">
-          <div class="text-xs font-semibold tracking-widest text-slate-400">01</div>
-          <h3 class="mt-2 text-xl font-semibold">AI Powered Recipe Planning</h3>
-          <p class="mt-2 text-slate-300">
-            Integrated MCTS and A* with FOON to generate optimized workflows, improving search efficiency by 34%.
-          </p>
-          <div class="mt-4 flex flex-wrap gap-2">
-            <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm">Python</span>
-            <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm">MCTS</span>
-            <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm">A*</span>
-          </div>
-          <div class="mt-4 flex flex-wrap gap-3">
-            <a class="text-sm font-semibold text-violet-300 underline underline-offset-4 hover:text-violet-200"
-               href="https://github.com/sahithik156" target="_blank" rel="noreferrer">Code</a>
-          </div>
-        </article>
-
-        <article class="rounded-2xl border border-white/10 bg-white/5 p-6">
-          <div class="text-xs font-semibold tracking-widest text-slate-400">02</div>
-          <h3 class="mt-2 text-xl font-semibold">Voice Driven Prescription Dictation</h3>
-          <p class="mt-2 text-slate-300">
-            Built an end to end ASR + NLP pipeline, reducing documentation effort by 32% and improving accuracy by 20%.
-          </p>
-          <div class="mt-4 flex flex-wrap gap-2">
-            <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm">Python</span>
-            <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm">React</span>
-            <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm">NLP</span>
-          </div>
-          <div class="mt-4 flex flex-wrap gap-3">
-            <a class="text-sm font-semibold text-violet-300 underline underline-offset-4 hover:text-violet-200"
-               href="https://github.com/sahithik156" target="_blank" rel="noreferrer">Code</a>
-          </div>
-        </article>
-
-        <article class="rounded-2xl border border-white/10 bg-white/5 p-6">
-          <div class="text-xs font-semibold tracking-widest text-slate-400">03</div>
-          <h3 class="mt-2 text-xl font-semibold">Global Malnutrition Analysis</h3>
-          <p class="mt-2 text-slate-300">
-            Designed Tableau dashboards over integrated public health datasets, increasing insight generation efficiency by 45%.
-          </p>
-          <div class="mt-4 flex flex-wrap gap-2">
-            <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm">Python</span>
-            <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm">Tableau</span>
-            <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm">Data</span>
-          </div>
-          <div class="mt-4 flex flex-wrap gap-3">
-            <a class="text-sm font-semibold text-violet-300 underline underline-offset-4 hover:text-violet-200"
-               href="https://github.com/sahithik156" target="_blank" rel="noreferrer">Code</a>
-          </div>
-        </article>
-
-        <article class="rounded-2xl border border-white/10 bg-white/5 p-6">
-          <div class="text-xs font-semibold tracking-widest text-slate-400">04</div>
-          <h3 class="mt-2 text-xl font-semibold">Pick your best repo here</h3>
-          <p class="mt-2 text-slate-300">
-            Replace this with one strong GitHub project you want recruiters to click first.
-          </p>
-          <div class="mt-4 flex flex-wrap gap-2">
-            <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm">Your tag</span>
-            <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm">Your tag</span>
-          </div>
-          <div class="mt-4 flex flex-wrap gap-3">
-            <a class="text-sm font-semibold text-violet-300 underline underline-offset-4 hover:text-violet-200"
-               href="https://github.com/sahithik156" target="_blank" rel="noreferrer">Code</a>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- Experience -->
-    <section id="experience" class="border-t border-white/10 py-12">
-      <p class="text-xs font-semibold uppercase tracking-widest text-slate-400">Experience</p>
-      <h2 class="mt-2 text-3xl font-bold tracking-tight">Work</h2>
-
-      <div class="mt-6 space-y-4">
-        <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
-          <div class="flex flex-wrap items-start justify-between gap-3">
-            <div>
-              <div class="text-lg font-semibold">Easysuite Software</div>
-              <div class="text-sm text-slate-300">Software Developer</div>
-            </div>
-            <div class="text-sm text-slate-400">Jul 2025 – Present</div>
-          </div>
-          <ul class="mt-4 list-disc space-y-2 pl-5 text-slate-300">
-            <li>Enhanced reporting accuracy by 28% by adding validation layers across ingestion flows.</li>
-            <li>Lowered API response latency by 40% by profiling queries and optimizing indexes.</li>
-            <li>Stabilized backend services supporting 10K+ active users through log tracing and database audits.</li>
-          </ul>
-        </div>
-
-        <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
-          <div class="flex flex-wrap items-start justify-between gap-3">
-            <div>
-              <div class="text-lg font-semibold">Cyber Florida at USF</div>
-              <div class="text-sm text-slate-300">NIST Grant Intern</div>
-            </div>
-            <div class="text-sm text-slate-400">Jan 2025 – Jun 2025</div>
-          </div>
-          <ul class="mt-4 list-disc space-y-2 pl-5 text-slate-300">
-            <li>Automated log cleaning and aggregation, increasing investigation throughput by 30%.</li>
-            <li>Analyzed 500GB+ telemetry with structured searches to improve anomaly detection quality.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- Certifications -->
-    <section id="certs" class="border-t border-white/10 py-12">
-      <p class="text-xs font-semibold uppercase tracking-widest text-slate-400">Certifications</p>
-      <h2 class="mt-2 text-3xl font-bold tracking-tight">Licenses and certifications</h2>
-
-      <div class="mt-6 grid gap-4 md:grid-cols-2">
-        <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
-          <p class="font-semibold">GIAC Global Industrial Cyber Security Professional (GICSP)</p>
-          <p class="mt-1 text-sm text-slate-300">GIAC Certifications</p>
-        </div>
-        <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
-          <p class="font-semibold">ICS410: ICS/SCADA Security Essentials</p>
-          <p class="mt-1 text-sm text-slate-300">SANS Institute</p>
-        </div>
-        <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
-          <p class="font-semibold">ICS310: ICS Cybersecurity Foundations</p>
-          <p class="mt-1 text-sm text-slate-300">SANS Institute</p>
-        </div>
-        <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
-          <p class="font-semibold">SQL (Intermediate)</p>
-          <p class="mt-1 text-sm text-slate-300">HackerRank</p>
-        </div>
-
-        <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
-          <p class="font-semibold">Career Essentials in Data Analysis</p>
-          <p class="mt-1 text-sm text-slate-300">Microsoft and LinkedIn</p>
-        </div>
-        <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
-          <p class="font-semibold">PwC Switzerland Power BI Job Simulation</p>
-          <p class="mt-1 text-sm text-slate-300">Forage</p>
-        </div>
-      </div>
-
-      <p class="mt-5 text-sm text-slate-400">
-        Full list with credential links is on LinkedIn.
-      </p>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" class="border-t border-white/10 py-12">
-      <p class="text-xs font-semibold uppercase tracking-widest text-slate-400">Contact</p>
-      <h2 class="mt-2 text-3xl font-bold tracking-tight">Let’s connect</h2>
-
-      <div class="mt-6 rounded-2xl border border-white/10 bg-white/5 p-6">
-        <p class="text-slate-300">
-          Best way to reach me is email. For certifications and credential links, LinkedIn is the source of truth.
+        <p class="mt-4 text-sm leading-relaxed text-slate-300">
+          Full stack engineer focused on reliable backend services, SQL-first debugging, and building practical products.
         </p>
-        <div class="mt-5 flex flex-wrap gap-3">
-          <a class="rounded-xl bg-gradient-to-br from-violet-500 to-emerald-400 px-4 py-2 font-semibold shadow-soft hover:opacity-95"
-             href="mailto:sahithik156@gmail.com">
-            Email
-          </a>
-          <a class="rounded-xl border border-white/10 bg-white/5 px-4 py-2 font-semibold hover:border-white/20"
-             href="https://www.linkedin.com/in/sree-sahithi-k" target="_blank" rel="noreferrer">
-            LinkedIn
-          </a>
-          <a class="rounded-xl border border-white/10 bg-white/5 px-4 py-2 font-semibold hover:border-white/20"
-             href="https://github.com/sahithik156" target="_blank" rel="noreferrer">
-            GitHub
-          </a>
-          <a class="rounded-xl border border-white/10 bg-white/5 px-4 py-2 font-semibold hover:border-white/20"
-             href="resume.pdf" target="_blank" rel="noreferrer">
-            Resume
-          </a>
-        </div>
-      </div>
-    </section>
 
-    <footer class="border-t border-white/10 py-8 text-sm text-slate-400">
-      <div class="flex flex-wrap items-center justify-between gap-3">
-        <div>© <span id="y"></span> Sree Sahithi Kantamneni</div>
-        <div class="text-slate-500">Built with Tailwind CDN on GitHub Pages</div>
-      </div>
-    </footer>
-  </main>
+        <div class="mt-4 grid gap-2 text-sm">
+          <div class="flex items-center justify-between gap-3">
+            <span class="text-slate-400">Location</span><span>Florida, USA</span>
+          </div>
+          <div class="flex items-center justify-between gap-3">
+            <span class="text-slate-400">Email</span>
+            <a class="underline underline-offset-4 hover:text-white" href="mailto:sreesahithikapply@gmail.com">sreesahithikapply@gmail.com</a>
+          </div>
+        </div>
+
+        <div class="mt-5 flex flex-wrap gap-2">
+          <a class="rounded-xl bg-gradient-to-br from-violet-500 to-emerald-400 px-3 py-2 text-sm font-semibold shadow-soft hover:opacity-95"
+             href="resume.pdf" target="_blank" rel="noreferrer">Resume</a>
+          <a class="rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm font-semibold hover:border-white/20"
+             href="https://github.com/sahithik156" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm font-semibold hover:border-white/20"
+             href="https://www.linkedin.com/in/sree-sahithi-k" target="_blank" rel="noreferrer">LinkedIn</a>
+        </div>
+
+        <div class="mt-6 border-t border-white/10 pt-5">
+          <div class="text-xs font-semibold uppercase tracking-widest text-slate-400">Skills</div>
+          <div class="mt-3 flex flex-wrap gap-2">
+            <span class="chip">Python</span><span class="chip">Java</span><span class="chip">SQL</span>
+            <span class="chip">React</span><span class="chip">APIs</span><span class="chip">MySQL</span>
+            <span class="chip">PostgreSQL</span><span class="chip">Azure</span><span class="chip">AWS</span>
+            <span class="chip">Docker</span>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Right column -->
+      <section class="space-y-6">
+        <!-- Hero -->
+        <section class="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-soft">
+          <div class="text-xs font-semibold uppercase tracking-widest text-slate-400">Featured</div>
+          <h1 class="mt-2 text-3xl font-bold tracking-tight">Projects that show real impact</h1>
+          <p class="mt-3 max-w-3xl text-slate-300">
+            Highlights from academic work: AI recipe planning (MCTS + A* + FOON), voice-driven prescription dictation,
+            and global malnutrition analysis dashboards.
+          </p>
+
+          <div class="mt-5 grid gap-3 md:grid-cols-3">
+            <a class="card" href="https://github.com/sahithik156" target="_blank" rel="noreferrer">
+              <div class="tag">AI</div>
+              <div class="mt-2 font-semibold">AI-Powered Recipe Planning</div>
+              <div class="mt-1 text-sm text-slate-300">MCTS + A* + FOON workflow planning</div>
+            </a>
+            <a class="card" href="https://github.com/sahithik156/Voice-prescription-system-for-doctors" target="_blank" rel="noreferrer">
+              <div class="tag">NLP</div>
+              <div class="mt-2 font-semibold">Voice Prescription System</div>
+              <div class="mt-1 text-sm text-slate-300">Speech to text + PDF prescription output</div>
+            </a>
+            <a class="card" href="https://github.com/sahithik156/Global-Malnutrition-Analysis" target="_blank" rel="noreferrer">
+              <div class="tag">Data</div>
+              <div class="mt-2 font-semibold">Global Malnutrition Analysis</div>
+              <div class="mt-1 text-sm text-slate-300">Tableau + notebooks + datasets</div>
+            </a>
+          </div>
+        </section>
+
+        <!-- Projects -->
+        <section id="projects" class="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-soft">
+          <div class="flex flex-wrap items-end justify-between gap-3">
+            <div>
+              <div class="text-xs font-semibold uppercase tracking-widest text-slate-400">Projects</div>
+              <h2 class="mt-2 text-2xl font-bold tracking-tight">All GitHub repos</h2>
+              <p class="mt-1 text-sm text-slate-400">Search and filter. Cards are generated from a single list.</p>
+            </div>
+
+            <div class="flex flex-wrap gap-2">
+              <input id="q" class="w-56 rounded-xl border border-white/10 bg-slate-950/40 px-3 py-2 text-sm outline-none placeholder:text-slate-500 focus:border-white/20"
+                     placeholder="Search repos..." />
+              <select id="f" class="rounded-xl border border-white/10 bg-slate-950/40 px-3 py-2 text-sm outline-none focus:border-white/20">
+                <option value="all">All</option>
+                <option value="web">Web</option>
+                <option value="data">Data</option>
+                <option value="ml">ML</option>
+                <option value="security">Security</option>
+                <option value="games">Games</option>
+              </select>
+            </div>
+          </div>
+
+          <div id="repoGrid" class="mt-5 grid gap-3 md:grid-cols-2"></div>
+        </section>
+
+        <!-- Experience -->
+        <section id="experience" class="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-soft">
+          <div class="text-xs font-semibold uppercase tracking-widest text-slate-400">Experience</div>
+          <h2 class="mt-2 text-2xl font-bold tracking-tight">Work</h2>
+
+          <div class="mt-5 space-y-3">
+            <div class="rounded-2xl border border-white/10 bg-slate-950/30 p-5">
+              <div class="flex flex-wrap items-start justify-between gap-3">
+                <div>
+                  <div class="font-semibold">Easysuite Software</div>
+                  <div class="text-sm text-slate-400">Software Developer</div>
+                </div>
+                <div class="text-sm text-slate-500">Jul 2025 – Present</div>
+              </div>
+              <ul class="mt-3 list-disc space-y-2 pl-5 text-sm text-slate-300">
+                <li>Backend optimization, production debugging, and data-quality improvements across consumer-facing flows.</li>
+              </ul>
+            </div>
+
+            <div class="rounded-2xl border border-white/10 bg-slate-950/30 p-5">
+              <div class="flex flex-wrap items-start justify-between gap-3">
+                <div>
+                  <div class="font-semibold">Cyber Florida at USF</div>
+                  <div class="text-sm text-slate-400">NIST Grant Intern</div>
+                </div>
+                <div class="text-sm text-slate-500">Jan 2025 – Jun 2025</div>
+              </div>
+              <ul class="mt-3 list-disc space-y-2 pl-5 text-sm text-slate-300">
+                <li>Log processing automation and investigation support on large telemetry datasets.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Certifications -->
+        <section id="certs" class="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-soft">
+          <div class="text-xs font-semibold uppercase tracking-widest text-slate-400">Certifications</div>
+          <h2 class="mt-2 text-2xl font-bold tracking-tight">Licenses and certifications</h2>
+
+          <div class="mt-5 grid gap-3 md:grid-cols-2">
+            <div class="cert">GIAC Global Industrial Cyber Security Professional (GICSP) <span class="sub">GIAC</span></div>
+            <div class="cert">ICS410: ICS/SCADA Security Essentials <span class="sub">SANS</span></div>
+            <div class="cert">ICS310: ICS Cybersecurity Foundations <span class="sub">SANS</span></div>
+            <div class="cert">Blue Team Level 1 (BTL1) <span class="sub">Security Blue Team</span></div>
+            <div class="cert">Career Essentials in Data Analysis <span class="sub">Microsoft + LinkedIn</span></div>
+            <div class="cert">SQL (Intermediate) <span class="sub">HackerRank</span></div>
+            <div class="cert">PwC Switzerland Power BI Job Simulation <span class="sub">Forage</span></div>
+            <div class="cert">Programming for Everybody (Python) <span class="sub">Coursera</span></div>
+          </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact" class="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-soft">
+          <div class="text-xs font-semibold uppercase tracking-widest text-slate-400">Contact</div>
+          <h2 class="mt-2 text-2xl font-bold tracking-tight">Connect</h2>
+
+          <div class="mt-5 flex flex-wrap gap-2">
+            <a class="rounded-xl bg-gradient-to-br from-violet-500 to-emerald-400 px-4 py-2 text-sm font-semibold shadow-soft hover:opacity-95"
+               href="mailto:sreesahithikapply@gmail.com">Email</a>
+            <a class="rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold hover:border-white/20"
+               href="https://www.linkedin.com/in/sree-sahithi-k" target="_blank" rel="noreferrer">LinkedIn</a>
+            <a class="rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold hover:border-white/20"
+               href="https://github.com/sahithik156" target="_blank" rel="noreferrer">GitHub</a>
+            <a class="rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold hover:border-white/20"
+               href="resume.pdf" target="_blank" rel="noreferrer">Resume</a>
+          </div>
+        </section>
+
+        <footer class="pb-10 text-sm text-slate-500">
+          © <span id="y"></span> Sree Sahithi Kantamneni • Built on GitHub Pages
+        </footer>
+      </section>
+    </main>
+  </div>
+
+  <style>
+    .chip { @apply rounded-full border border-white/10 bg-slate-950/30 px-3 py-1 text-xs text-slate-200; }
+    .card { @apply block rounded-2xl border border-white/10 bg-slate-950/30 p-5 hover:border-white/20; }
+    .tag  { @apply inline-flex rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-300; }
+    .cert { @apply rounded-2xl border border-white/10 bg-slate-950/30 p-5 text-sm text-slate-200; }
+    .sub  { @apply ml-2 text-xs text-slate-500; }
+  </style>
 
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
+
+    // All repos from your profile (13) :contentReference[oaicite:4]{index=4}
+    const repos = [
+      { name:"TV-Show-Search", url:"https://github.com/sahithik156/TV-Show-Search", tech:["HTML"], group:"web", blurb:"Search UI for TV shows." },
+      { name:"food-ordering-system-PHP", url:"https://github.com/sahithik156/food-ordering-system-PHP", tech:["PHP"], group:"web", blurb:"Food ordering web app in PHP." },
+      { name:"SafeCodeCheck-Advancing-Software-Security-through-Language-Based-Approaches", url:"https://github.com/sahithik156/SafeCodeCheck-Advancing-Software-Security-through-Language-Based-Approaches", tech:["Security"], group:"security", blurb:"Language-based software security study materials." },
+      { name:"Voice-prescription-system-for-doctors", url:"https://github.com/sahithik156/Voice-prescription-system-for-doctors", tech:["Python"], group:"ml", blurb:"Voice prescription generator (speech to text → PDF)." },
+      { name:"Flight-price-prediction", url:"https://github.com/sahithik156/Flight-price-prediction", tech:["Jupyter"], group:"data", blurb:"Notebook based flight fare prediction." },
+      { name:"Global-Malnutrition-Analysis", url:"https://github.com/sahithik156/Global-Malnutrition-Analysis", tech:["Jupyter","Tableau"], group:"data", blurb:"Dashboards + datasets for malnutrition analysis." },
+      { name:"DermaScan-Skin-Lesion-Classifier", url:"https://github.com/sahithik156/DermaScan-Skin-Lesion-Classifier", tech:["ML"], group:"ml", blurb:"Skin lesion classification project assets." },
+      { name:"Recipe-blog", url:"https://github.com/sahithik156/Recipe-blog", tech:["EJS"], group:"web", blurb:"Recipe blog web project." },
+      { name:"Hate-Speech-Detection", url:"https://github.com/sahithik156/Hate-Speech-Detection", tech:["NLP"], group:"ml", blurb:"Hate speech detection notebook." },
+      { name:"Checkers-Game", url:"https://github.com/sahithik156/Checkers-Game", tech:["Python"], group:"games", blurb:"Checkers game implementation." },
+      { name:"3D-Tic-tac-toe-game", url:"https://github.com/sahithik156/3D-Tic-tac-toe-game", tech:["Java"], group:"games", blurb:"3D tic-tac-toe in Java." },
+      { name:"snakes-and-ladders-game", url:"https://github.com/sahithik156/snakes-and-ladders-game", tech:["C"], group:"games", blurb:"Snakes and ladders in C." },
+      { name:"Food-ordering-system", url:"https://github.com/sahithik156/Food-ordering-system", tech:["Java"], group:"web", blurb:"Food ordering system in Java." },
+    ];
+
+    const q = document.getElementById("q");
+    const f = document.getElementById("f");
+    const grid = document.getElementById("repoGrid");
+
+    function render() {
+      const query = (q.value || "").toLowerCase().trim();
+      const filter = f.value;
+
+      const items = repos.filter(r => {
+        const hitsQuery =
+          !query ||
+          r.name.toLowerCase().includes(query) ||
+          (r.blurb || "").toLowerCase().includes(query) ||
+          (r.tech || []).join(" ").toLowerCase().includes(query);
+
+        const hitsFilter = (filter === "all") || (r.group === filter);
+        return hitsQuery && hitsFilter;
+      });
+
+      grid.innerHTML = items.map(r => `
+        <a class="block rounded-2xl border border-white/10 bg-slate-950/30 p-5 hover:border-white/20"
+           href="${r.url}" target="_blank" rel="noreferrer">
+          <div class="flex items-start justify-between gap-3">
+            <div class="font-semibold">${r.name}</div>
+            <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-300">${r.group}</span>
+          </div>
+          <div class="mt-2 text-sm text-slate-300">${r.blurb || ""}</div>
+          <div class="mt-4 flex flex-wrap gap-2">
+            ${(r.tech || []).map(t => `<span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-300">${t}</span>`).join("")}
+          </div>
+        </a>
+      `).join("");
+
+      if (!items.length) {
+        grid.innerHTML = `<div class="rounded-2xl border border-white/10 bg-slate-950/30 p-5 text-slate-300">No matches. Try another search.</div>`;
+      }
+    }
+
+    q.addEventListener("input", render);
+    f.addEventListener("change", render);
+    render();
   </script>
 </body>
 </html>
