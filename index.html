@@ -1,47 +1,445 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Your Name</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sree Sahithi Kantamneni | Portfolio</title>
+  <meta name="description" content="Software Engineer portfolio" />
   <style>
-    body{max-width:800px;margin:40px auto;font:16px system-ui,Segoe UI,Roboto,Arial}
-    header{display:flex;gap:16px;align-items:center}
-    img{width:72px;height:72px;border-radius:50%}
-    nav a{margin-right:12px}
-    section{margin:28px 0}
+    :root{
+      --bg:#0b0d12;
+      --panel:#101420;
+      --text:#e9ecf5;
+      --muted:#aab2c5;
+      --line:rgba(255,255,255,.10);
+      --accent:#7c5cff;
+      --accent2:#22c55e;
+      --shadow: 0 18px 60px rgba(0,0,0,.35);
+      --r:22px;
+      --max: 1100px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      background: radial-gradient(1200px 700px at 20% -10%, rgba(124,92,255,.20), transparent 60%),
+                  radial-gradient(900px 600px at 90% 0%, rgba(34,197,94,.14), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+    }
+    a{color:inherit; text-decoration:none}
+    a:hover{opacity:.92}
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 18px}
+    .nav{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(12px);
+      background: rgba(11,13,18,.65);
+      border-bottom:1px solid var(--line);
+    }
+    .navrow{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0;
+      gap:12px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      font-weight:800; letter-spacing:.4px;
+    }
+    .dot{
+      width:12px; height:12px; border-radius:999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 0 6px rgba(124,92,255,.12);
+    }
+    .links{display:flex; flex-wrap:wrap; gap:10px}
+    .links a{
+      padding:8px 10px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      color:var(--muted);
+      font-size:14px;
+    }
+    .links a:hover{border-color: rgba(255,255,255,.25); color:var(--text)}
+    .hero{
+      padding:46px 0 24px;
+    }
+    .badge{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:8px 12px;
+      border:1px solid rgba(34,197,94,.35);
+      background: rgba(34,197,94,.08);
+      color:#bff3d0;
+      border-radius:999px;
+      font-size:14px;
+    }
+    h1{
+      margin:14px 0 10px;
+      font-size: clamp(34px, 5vw, 56px);
+      line-height:1.05;
+      letter-spacing:-.6px;
+    }
+    .sub{
+      max-width: 900px;
+      color:var(--muted);
+      font-size: clamp(16px, 2vw, 18px);
+      line-height:1.6;
+      margin:0 0 18px;
+    }
+    .cta{display:flex; flex-wrap:wrap; gap:10px; margin:18px 0 26px}
+    .btn{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:12px 14px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      box-shadow: none;
+      font-weight:650;
+    }
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(124,92,255,.95), rgba(34,197,94,.55));
+      border-color: rgba(255,255,255,.14);
+      box-shadow: var(--shadow);
+    }
+    .btn span{color:rgba(255,255,255,.9)}
+    .stats{
+      display:grid;
+      grid-template-columns: repeat(4, minmax(0,1fr));
+      gap:12px;
+      margin:10px 0 0;
+    }
+    .stat{
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      border-radius: var(--r);
+      padding:14px 14px 12px;
+    }
+    .stat strong{display:block; font-size:22px; letter-spacing:-.2px}
+    .stat small{display:block; margin-top:4px; color:var(--muted)}
+    .scroll{
+      margin:18px 0 0;
+      color:var(--muted);
+      font-size:14px;
+      opacity:.85;
+    }
+    .section{
+      padding:34px 0;
+      border-top:1px solid var(--line);
+    }
+    .kicker{
+      color:var(--muted);
+      text-transform:uppercase;
+      letter-spacing:1.2px;
+      font-size:12px;
+      margin:0 0 10px;
+    }
+    h2{
+      margin:0 0 12px;
+      font-size:32px;
+      letter-spacing:-.4px;
+    }
+    .grid2{display:grid; grid-template-columns: 1.25fr .75fr; gap:14px}
+    .card{
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      border-radius: var(--r);
+      padding:16px;
+    }
+    .card p{margin:0; color:var(--muted); line-height:1.6}
+    .pillrow{display:flex; flex-wrap:wrap; gap:8px; margin-top:12px}
+    .pill{
+      font-size:13px;
+      padding:7px 10px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      color:rgba(233,236,245,.88);
+      background: rgba(255,255,255,.02);
+    }
+    .list{display:grid; gap:12px}
+    .item{
+      display:grid; gap:8px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      border-radius: var(--r);
+      padding:16px;
+    }
+    .row{
+      display:flex; align-items:flex-start; justify-content:space-between; gap:10px;
+      flex-wrap:wrap;
+    }
+    .role{font-weight:750}
+    .meta{color:var(--muted); font-size:14px}
+    .bullets{margin:0; padding-left:18px; color:var(--muted); line-height:1.6}
+    .bullets li{margin:6px 0}
+    .projgrid{display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:12px}
+    .projnum{
+      font-weight:800;
+      color: rgba(233,236,245,.75);
+      font-size:13px;
+      letter-spacing:1px;
+    }
+    .projtitle{margin:2px 0 6px; font-size:18px; font-weight:750}
+    .projlinks{display:flex; flex-wrap:wrap; gap:10px; margin-top:10px}
+    .projlinks a{color:rgba(233,236,245,.9); font-size:14px; text-decoration:underline; text-underline-offset:3px}
+    .footer{
+      padding:22px 0 34px;
+      color:var(--muted);
+      font-size:14px;
+    }
+    @media (max-width: 900px){
+      .stats{grid-template-columns: repeat(2, minmax(0,1fr))}
+      .grid2{grid-template-columns: 1fr}
+      .projgrid{grid-template-columns: 1fr}
+    }
   </style>
 </head>
+
 <body>
-  <header>
-    <img src="avatar.jpg" alt="Your photo" />
-    <div>
-      <h1>Your Name</h1>
-      <p>Role or tagline</p>
-      <nav>
-        <a href="#projects">Projects</a>
+  <header class="nav">
+    <div class="wrap navrow">
+      <div class="brand">
+        <span class="dot" aria-hidden="true"></span>
+        <span>SSK</span>
+      </div>
+      <nav class="links" aria-label="Primary">
         <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#impact">Impact</a>
+        <a href="#education">Education</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
   </header>
 
-  <section id="projects">
-    <h2>Projects</h2>
-    <ul>
-      <li><a href="https://github.com/yourusername/project1">Project One</a>  short one line summary</li>
-      <li><a href="https://github.com/yourusername/project2">Project Two</a>  short one line summary</li>
-    </ul>
-  </section>
+  <main class="wrap">
+    <section class="hero" id="top">
+      <span class="badge">Available for opportunities</span>
 
-  <section id="about">
-    <h2>About</h2>
-    <p>Two or three sentences about what you do and what you care about.</p>
-  </section>
+      <h1>Sree Sahithi Kantamneni</h1>
+      <p class="sub">
+        Software Engineer focused on backend systems, data heavy workflows, and production debugging.
+        I like building reliable features that reduce manual work and make users’ lives easier.
+      </p>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <p><a href="mailto:you@example.com">you@example.com</a>  •  <a href="https://www.linkedin.com/in/yourusername/">LinkedIn</a></p>
-  </section>
+      <div class="cta">
+        <a class="btn primary" href="#impact"><span>View My Work</span></a>
+        <a class="btn" href="#contact"><span>Get In Touch</span></a>
+        <a class="btn" href="https://github.com/sahithik156" target="_blank" rel="noreferrer"><span>GitHub</span></a>
+        <a class="btn" href="YOUR_RESUME_LINK.pdf" target="_blank" rel="noreferrer"><span>Resume</span></a>
+      </div>
+
+      <div class="stats" role="list">
+        <div class="stat" role="listitem"><strong>3+ yrs</strong><small>Experience</small></div>
+        <div class="stat" role="listitem"><strong>50+</strong><small>Tickets and bugs resolved</small></div>
+        <div class="stat" role="listitem"><strong>10+</strong><small>APIs and features shipped</small></div>
+        <div class="stat" role="listitem"><strong>60%</strong><small>Manual effort reduced</small></div>
+      </div>
+
+      <div class="scroll">Scroll</div>
+    </section>
+
+    <section class="section" id="about">
+      <p class="kicker">01 — About Me</p>
+      <h2>Building impact through code</h2>
+
+      <div class="grid2">
+        <div class="card">
+          <p>
+            Write 4 to 6 lines about what you build, the kinds of problems you solve, and the outcomes you care about.
+            Mention domains like billing, SaaS platforms, K12 systems, automation, reliability, and data quality if that fits you.
+          </p>
+
+          <div class="pillrow" aria-label="Focus areas">
+            <span class="pill">Backend engineering</span>
+            <span class="pill">Production debugging</span>
+            <span class="pill">Workflow automation</span>
+            <span class="pill">SQL and data</span>
+            <span class="pill">APIs</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <p class="meta"><strong>Quick snapshot</strong></p>
+          <ul class="bullets">
+            <li>Zuora Application Support Engineer</li>
+            <li>PHP, SQL, REST, workflows</li>
+            <li>Strong at reproducing issues and writing clean fixes</li>
+            <li>Enjoys building tools and internal automation</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="skills">
+      <p class="kicker">02 — Technical Skills</p>
+      <h2>My stack</h2>
+
+      <div class="list">
+        <div class="item">
+          <div class="row">
+            <div class="role">Languages</div>
+            <div class="meta">PHP · SQL · JavaScript · Python</div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="row">
+            <div class="role">Backend</div>
+            <div class="meta">REST APIs · Auth · Cron jobs · Debugging · Performance</div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="row">
+            <div class="role">Data</div>
+            <div class="meta">MySQL · ETL · Reporting · Data quality checks</div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="row">
+            <div class="role">Tools</div>
+            <div class="meta">Git · CI/CD · Linux · Logs · Postman</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="experience">
+      <p class="kicker">03 — Work Experience</p>
+      <h2>Where I’ve worked</h2>
+
+      <div class="list">
+        <div class="item">
+          <div class="row">
+            <div>
+              <div class="role">Zuora · Application Support Engineer</div>
+              <div class="meta">Tampa, FL · Remote</div>
+            </div>
+            <div class="meta">YYYY – Present</div>
+          </div>
+          <ul class="bullets">
+            <li>Example: solved complex billing and data issues across tenants with strong root cause analysis.</li>
+            <li>Example: improved customer outcomes by creating repeatable investigation playbooks.</li>
+            <li>Example: partnered with engineering on escalations and fixes.</li>
+          </ul>
+        </div>
+
+        <div class="item">
+          <div class="row">
+            <div>
+              <div class="role">Improvation LLC · Software Engineer</div>
+              <div class="meta">Backend and platform</div>
+            </div>
+            <div class="meta">YYYY – YYYY</div>
+          </div>
+          <ul class="bullets">
+            <li>Example: built and maintained PHP features for K12 apps like meal assistance, lottery, and payments.</li>
+            <li>Example: wrote DB migrations, cron jobs, and admin tooling to reduce manual work.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="impact">
+      <p class="kicker">04 — Key Projects & Impact</p>
+      <h2>What I’ve built</h2>
+
+      <div class="projgrid">
+        <div class="item">
+          <div class="projnum">01</div>
+          <div class="projtitle">Project Title</div>
+          <p>2 to 3 lines describing the problem, your approach, and result.</p>
+          <div class="pillrow">
+            <span class="pill">PHP</span><span class="pill">SQL</span><span class="pill">Cron</span>
+          </div>
+          <div class="projlinks">
+            <a href="YOUR_GITHUB_REPO_LINK" target="_blank" rel="noreferrer">Code</a>
+            <a href="YOUR_DEMO_LINK" target="_blank" rel="noreferrer">Demo</a>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="projnum">02</div>
+          <div class="projtitle">Project Title</div>
+          <p>2 to 3 lines describing the impact, scale, and what you owned.</p>
+          <div class="pillrow">
+            <span class="pill">API</span><span class="pill">Debugging</span><span class="pill">Data</span>
+          </div>
+          <div class="projlinks">
+            <a href="YOUR_GITHUB_REPO_LINK" target="_blank" rel="noreferrer">Code</a>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="projnum">03</div>
+          <div class="projtitle">Project Title</div>
+          <p>Add 1 strong metric if possible. Reduced X by Y%, saved Z hours, sped up by N.</p>
+          <div class="pillrow">
+            <span class="pill">Automation</span><span class="pill">Testing</span>
+          </div>
+          <div class="projlinks">
+            <a href="YOUR_GITHUB_REPO_LINK" target="_blank" rel="noreferrer">Code</a>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="projnum">04</div>
+          <div class="projtitle">Project Title</div>
+          <p>Keep it crisp. What did you build and why does it matter?</p>
+          <div class="pillrow">
+            <span class="pill">System design</span><span class="pill">SQL</span>
+          </div>
+          <div class="projlinks">
+            <a href="YOUR_GITHUB_REPO_LINK" target="_blank" rel="noreferrer">Code</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="education">
+      <p class="kicker">05 — Education</p>
+      <h2>Academic journey</h2>
+
+      <div class="list">
+        <div class="item">
+          <div class="row">
+            <div>
+              <div class="role">University Name</div>
+              <div class="meta">Degree · Location</div>
+            </div>
+            <div class="meta">YYYY – YYYY</div>
+          </div>
+          <p class="meta">Add 1 line: focus areas, thesis, coursework, awards.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <p class="kicker">06 — Let’s Connect</p>
+      <h2>Let’s talk</h2>
+
+      <div class="card">
+        <p>
+          Open to full time roles in backend engineering, platform engineering, and data heavy systems.
+          Best way to reach me:
+        </p>
+
+        <div class="cta" style="margin-top:14px">
+          <a class="btn primary" href="mailto:YOUR_EMAIL"><span>Email</span></a>
+          <a class="btn" href="https://www.linkedin.com/in/YOUR_LINKEDIN" target="_blank" rel="noreferrer"><span>LinkedIn</span></a>
+          <a class="btn" href="https://github.com/sahithik156" target="_blank" rel="noreferrer"><span>GitHub</span></a>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer">
+      © <span id="y"></span> Sree Sahithi Kantamneni · Built on GitHub Pages
+    </div>
+  </main>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
