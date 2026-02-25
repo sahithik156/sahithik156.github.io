@@ -1,441 +1,372 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sree Sahithi Kantamneni | Portfolio</title>
-  <meta name="description" content="Software Engineer portfolio" />
-  <style>
-    :root{
-      --bg:#0b0d12;
-      --panel:#101420;
-      --text:#e9ecf5;
-      --muted:#aab2c5;
-      --line:rgba(255,255,255,.10);
-      --accent:#7c5cff;
-      --accent2:#22c55e;
-      --shadow: 0 18px 60px rgba(0,0,0,.35);
-      --r:22px;
-      --max: 1100px;
+  <meta name="description" content="Software Engineer | Python, Java, SQL | Portfolio" />
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ["ui-sans-serif", "system-ui", "Segoe UI", "Roboto", "Arial"]
+          },
+          boxShadow: {
+            soft: "0 18px 60px rgba(0,0,0,.35)"
+          }
+        }
+      }
     }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-      background: radial-gradient(1200px 700px at 20% -10%, rgba(124,92,255,.20), transparent 60%),
-                  radial-gradient(900px 600px at 90% 0%, rgba(34,197,94,.14), transparent 55%),
-                  var(--bg);
-      color:var(--text);
-    }
-    a{color:inherit; text-decoration:none}
-    a:hover{opacity:.92}
-    .wrap{max-width:var(--max); margin:0 auto; padding:0 18px}
-    .nav{
-      position:sticky; top:0; z-index:50;
-      backdrop-filter: blur(12px);
-      background: rgba(11,13,18,.65);
-      border-bottom:1px solid var(--line);
-    }
-    .navrow{
-      display:flex; align-items:center; justify-content:space-between;
-      padding:14px 0;
-      gap:12px;
-    }
-    .brand{
-      display:flex; align-items:center; gap:10px;
-      font-weight:800; letter-spacing:.4px;
-    }
-    .dot{
-      width:12px; height:12px; border-radius:999px;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      box-shadow: 0 0 0 6px rgba(124,92,255,.12);
-    }
-    .links{display:flex; flex-wrap:wrap; gap:10px}
-    .links a{
-      padding:8px 10px;
-      border:1px solid var(--line);
-      border-radius:999px;
-      color:var(--muted);
-      font-size:14px;
-    }
-    .links a:hover{border-color: rgba(255,255,255,.25); color:var(--text)}
-    .hero{
-      padding:46px 0 24px;
-    }
-    .badge{
-      display:inline-flex; align-items:center; gap:10px;
-      padding:8px 12px;
-      border:1px solid rgba(34,197,94,.35);
-      background: rgba(34,197,94,.08);
-      color:#bff3d0;
-      border-radius:999px;
-      font-size:14px;
-    }
-    h1{
-      margin:14px 0 10px;
-      font-size: clamp(34px, 5vw, 56px);
-      line-height:1.05;
-      letter-spacing:-.6px;
-    }
-    .sub{
-      max-width: 900px;
-      color:var(--muted);
-      font-size: clamp(16px, 2vw, 18px);
-      line-height:1.6;
-      margin:0 0 18px;
-    }
-    .cta{display:flex; flex-wrap:wrap; gap:10px; margin:18px 0 26px}
-    .btn{
-      display:inline-flex; align-items:center; gap:10px;
-      padding:12px 14px;
-      border-radius:14px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.04);
-      box-shadow: none;
-      font-weight:650;
-    }
-    .btn.primary{
-      background: linear-gradient(135deg, rgba(124,92,255,.95), rgba(34,197,94,.55));
-      border-color: rgba(255,255,255,.14);
-      box-shadow: var(--shadow);
-    }
-    .btn span{color:rgba(255,255,255,.9)}
-    .stats{
-      display:grid;
-      grid-template-columns: repeat(4, minmax(0,1fr));
-      gap:12px;
-      margin:10px 0 0;
-    }
-    .stat{
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      border-radius: var(--r);
-      padding:14px 14px 12px;
-    }
-    .stat strong{display:block; font-size:22px; letter-spacing:-.2px}
-    .stat small{display:block; margin-top:4px; color:var(--muted)}
-    .scroll{
-      margin:18px 0 0;
-      color:var(--muted);
-      font-size:14px;
-      opacity:.85;
-    }
-    .section{
-      padding:34px 0;
-      border-top:1px solid var(--line);
-    }
-    .kicker{
-      color:var(--muted);
-      text-transform:uppercase;
-      letter-spacing:1.2px;
-      font-size:12px;
-      margin:0 0 10px;
-    }
-    h2{
-      margin:0 0 12px;
-      font-size:32px;
-      letter-spacing:-.4px;
-    }
-    .grid2{display:grid; grid-template-columns: 1.25fr .75fr; gap:14px}
-    .card{
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      border-radius: var(--r);
-      padding:16px;
-    }
-    .card p{margin:0; color:var(--muted); line-height:1.6}
-    .pillrow{display:flex; flex-wrap:wrap; gap:8px; margin-top:12px}
-    .pill{
-      font-size:13px;
-      padding:7px 10px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      color:rgba(233,236,245,.88);
-      background: rgba(255,255,255,.02);
-    }
-    .list{display:grid; gap:12px}
-    .item{
-      display:grid; gap:8px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      border-radius: var(--r);
-      padding:16px;
-    }
-    .row{
-      display:flex; align-items:flex-start; justify-content:space-between; gap:10px;
-      flex-wrap:wrap;
-    }
-    .role{font-weight:750}
-    .meta{color:var(--muted); font-size:14px}
-    .bullets{margin:0; padding-left:18px; color:var(--muted); line-height:1.6}
-    .bullets li{margin:6px 0}
-    .projgrid{display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:12px}
-    .projnum{
-      font-weight:800;
-      color: rgba(233,236,245,.75);
-      font-size:13px;
-      letter-spacing:1px;
-    }
-    .projtitle{margin:2px 0 6px; font-size:18px; font-weight:750}
-    .projlinks{display:flex; flex-wrap:wrap; gap:10px; margin-top:10px}
-    .projlinks a{color:rgba(233,236,245,.9); font-size:14px; text-decoration:underline; text-underline-offset:3px}
-    .footer{
-      padding:22px 0 34px;
-      color:var(--muted);
-      font-size:14px;
-    }
-    @media (max-width: 900px){
-      .stats{grid-template-columns: repeat(2, minmax(0,1fr))}
-      .grid2{grid-template-columns: 1fr}
-      .projgrid{grid-template-columns: 1fr}
-    }
-  </style>
+  </script>
 </head>
 
-<body>
-  <header class="nav">
-    <div class="wrap navrow">
-      <div class="brand">
-        <span class="dot" aria-hidden="true"></span>
+<body class="bg-slate-950 text-slate-100">
+  <!-- Background glow -->
+  <div class="pointer-events-none fixed inset-0 -z-10">
+    <div class="absolute -top-24 left-10 h-80 w-80 rounded-full bg-violet-500/20 blur-3xl"></div>
+    <div class="absolute -top-28 right-10 h-80 w-80 rounded-full bg-emerald-400/15 blur-3xl"></div>
+    <div class="absolute bottom-0 left-1/3 h-72 w-72 rounded-full bg-cyan-400/10 blur-3xl"></div>
+  </div>
+
+  <!-- Top Nav -->
+  <header class="sticky top-0 z-50 border-b border-white/10 bg-slate-950/70 backdrop-blur">
+    <div class="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3">
+      <a href="#top" class="flex items-center gap-3 font-semibold tracking-tight">
+        <span class="h-3 w-3 rounded-full bg-gradient-to-br from-violet-400 to-emerald-300 shadow-[0_0_0_6px_rgba(139,92,246,.14)]"></span>
         <span>SSK</span>
-      </div>
-      <nav class="links" aria-label="Primary">
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#experience">Experience</a>
-        <a href="#impact">Impact</a>
-        <a href="#education">Education</a>
-        <a href="#contact">Contact</a>
+      </a>
+
+      <nav class="hidden flex-wrap items-center gap-2 sm:flex">
+        <a class="rounded-full border border-white/10 px-3 py-1 text-sm text-slate-300 hover:border-white/20 hover:text-white" href="#about">About</a>
+        <a class="rounded-full border border-white/10 px-3 py-1 text-sm text-slate-300 hover:border-white/20 hover:text-white" href="#skills">Skills</a>
+        <a class="rounded-full border border-white/10 px-3 py-1 text-sm text-slate-300 hover:border-white/20 hover:text-white" href="#projects">Projects</a>
+        <a class="rounded-full border border-white/10 px-3 py-1 text-sm text-slate-300 hover:border-white/20 hover:text-white" href="#experience">Experience</a>
+        <a class="rounded-full border border-white/10 px-3 py-1 text-sm text-slate-300 hover:border-white/20 hover:text-white" href="#certs">Certifications</a>
+        <a class="rounded-full border border-white/10 px-3 py-1 text-sm text-slate-300 hover:border-white/20 hover:text-white" href="#contact">Contact</a>
       </nav>
+
+      <a class="rounded-xl bg-gradient-to-br from-violet-500 to-emerald-400 px-3 py-2 text-sm font-semibold text-white shadow-soft hover:opacity-95"
+         href="#contact">
+        Hire / Connect
+      </a>
     </div>
   </header>
 
-  <main class="wrap">
-    <section class="hero" id="top">
-      <span class="badge">Available for opportunities</span>
+  <main id="top" class="mx-auto max-w-6xl px-4">
+    <!-- Hero -->
+    <section class="py-12 sm:py-16">
+      <div class="inline-flex items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-400/10 px-3 py-1 text-sm text-emerald-200">
+        <span class="h-2 w-2 rounded-full bg-emerald-300"></span>
+        Open to opportunities
+      </div>
 
-      <h1>Sree Sahithi Kantamneni</h1>
-      <p class="sub">
-        Software Engineer focused on backend systems, data heavy workflows, and production debugging.
-        I like building reliable features that reduce manual work and make users’ lives easier.
+      <h1 class="mt-4 text-4xl font-bold tracking-tight sm:text-6xl">
+        Sree Sahithi Kantamneni
+      </h1>
+
+      <p class="mt-4 max-w-3xl text-lg leading-relaxed text-slate-300">
+        Full stack software engineer focused on reliable backend systems, SQL driven workflows, and production debugging.
+        Built and supported consumer facing apps and services used at scale.
       </p>
 
-      <div class="cta">
-        <a class="btn primary" href="#impact"><span>View My Work</span></a>
-        <a class="btn" href="#contact"><span>Get In Touch</span></a>
-        <a class="btn" href="https://github.com/sahithik156" target="_blank" rel="noreferrer"><span>GitHub</span></a>
-        <a class="btn" href="YOUR_RESUME_LINK.pdf" target="_blank" rel="noreferrer"><span>Resume</span></a>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <!-- Update these 3 links -->
+        <a class="rounded-xl bg-gradient-to-br from-violet-500 to-emerald-400 px-4 py-2 font-semibold shadow-soft hover:opacity-95"
+           href="#projects">
+          View Projects
+        </a>
+        <a class="rounded-xl border border-white/10 bg-white/5 px-4 py-2 font-semibold text-slate-100 hover:border-white/20"
+           href="resume.pdf" target="_blank" rel="noreferrer">
+          Resume
+        </a>
+        <a class="rounded-xl border border-white/10 bg-white/5 px-4 py-2 font-semibold text-slate-100 hover:border-white/20"
+           href="https://github.com/sahithik156" target="_blank" rel="noreferrer">
+          GitHub
+        </a>
+        <a class="rounded-xl border border-white/10 bg-white/5 px-4 py-2 font-semibold text-slate-100 hover:border-white/20"
+           href="https://www.linkedin.com/in/sree-sahithi-k" target="_blank" rel="noreferrer">
+          LinkedIn
+        </a>
       </div>
 
-      <div class="stats" role="list">
-        <div class="stat" role="listitem"><strong>3+ yrs</strong><small>Experience</small></div>
-        <div class="stat" role="listitem"><strong>50+</strong><small>Tickets and bugs resolved</small></div>
-        <div class="stat" role="listitem"><strong>10+</strong><small>APIs and features shipped</small></div>
-        <div class="stat" role="listitem"><strong>60%</strong><small>Manual effort reduced</small></div>
+      <!-- Stats -->
+      <div class="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+          <div class="text-2xl font-bold">10K+</div>
+          <div class="mt-1 text-sm text-slate-300">Users supported</div>
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+          <div class="text-2xl font-bold">40%</div>
+          <div class="mt-1 text-sm text-slate-300">API latency reduced</div>
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+          <div class="text-2xl font-bold">28%</div>
+          <div class="mt-1 text-sm text-slate-300">Reporting accuracy improved</div>
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+          <div class="text-2xl font-bold">500GB+</div>
+          <div class="mt-1 text-sm text-slate-300">Telemetry analyzed</div>
+        </div>
       </div>
-
-      <div class="scroll">Scroll</div>
     </section>
 
-    <section class="section" id="about">
-      <p class="kicker">01 — About Me</p>
-      <h2>Building impact through code</h2>
+    <!-- About -->
+    <section id="about" class="border-t border-white/10 py-12">
+      <p class="text-xs font-semibold uppercase tracking-widest text-slate-400">About</p>
+      <h2 class="mt-2 text-3xl font-bold tracking-tight">What I do</h2>
 
-      <div class="grid2">
-        <div class="card">
-          <p>
-            Write 4 to 6 lines about what you build, the kinds of problems you solve, and the outcomes you care about.
-            Mention domains like billing, SaaS platforms, K12 systems, automation, reliability, and data quality if that fits you.
+      <div class="mt-6 grid gap-4 lg:grid-cols-3">
+        <div class="lg:col-span-2 rounded-2xl border border-white/10 bg-white/5 p-6">
+          <p class="text-slate-300 leading-relaxed">
+            I build and operate web applications end to end: backend services, REST APIs, data pipelines, and user facing experiences.
+            I care about performance, reliability, and clean debugging workflows.
           </p>
 
-          <div class="pillrow" aria-label="Focus areas">
-            <span class="pill">Backend engineering</span>
-            <span class="pill">Production debugging</span>
-            <span class="pill">Workflow automation</span>
-            <span class="pill">SQL and data</span>
-            <span class="pill">APIs</span>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm">Backend</span>
+            <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm">APIs</span>
+            <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm">SQL</span>
+            <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm">Automation</span>
+            <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm">Production debugging</span>
           </div>
         </div>
 
-        <div class="card">
-          <p class="meta"><strong>Quick snapshot</strong></p>
-          <ul class="bullets">
-            <li>Zuora Application Support Engineer</li>
-            <li>PHP, SQL, REST, workflows</li>
-            <li>Strong at reproducing issues and writing clean fixes</li>
-            <li>Enjoys building tools and internal automation</li>
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
+          <p class="text-sm font-semibold text-slate-200">Quick info</p>
+          <ul class="mt-3 space-y-2 text-slate-300">
+            <li><span class="text-slate-400">Location:</span> United States</li>
+            <li><span class="text-slate-400">Email:</span> sahithik156@gmail.com</li>
+            <li><span class="text-slate-400">Role:</span> Software Developer</li>
+            <li><span class="text-slate-400">MS CS:</span> University of South Florida</li>
           </ul>
         </div>
       </div>
     </section>
 
-    <section class="section" id="skills">
-      <p class="kicker">02 — Technical Skills</p>
-      <h2>My stack</h2>
+    <!-- Skills -->
+    <section id="skills" class="border-t border-white/10 py-12">
+      <p class="text-xs font-semibold uppercase tracking-widest text-slate-400">Skills</p>
+      <h2 class="mt-2 text-3xl font-bold tracking-tight">Stack</h2>
 
-      <div class="list">
-        <div class="item">
-          <div class="row">
-            <div class="role">Languages</div>
-            <div class="meta">PHP · SQL · JavaScript · Python</div>
+      <div class="mt-6 grid gap-4 md:grid-cols-2">
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
+          <div class="flex items-start justify-between gap-3">
+            <p class="font-semibold">Languages</p>
+            <p class="text-sm text-slate-300">Python · JavaScript · SQL · C# · Java</p>
           </div>
         </div>
-
-        <div class="item">
-          <div class="row">
-            <div class="role">Backend</div>
-            <div class="meta">REST APIs · Auth · Cron jobs · Debugging · Performance</div>
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
+          <div class="flex items-start justify-between gap-3">
+            <p class="font-semibold">Backend</p>
+            <p class="text-sm text-slate-300">REST · Auth · Microservices · Caching · Cron jobs</p>
           </div>
         </div>
-
-        <div class="item">
-          <div class="row">
-            <div class="role">Data</div>
-            <div class="meta">MySQL · ETL · Reporting · Data quality checks</div>
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
+          <div class="flex items-start justify-between gap-3">
+            <p class="font-semibold">Databases</p>
+            <p class="text-sm text-slate-300">MySQL · PostgreSQL · SQL Server · MongoDB</p>
           </div>
         </div>
-
-        <div class="item">
-          <div class="row">
-            <div class="role">Tools</div>
-            <div class="meta">Git · CI/CD · Linux · Logs · Postman</div>
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
+          <div class="flex items-start justify-between gap-3">
+            <p class="font-semibold">Cloud & Tools</p>
+            <p class="text-sm text-slate-300">AWS · Azure · Docker · Git · CI/CD · Splunk</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section" id="experience">
-      <p class="kicker">03 — Work Experience</p>
-      <h2>Where I’ve worked</h2>
+    <!-- Projects -->
+    <section id="projects" class="border-t border-white/10 py-12">
+      <p class="text-xs font-semibold uppercase tracking-widest text-slate-400">Projects</p>
+      <h2 class="mt-2 text-3xl font-bold tracking-tight">Selected work</h2>
 
-      <div class="list">
-        <div class="item">
-          <div class="row">
-            <div>
-              <div class="role">Zuora · Application Support Engineer</div>
-              <div class="meta">Tampa, FL · Remote</div>
-            </div>
-            <div class="meta">YYYY – Present</div>
+      <div class="mt-6 grid gap-4 lg:grid-cols-2">
+        <!-- Project Card -->
+        <article class="rounded-2xl border border-white/10 bg-white/5 p-6">
+          <div class="text-xs font-semibold tracking-widest text-slate-400">01</div>
+          <h3 class="mt-2 text-xl font-semibold">AI Powered Recipe Planning</h3>
+          <p class="mt-2 text-slate-300">
+            Integrated MCTS and A* with FOON to generate optimized workflows, improving search efficiency by 34%.
+          </p>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm">Python</span>
+            <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm">MCTS</span>
+            <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm">A*</span>
           </div>
-          <ul class="bullets">
-            <li>Example: solved complex billing and data issues across tenants with strong root cause analysis.</li>
-            <li>Example: improved customer outcomes by creating repeatable investigation playbooks.</li>
-            <li>Example: partnered with engineering on escalations and fixes.</li>
+          <div class="mt-4 flex flex-wrap gap-3">
+            <a class="text-sm font-semibold text-violet-300 underline underline-offset-4 hover:text-violet-200"
+               href="https://github.com/sahithik156" target="_blank" rel="noreferrer">Code</a>
+          </div>
+        </article>
+
+        <article class="rounded-2xl border border-white/10 bg-white/5 p-6">
+          <div class="text-xs font-semibold tracking-widest text-slate-400">02</div>
+          <h3 class="mt-2 text-xl font-semibold">Voice Driven Prescription Dictation</h3>
+          <p class="mt-2 text-slate-300">
+            Built an end to end ASR + NLP pipeline, reducing documentation effort by 32% and improving accuracy by 20%.
+          </p>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm">Python</span>
+            <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm">React</span>
+            <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm">NLP</span>
+          </div>
+          <div class="mt-4 flex flex-wrap gap-3">
+            <a class="text-sm font-semibold text-violet-300 underline underline-offset-4 hover:text-violet-200"
+               href="https://github.com/sahithik156" target="_blank" rel="noreferrer">Code</a>
+          </div>
+        </article>
+
+        <article class="rounded-2xl border border-white/10 bg-white/5 p-6">
+          <div class="text-xs font-semibold tracking-widest text-slate-400">03</div>
+          <h3 class="mt-2 text-xl font-semibold">Global Malnutrition Analysis</h3>
+          <p class="mt-2 text-slate-300">
+            Designed Tableau dashboards over integrated public health datasets, increasing insight generation efficiency by 45%.
+          </p>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm">Python</span>
+            <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm">Tableau</span>
+            <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm">Data</span>
+          </div>
+          <div class="mt-4 flex flex-wrap gap-3">
+            <a class="text-sm font-semibold text-violet-300 underline underline-offset-4 hover:text-violet-200"
+               href="https://github.com/sahithik156" target="_blank" rel="noreferrer">Code</a>
+          </div>
+        </article>
+
+        <article class="rounded-2xl border border-white/10 bg-white/5 p-6">
+          <div class="text-xs font-semibold tracking-widest text-slate-400">04</div>
+          <h3 class="mt-2 text-xl font-semibold">Pick your best repo here</h3>
+          <p class="mt-2 text-slate-300">
+            Replace this with one strong GitHub project you want recruiters to click first.
+          </p>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm">Your tag</span>
+            <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm">Your tag</span>
+          </div>
+          <div class="mt-4 flex flex-wrap gap-3">
+            <a class="text-sm font-semibold text-violet-300 underline underline-offset-4 hover:text-violet-200"
+               href="https://github.com/sahithik156" target="_blank" rel="noreferrer">Code</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" class="border-t border-white/10 py-12">
+      <p class="text-xs font-semibold uppercase tracking-widest text-slate-400">Experience</p>
+      <h2 class="mt-2 text-3xl font-bold tracking-tight">Work</h2>
+
+      <div class="mt-6 space-y-4">
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
+          <div class="flex flex-wrap items-start justify-between gap-3">
+            <div>
+              <div class="text-lg font-semibold">Easysuite Software</div>
+              <div class="text-sm text-slate-300">Software Developer</div>
+            </div>
+            <div class="text-sm text-slate-400">Jul 2025 – Present</div>
+          </div>
+          <ul class="mt-4 list-disc space-y-2 pl-5 text-slate-300">
+            <li>Enhanced reporting accuracy by 28% by adding validation layers across ingestion flows.</li>
+            <li>Lowered API response latency by 40% by profiling queries and optimizing indexes.</li>
+            <li>Stabilized backend services supporting 10K+ active users through log tracing and database audits.</li>
           </ul>
         </div>
 
-        <div class="item">
-          <div class="row">
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
+          <div class="flex flex-wrap items-start justify-between gap-3">
             <div>
-              <div class="role">Improvation LLC · Software Engineer</div>
-              <div class="meta">Backend and platform</div>
+              <div class="text-lg font-semibold">Cyber Florida at USF</div>
+              <div class="text-sm text-slate-300">NIST Grant Intern</div>
             </div>
-            <div class="meta">YYYY – YYYY</div>
+            <div class="text-sm text-slate-400">Jan 2025 – Jun 2025</div>
           </div>
-          <ul class="bullets">
-            <li>Example: built and maintained PHP features for K12 apps like meal assistance, lottery, and payments.</li>
-            <li>Example: wrote DB migrations, cron jobs, and admin tooling to reduce manual work.</li>
+          <ul class="mt-4 list-disc space-y-2 pl-5 text-slate-300">
+            <li>Automated log cleaning and aggregation, increasing investigation throughput by 30%.</li>
+            <li>Analyzed 500GB+ telemetry with structured searches to improve anomaly detection quality.</li>
           </ul>
         </div>
       </div>
     </section>
 
-    <section class="section" id="impact">
-      <p class="kicker">04 — Key Projects & Impact</p>
-      <h2>What I’ve built</h2>
+    <!-- Certifications -->
+    <section id="certs" class="border-t border-white/10 py-12">
+      <p class="text-xs font-semibold uppercase tracking-widest text-slate-400">Certifications</p>
+      <h2 class="mt-2 text-3xl font-bold tracking-tight">Licenses and certifications</h2>
 
-      <div class="projgrid">
-        <div class="item">
-          <div class="projnum">01</div>
-          <div class="projtitle">Project Title</div>
-          <p>2 to 3 lines describing the problem, your approach, and result.</p>
-          <div class="pillrow">
-            <span class="pill">PHP</span><span class="pill">SQL</span><span class="pill">Cron</span>
-          </div>
-          <div class="projlinks">
-            <a href="YOUR_GITHUB_REPO_LINK" target="_blank" rel="noreferrer">Code</a>
-            <a href="YOUR_DEMO_LINK" target="_blank" rel="noreferrer">Demo</a>
-          </div>
+      <div class="mt-6 grid gap-4 md:grid-cols-2">
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
+          <p class="font-semibold">GIAC Global Industrial Cyber Security Professional (GICSP)</p>
+          <p class="mt-1 text-sm text-slate-300">GIAC Certifications</p>
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
+          <p class="font-semibold">ICS410: ICS/SCADA Security Essentials</p>
+          <p class="mt-1 text-sm text-slate-300">SANS Institute</p>
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
+          <p class="font-semibold">ICS310: ICS Cybersecurity Foundations</p>
+          <p class="mt-1 text-sm text-slate-300">SANS Institute</p>
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
+          <p class="font-semibold">SQL (Intermediate)</p>
+          <p class="mt-1 text-sm text-slate-300">HackerRank</p>
         </div>
 
-        <div class="item">
-          <div class="projnum">02</div>
-          <div class="projtitle">Project Title</div>
-          <p>2 to 3 lines describing the impact, scale, and what you owned.</p>
-          <div class="pillrow">
-            <span class="pill">API</span><span class="pill">Debugging</span><span class="pill">Data</span>
-          </div>
-          <div class="projlinks">
-            <a href="YOUR_GITHUB_REPO_LINK" target="_blank" rel="noreferrer">Code</a>
-          </div>
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
+          <p class="font-semibold">Career Essentials in Data Analysis</p>
+          <p class="mt-1 text-sm text-slate-300">Microsoft and LinkedIn</p>
         </div>
-
-        <div class="item">
-          <div class="projnum">03</div>
-          <div class="projtitle">Project Title</div>
-          <p>Add 1 strong metric if possible. Reduced X by Y%, saved Z hours, sped up by N.</p>
-          <div class="pillrow">
-            <span class="pill">Automation</span><span class="pill">Testing</span>
-          </div>
-          <div class="projlinks">
-            <a href="YOUR_GITHUB_REPO_LINK" target="_blank" rel="noreferrer">Code</a>
-          </div>
-        </div>
-
-        <div class="item">
-          <div class="projnum">04</div>
-          <div class="projtitle">Project Title</div>
-          <p>Keep it crisp. What did you build and why does it matter?</p>
-          <div class="pillrow">
-            <span class="pill">System design</span><span class="pill">SQL</span>
-          </div>
-          <div class="projlinks">
-            <a href="YOUR_GITHUB_REPO_LINK" target="_blank" rel="noreferrer">Code</a>
-          </div>
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
+          <p class="font-semibold">PwC Switzerland Power BI Job Simulation</p>
+          <p class="mt-1 text-sm text-slate-300">Forage</p>
         </div>
       </div>
+
+      <p class="mt-5 text-sm text-slate-400">
+        Full list with credential links is on LinkedIn.
+      </p>
     </section>
 
-    <section class="section" id="education">
-      <p class="kicker">05 — Education</p>
-      <h2>Academic journey</h2>
+    <!-- Contact -->
+    <section id="contact" class="border-t border-white/10 py-12">
+      <p class="text-xs font-semibold uppercase tracking-widest text-slate-400">Contact</p>
+      <h2 class="mt-2 text-3xl font-bold tracking-tight">Let’s connect</h2>
 
-      <div class="list">
-        <div class="item">
-          <div class="row">
-            <div>
-              <div class="role">University Name</div>
-              <div class="meta">Degree · Location</div>
-            </div>
-            <div class="meta">YYYY – YYYY</div>
-          </div>
-          <p class="meta">Add 1 line: focus areas, thesis, coursework, awards.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="contact">
-      <p class="kicker">06 — Let’s Connect</p>
-      <h2>Let’s talk</h2>
-
-      <div class="card">
-        <p>
-          Open to full time roles in backend engineering, platform engineering, and data heavy systems.
-          Best way to reach me:
+      <div class="mt-6 rounded-2xl border border-white/10 bg-white/5 p-6">
+        <p class="text-slate-300">
+          Best way to reach me is email. For certifications and credential links, LinkedIn is the source of truth.
         </p>
-
-        <div class="cta" style="margin-top:14px">
-          <a class="btn primary" href="mailto:YOUR_EMAIL"><span>Email</span></a>
-          <a class="btn" href="https://www.linkedin.com/in/YOUR_LINKEDIN" target="_blank" rel="noreferrer"><span>LinkedIn</span></a>
-          <a class="btn" href="https://github.com/sahithik156" target="_blank" rel="noreferrer"><span>GitHub</span></a>
+        <div class="mt-5 flex flex-wrap gap-3">
+          <a class="rounded-xl bg-gradient-to-br from-violet-500 to-emerald-400 px-4 py-2 font-semibold shadow-soft hover:opacity-95"
+             href="mailto:sahithik156@gmail.com">
+            Email
+          </a>
+          <a class="rounded-xl border border-white/10 bg-white/5 px-4 py-2 font-semibold hover:border-white/20"
+             href="https://www.linkedin.com/in/sree-sahithi-k" target="_blank" rel="noreferrer">
+            LinkedIn
+          </a>
+          <a class="rounded-xl border border-white/10 bg-white/5 px-4 py-2 font-semibold hover:border-white/20"
+             href="https://github.com/sahithik156" target="_blank" rel="noreferrer">
+            GitHub
+          </a>
+          <a class="rounded-xl border border-white/10 bg-white/5 px-4 py-2 font-semibold hover:border-white/20"
+             href="resume.pdf" target="_blank" rel="noreferrer">
+            Resume
+          </a>
         </div>
       </div>
     </section>
 
-    <div class="footer">
-      © <span id="y"></span> Sree Sahithi Kantamneni · Built on GitHub Pages
-    </div>
+    <footer class="border-t border-white/10 py-8 text-sm text-slate-400">
+      <div class="flex flex-wrap items-center justify-between gap-3">
+        <div>© <span id="y"></span> Sree Sahithi Kantamneni</div>
+        <div class="text-slate-500">Built with Tailwind CDN on GitHub Pages</div>
+      </div>
+    </footer>
   </main>
 
   <script>
