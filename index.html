@@ -6,17 +6,21 @@
   <title>Sree Sahithi Kantamneni | Portfolio</title>
   <meta name="description" content="Software Engineer portfolio. Projects, experience, and certifications." />
 
-  <!-- Font -->
+  <!-- Modern font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
-          fontFamily: { sans: ["Space Grotesk", "ui-sans-serif", "system-ui"] },
+          fontFamily: { sans: ["Inter", "ui-sans-serif", "system-ui"] },
           boxShadow: { soft: "0 20px 60px rgba(0,0,0,.35)" }
         }
       }
@@ -25,46 +29,31 @@
 </head>
 
 <body class="bg-slate-950 text-slate-100 font-sans">
-  <!-- subtle background -->
+  <!-- background glow -->
   <div class="pointer-events-none fixed inset-0 -z-10">
     <div class="absolute -top-24 left-10 h-72 w-72 rounded-full bg-violet-500/15 blur-3xl"></div>
     <div class="absolute top-20 right-10 h-72 w-72 rounded-full bg-cyan-400/10 blur-3xl"></div>
     <div class="absolute bottom-0 left-1/3 h-72 w-72 rounded-full bg-emerald-400/10 blur-3xl"></div>
   </div>
 
-  <!-- Icons (inline, no dependencies) -->
-  <svg width="0" height="0" class="absolute">
-    <symbol id="i-user" viewBox="0 0 24 24"><path fill="currentColor" d="M12 12a4 4 0 1 0-4-4a4 4 0 0 0 4 4m0 2c-4.42 0-8 2-8 4.5V21h16v-2.5c0-2.5-3.58-4.5-8-4.5"/></symbol>
-    <symbol id="i-briefcase" viewBox="0 0 24 24"><path fill="currentColor" d="M10 4h4a2 2 0 0 1 2 2v2h4a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h4V6a2 2 0 0 1 2-2m0 4h4V6h-4v2"/></symbol>
-    <symbol id="i-grid" viewBox="0 0 24 24"><path fill="currentColor" d="M4 4h7v7H4V4m9 0h7v7h-7V4M4 13h7v7H4v-7m9 0h7v7h-7v-7Z"/></symbol>
-    <symbol id="i-badge" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a6 6 0 0 1 6 6c0 2.2-1.2 4.2-3 5.2V22l-3-2l-3 2v-8.8A6 6 0 0 1 6 8a6 6 0 0 1 6-6Z"/></symbol>
-    <symbol id="i-mail" viewBox="0 0 24 24"><path fill="currentColor" d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2m0 4-8 5L4 8V6l8 5 8-5v2Z"/></symbol>
-    <symbol id="i-link" viewBox="0 0 24 24"><path fill="currentColor" d="M10.6 13.4a1 1 0 0 1 0-1.4l3.6-3.6a3 3 0 1 1 4.2 4.2l-2 2a1 1 0 1 1-1.4-1.4l2-2a1 1 0 1 0-1.4-1.4l-3.6 3.6a1 1 0 0 1-1.4 0M13.4 10.6a1 1 0 0 1 0 1.4l-3.6 3.6a3 3 0 1 1-4.2-4.2l2-2A1 1 0 0 1 8.999 10.8l-2 2a1 1 0 1 0 1.4 1.4l3.6-3.6a1 1 0 0 1 1.4 0"/></symbol>
-    <symbol id="i-search" viewBox="0 0 24 24"><path fill="currentColor" d="M10 2a8 8 0 1 1 5.3 14l4.2 4.2l-1.4 1.4l-4.2-4.2A8 8 0 0 1 10 2m0 2a6 6 0 1 0 0 12a6 6 0 0 0 0-12Z"/></symbol>
-    <symbol id="i-filter" viewBox="0 0 24 24"><path fill="currentColor" d="M3 5h18v2H3V5m4 6h10v2H7v-2m3 6h4v2h-4v-2Z"/></symbol>
-    <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="currentColor" d="M12 4l-1.4 1.4L16.2 11H4v2h12.2l-5.6 5.6L12 20l8-8z"/></symbol>
-    <symbol id="i-code" viewBox="0 0 24 24"><path fill="currentColor" d="M8.7 16.3L3.4 12l5.3-4.3L7.4 6L0 12l7.4 6l1.3-1.7M15.3 16.3L20.6 12l-5.3-4.3L16.6 6L24 12l-7.4 6l-1.3-1.7M14.1 4L9.9 20H12l4.1-16h-2Z"/></symbol>
-    <symbol id="i-star" viewBox="0 0 24 24"><path fill="currentColor" d="M12 17.3L18.2 21l-1.6-7l5.4-4.7l-7.1-.6L12 2L9.1 8.7L2 9.3L7.4 14l-1.6 7L12 17.3Z"/></symbol>
-  </svg>
-
   <div class="mx-auto max-w-6xl px-4 py-6">
     <!-- Top bar -->
     <header class="flex flex-wrap items-center justify-between gap-3">
       <a href="#top" class="flex items-center gap-3">
-        <span class="h-11 w-11 rounded-2xl bg-white/5 border border-white/10 grid place-items-center shadow-soft">
-          <svg class="h-5 w-5 text-violet-200"><use href="#i-user"></use></svg>
+        <span class="h-10 w-10 rounded-2xl bg-white/5 border border-white/10 grid place-items-center shadow-soft">
+          <i class="fa-solid fa-bolt text-violet-200"></i>
         </span>
         <div class="leading-tight">
           <div class="font-semibold tracking-tight">Sree Sahithi Kantamneni</div>
-          <div class="text-sm text-slate-400">Software Engineer</div>
+          <div class="text-sm text-slate-400"><i class="fa-solid fa-code mr-2"></i>Software Engineer</div>
         </div>
       </a>
 
       <nav class="flex flex-wrap gap-2 text-sm">
-        <a class="navpill" href="#projects"><svg class="h-4 w-4"><use href="#i-grid"/></svg><span>Projects</span></a>
-        <a class="navpill" href="#experience"><svg class="h-4 w-4"><use href="#i-briefcase"/></svg><span>Experience</span></a>
-        <a class="navpill" href="#certs"><svg class="h-4 w-4"><use href="#i-badge"/></svg><span>Certs</span></a>
-        <a class="navpill" href="#contact"><svg class="h-4 w-4"><use href="#i-mail"/></svg><span>Contact</span></a>
+        <a class="pillnav" href="#projects"><i class="fa-solid fa-layer-group mr-2"></i>Projects</a>
+        <a class="pillnav" href="#experience"><i class="fa-solid fa-briefcase mr-2"></i>Experience</a>
+        <a class="pillnav" href="#certs"><i class="fa-solid fa-certificate mr-2"></i>Certifications</a>
+        <a class="pillnav" href="#contact"><i class="fa-solid fa-envelope mr-2"></i>Contact</a>
       </nav>
     </header>
 
@@ -73,14 +62,11 @@
       <aside class="h-fit rounded-3xl border border-white/10 bg-white/5 p-5 shadow-soft lg:sticky lg:top-6">
         <div class="flex items-start justify-between gap-3">
           <div>
-            <div class="text-sm text-slate-400">Open to roles</div>
+            <div class="text-sm text-slate-400"><i class="fa-solid fa-compass mr-2"></i>Open to roles</div>
             <div class="mt-1 text-xl font-semibold tracking-tight">Backend • Full stack • Data</div>
           </div>
           <span class="rounded-full border border-emerald-400/25 bg-emerald-400/10 px-3 py-1 text-xs text-emerald-200">
-            <span class="inline-flex items-center gap-2">
-              <span class="h-2 w-2 rounded-full bg-emerald-300"></span>
-              Available
-            </span>
+            <i class="fa-solid fa-circle-check mr-2"></i>Available
           </span>
         </div>
 
@@ -90,37 +76,43 @@
 
         <div class="mt-4 grid gap-2 text-sm">
           <div class="flex items-center justify-between gap-3">
-            <span class="text-slate-400">Location</span><span>Florida, USA</span>
+            <span class="text-slate-400"><i class="fa-solid fa-location-dot mr-2"></i>Location</span>
+            <span>Florida, USA</span>
           </div>
           <div class="flex items-center justify-between gap-3">
-            <span class="text-slate-400">Email</span>
-            <a class="underline underline-offset-4 hover:text-white" href="mailto:sreesahithikapply@gmail.com">sreesahithikapply@gmail.com</a>
+            <span class="text-slate-400"><i class="fa-solid fa-at mr-2"></i>Email</span>
+            <a class="underline underline-offset-4 hover:text-white" href="mailto:sreesahithikapply@gmail.com">
+              sreesahithikapply@gmail.com
+            </a>
           </div>
         </div>
 
         <div class="mt-5 flex flex-wrap gap-2">
-          <a class="btn-primary" href="resume.pdf" target="_blank" rel="noreferrer">
-            <svg class="h-4 w-4"><use href="#i-link"/></svg><span>Resume</span>
+          <a class="btnPrimary" href="resume.pdf" target="_blank" rel="noreferrer">
+            <i class="fa-solid fa-file-arrow-down mr-2"></i>Resume
           </a>
-          <a class="btn-ghost" href="https://github.com/sahithik156" target="_blank" rel="noreferrer">
-            <svg class="h-4 w-4"><use href="#i-code"/></svg><span>GitHub</span>
+          <a class="btnGhost" href="https://github.com/sahithik156" target="_blank" rel="noreferrer">
+            <i class="fa-brands fa-github mr-2"></i>GitHub
           </a>
-          <a class="btn-ghost" href="https://www.linkedin.com/in/sree-sahithi-k" target="_blank" rel="noreferrer">
-            <svg class="h-4 w-4"><use href="#i-link"/></svg><span>LinkedIn</span>
+          <a class="btnGhost" href="https://www.linkedin.com/in/sree-sahithi-k" target="_blank" rel="noreferrer">
+            <i class="fa-brands fa-linkedin mr-2"></i>LinkedIn
           </a>
         </div>
 
         <div class="mt-6 border-t border-white/10 pt-5">
-          <div class="text-xs font-semibold uppercase tracking-widest text-slate-400">Skills</div>
+          <div class="text-xs font-semibold uppercase tracking-widest text-slate-400">
+            <i class="fa-solid fa-wand-magic-sparkles mr-2"></i>Skills
+          </div>
           <div class="mt-3 flex flex-wrap gap-2">
-            <span class="chip"><svg class="h-3.5 w-3.5"><use href="#i-star"/></svg>Python</span>
-            <span class="chip"><svg class="h-3.5 w-3.5"><use href="#i-star"/></svg>Java</span>
-            <span class="chip"><svg class="h-3.5 w-3.5"><use href="#i-star"/></svg>SQL</span>
-            <span class="chip"><svg class="h-3.5 w-3.5"><use href="#i-star"/></svg>React</span>
-            <span class="chip"><svg class="h-3.5 w-3.5"><use href="#i-star"/></svg>APIs</span>
-            <span class="chip"><svg class="h-3.5 w-3.5"><use href="#i-star"/></svg>MySQL</span>
-            <span class="chip"><svg class="h-3.5 w-3.5"><use href="#i-star"/></svg>AWS</span>
-            <span class="chip"><svg class="h-3.5 w-3.5"><use href="#i-star"/></svg>Docker</span>
+            <span class="chip"><i class="fa-brands fa-python mr-2"></i>Python</span>
+            <span class="chip"><i class="fa-brands fa-java mr-2"></i>Java</span>
+            <span class="chip"><i class="fa-solid fa-database mr-2"></i>SQL</span>
+            <span class="chip"><i class="fa-brands fa-react mr-2"></i>React</span>
+            <span class="chip"><i class="fa-solid fa-diagram-project mr-2"></i>APIs</span>
+            <span class="chip"><i class="fa-solid fa-server mr-2"></i>MySQL</span>
+            <span class="chip"><i class="fa-solid fa-cloud mr-2"></i>AWS</span>
+            <span class="chip"><i class="fa-solid fa-cloud mr-2"></i>Azure</span>
+            <span class="chip"><i class="fa-brands fa-docker mr-2"></i>Docker</span>
           </div>
         </div>
       </aside>
@@ -129,41 +121,39 @@
       <section class="space-y-6">
         <!-- Featured -->
         <section class="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-soft">
-          <div class="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-slate-400">
-            <svg class="h-4 w-4 text-violet-200"><use href="#i-star"/></svg>
-            Featured
+          <div class="text-xs font-semibold uppercase tracking-widest text-slate-400">
+            <i class="fa-solid fa-star mr-2"></i>Featured
           </div>
-
           <h1 class="mt-2 text-3xl font-bold tracking-tight">Projects that show real impact</h1>
           <p class="mt-3 max-w-3xl text-slate-300">
-            Highlights from your work. This section stays short. Recruiters click fast.
+            Highlights across AI planning, NLP automation, and data analysis.
           </p>
 
           <div class="mt-5 grid gap-3 md:grid-cols-3">
             <a class="card" href="https://github.com/sahithik156" target="_blank" rel="noreferrer">
-              <div class="tag"><svg class="h-4 w-4"><use href="#i-star"/></svg><span>AI</span></div>
-              <div class="mt-2 font-semibold">AI Powered Recipe Planning</div>
+              <div class="tag"><i class="fa-solid fa-brain mr-2"></i>AI</div>
+              <div class="mt-2 font-semibold">AI-Powered Recipe Planning</div>
               <div class="mt-1 text-sm text-slate-300">MCTS + A* + FOON workflow planning</div>
-              <div class="mt-4 inline-flex items-center gap-2 text-sm text-violet-200">
-                <span>Open</span><svg class="h-4 w-4"><use href="#i-arrow"/></svg>
+              <div class="mt-4 text-sm text-violet-200">
+                View <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
               </div>
             </a>
 
             <a class="card" href="https://github.com/sahithik156/Voice-prescription-system-for-doctors" target="_blank" rel="noreferrer">
-              <div class="tag"><svg class="h-4 w-4"><use href="#i-star"/></svg><span>NLP</span></div>
+              <div class="tag"><i class="fa-solid fa-microphone-lines mr-2"></i>NLP</div>
               <div class="mt-2 font-semibold">Voice Prescription System</div>
               <div class="mt-1 text-sm text-slate-300">Speech to text → prescription output</div>
-              <div class="mt-4 inline-flex items-center gap-2 text-sm text-violet-200">
-                <span>Open</span><svg class="h-4 w-4"><use href="#i-arrow"/></svg>
+              <div class="mt-4 text-sm text-violet-200">
+                View <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
               </div>
             </a>
 
             <a class="card" href="https://github.com/sahithik156/Global-Malnutrition-Analysis" target="_blank" rel="noreferrer">
-              <div class="tag"><svg class="h-4 w-4"><use href="#i-star"/></svg><span>Data</span></div>
+              <div class="tag"><i class="fa-solid fa-chart-line mr-2"></i>Data</div>
               <div class="mt-2 font-semibold">Global Malnutrition Analysis</div>
               <div class="mt-1 text-sm text-slate-300">Dashboards + notebooks + datasets</div>
-              <div class="mt-4 inline-flex items-center gap-2 text-sm text-violet-200">
-                <span>Open</span><svg class="h-4 w-4"><use href="#i-arrow"/></svg>
+              <div class="mt-4 text-sm text-violet-200">
+                View <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
               </div>
             </a>
           </div>
@@ -173,31 +163,28 @@
         <section id="projects" class="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-soft">
           <div class="flex flex-wrap items-end justify-between gap-3">
             <div>
-              <div class="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-slate-400">
-                <svg class="h-4 w-4"><use href="#i-grid"/></svg><span>Projects</span>
+              <div class="text-xs font-semibold uppercase tracking-widest text-slate-400">
+                <i class="fa-solid fa-layer-group mr-2"></i>Projects
               </div>
               <h2 class="mt-2 text-2xl font-bold tracking-tight">All GitHub repos</h2>
-              <p class="mt-1 text-sm text-slate-400">Search and filter.</p>
+              <p class="mt-1 text-sm text-slate-400">Search and filter. Icons show category.</p>
             </div>
 
             <div class="flex flex-wrap gap-2">
               <div class="relative">
-                <svg class="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-500"><use href="#i-search"/></svg>
-                <input id="q" class="w-56 rounded-xl border border-white/10 bg-slate-950/40 pl-9 pr-3 py-2 text-sm outline-none placeholder:text-slate-500 focus:border-white/20"
-                       placeholder="Search repos..." />
+                <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-500"></i>
+                <input id="q"
+                  class="w-56 rounded-xl border border-white/10 bg-slate-950/40 pl-9 pr-3 py-2 text-sm outline-none placeholder:text-slate-500 focus:border-white/20"
+                  placeholder="Search repos..." />
               </div>
-
-              <div class="relative">
-                <svg class="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-500"><use href="#i-filter"/></svg>
-                <select id="f" class="rounded-xl border border-white/10 bg-slate-950/40 pl-9 pr-8 py-2 text-sm outline-none focus:border-white/20">
-                  <option value="all">All</option>
-                  <option value="web">Web</option>
-                  <option value="data">Data</option>
-                  <option value="ml">ML</option>
-                  <option value="security">Security</option>
-                  <option value="games">Games</option>
-                </select>
-              </div>
+              <select id="f" class="rounded-xl border border-white/10 bg-slate-950/40 px-3 py-2 text-sm outline-none focus:border-white/20">
+                <option value="all">All</option>
+                <option value="web">Web</option>
+                <option value="data">Data</option>
+                <option value="ml">ML</option>
+                <option value="security">Security</option>
+                <option value="games">Games</option>
+              </select>
             </div>
           </div>
 
@@ -206,8 +193,8 @@
 
         <!-- Experience -->
         <section id="experience" class="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-soft">
-          <div class="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-slate-400">
-            <svg class="h-4 w-4"><use href="#i-briefcase"/></svg><span>Experience</span>
+          <div class="text-xs font-semibold uppercase tracking-widest text-slate-400">
+            <i class="fa-solid fa-briefcase mr-2"></i>Experience
           </div>
           <h2 class="mt-2 text-2xl font-bold tracking-tight">Work</h2>
 
@@ -215,10 +202,10 @@
             <div class="rounded-2xl border border-white/10 bg-slate-950/30 p-5">
               <div class="flex flex-wrap items-start justify-between gap-3">
                 <div>
-                  <div class="font-semibold">Easysuite Software</div>
+                  <div class="font-semibold"><i class="fa-solid fa-building mr-2 text-slate-300"></i>Easysuite Software</div>
                   <div class="text-sm text-slate-400">Software Developer</div>
                 </div>
-                <div class="text-sm text-slate-500">Jul 2025 – Present</div>
+                <div class="text-sm text-slate-500"><i class="fa-regular fa-calendar mr-2"></i>Jul 2025 – Present</div>
               </div>
               <ul class="mt-3 list-disc space-y-2 pl-5 text-sm text-slate-300">
                 <li>Backend optimization, production debugging, and data-quality improvements across consumer-facing flows.</li>
@@ -228,10 +215,10 @@
             <div class="rounded-2xl border border-white/10 bg-slate-950/30 p-5">
               <div class="flex flex-wrap items-start justify-between gap-3">
                 <div>
-                  <div class="font-semibold">Cyber Florida at USF</div>
+                  <div class="font-semibold"><i class="fa-solid fa-building-columns mr-2 text-slate-300"></i>Cyber Florida at USF</div>
                   <div class="text-sm text-slate-400">NIST Grant Intern</div>
                 </div>
-                <div class="text-sm text-slate-500">Jan 2025 – Jun 2025</div>
+                <div class="text-sm text-slate-500"><i class="fa-regular fa-calendar mr-2"></i>Jan 2025 – Jun 2025</div>
               </div>
               <ul class="mt-3 list-disc space-y-2 pl-5 text-sm text-slate-300">
                 <li>Log processing automation and investigation support on large telemetry datasets.</li>
@@ -242,86 +229,84 @@
 
         <!-- Certifications -->
         <section id="certs" class="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-soft">
-          <div class="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-slate-400">
-            <svg class="h-4 w-4"><use href="#i-badge"/></svg><span>Certifications</span>
+          <div class="text-xs font-semibold uppercase tracking-widest text-slate-400">
+            <i class="fa-solid fa-certificate mr-2"></i>Certifications
           </div>
           <h2 class="mt-2 text-2xl font-bold tracking-tight">Licenses and certifications</h2>
 
           <div class="mt-5 grid gap-3 md:grid-cols-2">
-            <div class="cert"><svg class="h-5 w-5 text-emerald-200"><use href="#i-badge"/></svg><div><div class="font-semibold">GICSP</div><div class="text-sm text-slate-400">GIAC</div></div></div>
-            <div class="cert"><svg class="h-5 w-5 text-emerald-200"><use href="#i-badge"/></svg><div><div class="font-semibold">ICS410</div><div class="text-sm text-slate-400">SANS</div></div></div>
-            <div class="cert"><svg class="h-5 w-5 text-emerald-200"><use href="#i-badge"/></svg><div><div class="font-semibold">ICS310</div><div class="text-sm text-slate-400">SANS</div></div></div>
-            <div class="cert"><svg class="h-5 w-5 text-emerald-200"><use href="#i-badge"/></svg><div><div class="font-semibold">BTL1</div><div class="text-sm text-slate-400">Security Blue Team</div></div></div>
+            <div class="cert"><i class="fa-solid fa-shield-halved mr-2 text-emerald-200"></i>GICSP <span class="sub">GIAC</span></div>
+            <div class="cert"><i class="fa-solid fa-industry mr-2 text-emerald-200"></i>ICS410 <span class="sub">SANS</span></div>
+            <div class="cert"><i class="fa-solid fa-industry mr-2 text-emerald-200"></i>ICS310 <span class="sub">SANS</span></div>
+            <div class="cert"><i class="fa-solid fa-user-shield mr-2 text-emerald-200"></i>BTL1 <span class="sub">Security Blue Team</span></div>
+            <div class="cert"><i class="fa-solid fa-chart-simple mr-2 text-emerald-200"></i>Data Analysis Essentials <span class="sub">Microsoft + LinkedIn</span></div>
+            <div class="cert"><i class="fa-solid fa-database mr-2 text-emerald-200"></i>SQL (Intermediate) <span class="sub">HackerRank</span></div>
+            <div class="cert"><i class="fa-solid fa-chart-pie mr-2 text-emerald-200"></i>Power BI Job Simulation <span class="sub">Forage</span></div>
+            <div class="cert"><i class="fa-brands fa-python mr-2 text-emerald-200"></i>Python Foundations <span class="sub">Coursera</span></div>
           </div>
 
-          <p class="mt-4 text-sm text-slate-400">Full list and credential links are on LinkedIn.</p>
+          <p class="mt-5 text-sm text-slate-400">
+            Full list with credential links is on LinkedIn.
+          </p>
         </section>
 
         <!-- Contact -->
         <section id="contact" class="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-soft">
-          <div class="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-slate-400">
-            <svg class="h-4 w-4"><use href="#i-mail"/></svg><span>Contact</span>
+          <div class="text-xs font-semibold uppercase tracking-widest text-slate-400">
+            <i class="fa-solid fa-envelope mr-2"></i>Contact
           </div>
           <h2 class="mt-2 text-2xl font-bold tracking-tight">Connect</h2>
 
           <div class="mt-5 flex flex-wrap gap-2">
-            <a class="btn-primary" href="mailto:sreesahithikapply@gmail.com">
-              <svg class="h-4 w-4"><use href="#i-mail"/></svg><span>Email</span>
+            <a class="btnPrimary" href="mailto:sreesahithikapply@gmail.com">
+              <i class="fa-solid fa-paper-plane mr-2"></i>Email
             </a>
-            <a class="btn-ghost" href="https://www.linkedin.com/in/sree-sahithi-k" target="_blank" rel="noreferrer">
-              <svg class="h-4 w-4"><use href="#i-link"/></svg><span>LinkedIn</span>
+            <a class="btnGhost" href="https://www.linkedin.com/in/sree-sahithi-k" target="_blank" rel="noreferrer">
+              <i class="fa-brands fa-linkedin mr-2"></i>LinkedIn
             </a>
-            <a class="btn-ghost" href="https://github.com/sahithik156" target="_blank" rel="noreferrer">
-              <svg class="h-4 w-4"><use href="#i-code"/></svg><span>GitHub</span>
+            <a class="btnGhost" href="https://github.com/sahithik156" target="_blank" rel="noreferrer">
+              <i class="fa-brands fa-github mr-2"></i>GitHub
             </a>
-            <a class="btn-ghost" href="resume.pdf" target="_blank" rel="noreferrer">
-              <svg class="h-4 w-4"><use href="#i-link"/></svg><span>Resume</span>
+            <a class="btnGhost" href="resume.pdf" target="_blank" rel="noreferrer">
+              <i class="fa-solid fa-file-lines mr-2"></i>Resume
             </a>
           </div>
         </section>
 
         <footer class="pb-10 text-sm text-slate-500">
-          © <span id="y"></span> Sree Sahithi Kantamneni • Built on GitHub Pages
+          <i class="fa-regular fa-copyright mr-2"></i><span id="y"></span> Sree Sahithi Kantamneni
         </footer>
       </section>
     </main>
   </div>
 
   <style>
-    .navpill{ display:inline-flex; align-items:center; gap:.45rem; border:1px solid rgba(255,255,255,.10); background: rgba(255,255,255,.05); padding:.35rem .75rem; border-radius:999px; color: rgba(226,232,240,.95); }
-    .navpill:hover{ border-color: rgba(255,255,255,.20); }
-
-    .btn-primary{ display:inline-flex; align-items:center; gap:.5rem; border-radius:.9rem; padding:.55rem .9rem; font-weight:600; background: linear-gradient(135deg, rgba(139,92,246,.95), rgba(34,197,94,.55)); box-shadow: 0 20px 60px rgba(0,0,0,.35); }
-    .btn-primary:hover{ opacity:.95; }
-
-    .btn-ghost{ display:inline-flex; align-items:center; gap:.5rem; border-radius:.9rem; padding:.55rem .9rem; font-weight:600; border:1px solid rgba(255,255,255,.10); background: rgba(255,255,255,.05); }
-    .btn-ghost:hover{ border-color: rgba(255,255,255,.20); }
-
-    .chip{ display:inline-flex; align-items:center; gap:.35rem; border-radius:999px; border:1px solid rgba(255,255,255,.10); background: rgba(2,6,23,.35); padding:.25rem .7rem; font-size:.75rem; color: rgba(226,232,240,.95); }
-
-    .card{ display:block; border-radius:1.25rem; border:1px solid rgba(255,255,255,.10); background: rgba(2,6,23,.35); padding:1.1rem; }
-    .card:hover{ border-color: rgba(255,255,255,.20); }
-
-    .tag{ display:inline-flex; align-items:center; gap:.4rem; border-radius:999px; border:1px solid rgba(255,255,255,.10); background: rgba(255,255,255,.05); padding:.25rem .7rem; font-size:.75rem; color: rgba(203,213,225,.95); }
-
-    .cert{ display:flex; gap:.75rem; align-items:flex-start; border-radius:1.25rem; border:1px solid rgba(255,255,255,.10); background: rgba(2,6,23,.35); padding:1.1rem; }
+    .pillnav { @apply rounded-full border border-white/10 bg-white/5 px-3 py-1 text-slate-200 hover:border-white/20; }
+    .chip { @apply rounded-full border border-white/10 bg-slate-950/30 px-3 py-1 text-xs text-slate-200; }
+    .card { @apply block rounded-2xl border border-white/10 bg-slate-950/30 p-5 hover:border-white/20 hover:bg-slate-950/40 transition; }
+    .tag  { @apply inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-300; }
+    .cert { @apply rounded-2xl border border-white/10 bg-slate-950/30 p-5 text-sm text-slate-200; }
+    .sub  { @apply ml-2 text-xs text-slate-500; }
+    .btnPrimary { @apply rounded-xl bg-gradient-to-br from-violet-500 to-emerald-400 px-3 py-2 text-sm font-semibold shadow-soft hover:opacity-95; }
+    .btnGhost { @apply rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm font-semibold hover:border-white/20; }
   </style>
 
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
 
+    // repo list
     const repos = [
       { name:"TV-Show-Search", url:"https://github.com/sahithik156/TV-Show-Search", tech:["HTML"], group:"web", blurb:"Search UI for TV shows." },
       { name:"food-ordering-system-PHP", url:"https://github.com/sahithik156/food-ordering-system-PHP", tech:["PHP"], group:"web", blurb:"Food ordering web app in PHP." },
-      { name:"SafeCodeCheck-Advancing-Software-Security-through-Language-Based-Approaches", url:"https://github.com/sahithik156/SafeCodeCheck-Advancing-Software-Security-through-Language-Based-Approaches", tech:["Security"], group:"security", blurb:"Language based software security study." },
-      { name:"Voice-prescription-system-for-doctors", url:"https://github.com/sahithik156/Voice-prescription-system-for-doctors", tech:["Python"], group:"ml", blurb:"Voice prescription generator." },
-      { name:"Flight-price-prediction", url:"https://github.com/sahithik156/Flight-price-prediction", tech:["Jupyter"], group:"data", blurb:"Flight fare prediction notebook." },
+      { name:"SafeCodeCheck-Advancing-Software-Security-through-Language-Based-Approaches", url:"https://github.com/sahithik156/SafeCodeCheck-Advancing-Software-Security-through-Language-Based-Approaches", tech:["Security"], group:"security", blurb:"Language-based software security study materials." },
+      { name:"Voice-prescription-system-for-doctors", url:"https://github.com/sahithik156/Voice-prescription-system-for-doctors", tech:["Python"], group:"ml", blurb:"Voice prescription generator (speech to text → PDF)." },
+      { name:"Flight-price-prediction", url:"https://github.com/sahithik156/Flight-price-prediction", tech:["Jupyter"], group:"data", blurb:"Notebook based flight fare prediction." },
       { name:"Global-Malnutrition-Analysis", url:"https://github.com/sahithik156/Global-Malnutrition-Analysis", tech:["Jupyter","Tableau"], group:"data", blurb:"Dashboards + datasets for malnutrition analysis." },
-      { name:"DermaScan-Skin-Lesion-Classifier", url:"https://github.com/sahithik156/DermaScan-Skin-Lesion-Classifier", tech:["ML"], group:"ml", blurb:"Skin lesion classification project." },
+      { name:"DermaScan-Skin-Lesion-Classifier", url:"https://github.com/sahithik156/DermaScan-Skin-Lesion-Classifier", tech:["ML"], group:"ml", blurb:"Skin lesion classification project assets." },
       { name:"Recipe-blog", url:"https://github.com/sahithik156/Recipe-blog", tech:["EJS"], group:"web", blurb:"Recipe blog web project." },
       { name:"Hate-Speech-Detection", url:"https://github.com/sahithik156/Hate-Speech-Detection", tech:["NLP"], group:"ml", blurb:"Hate speech detection notebook." },
       { name:"Checkers-Game", url:"https://github.com/sahithik156/Checkers-Game", tech:["Python"], group:"games", blurb:"Checkers game implementation." },
-      { name:"3D-Tic-tac-toe-game", url:"https://github.com/sahithik156/3D-Tic-tac-toe-game", tech:["Java"], group:"games", blurb:"3D tic tac toe in Java." },
+      { name:"3D-Tic-tac-toe-game", url:"https://github.com/sahithik156/3D-Tic-tac-toe-game", tech:["Java"], group:"games", blurb:"3D tic-tac-toe in Java." },
       { name:"snakes-and-ladders-game", url:"https://github.com/sahithik156/snakes-and-ladders-game", tech:["C"], group:"games", blurb:"Snakes and ladders in C." },
       { name:"Food-ordering-system", url:"https://github.com/sahithik156/Food-ordering-system", tech:["Java"], group:"web", blurb:"Food ordering system in Java." },
     ];
@@ -330,13 +315,15 @@
     const f = document.getElementById("f");
     const grid = document.getElementById("repoGrid");
 
-    function iconFor(group){
-      if(group === "web") return "#i-link";
-      if(group === "data") return "#i-grid";
-      if(group === "ml") return "#i-star";
-      if(group === "security") return "#i-badge";
-      if(group === "games") return "#i-grid";
-      return "#i-code";
+    function groupIcon(group){
+      switch(group){
+        case "web": return `<i class="fa-solid fa-globe mr-2 text-cyan-200"></i>`;
+        case "data": return `<i class="fa-solid fa-chart-line mr-2 text-cyan-200"></i>`;
+        case "ml": return `<i class="fa-solid fa-brain mr-2 text-cyan-200"></i>`;
+        case "security": return `<i class="fa-solid fa-shield-halved mr-2 text-cyan-200"></i>`;
+        case "games": return `<i class="fa-solid fa-gamepad mr-2 text-cyan-200"></i>`;
+        default: return `<i class="fa-solid fa-code mr-2 text-cyan-200"></i>`;
+      }
     }
 
     function render() {
@@ -355,27 +342,20 @@
       });
 
       grid.innerHTML = items.map(r => `
-        <a class="block rounded-2xl border border-white/10 bg-slate-950/30 p-5 hover:border-white/20"
+        <a class="block rounded-2xl border border-white/10 bg-slate-950/30 p-5 hover:border-white/20 hover:bg-slate-950/40 transition"
            href="${r.url}" target="_blank" rel="noreferrer">
           <div class="flex items-start justify-between gap-3">
-            <div class="flex items-start gap-3">
-              <span class="mt-0.5 grid h-9 w-9 place-items-center rounded-xl border border-white/10 bg-white/5">
-                <svg class="h-4 w-4 text-slate-200"><use href="${iconFor(r.group)}"></use></svg>
-              </span>
-              <div>
-                <div class="font-semibold">${r.name}</div>
-                <div class="mt-1 text-sm text-slate-300">${r.blurb || ""}</div>
-              </div>
-            </div>
-            <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-300">${r.group}</span>
+            <div class="font-semibold tracking-tight">${r.name}</div>
+            <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-300">
+              ${groupIcon(r.group)}${r.group}
+            </span>
           </div>
-
+          <div class="mt-2 text-sm text-slate-300">${r.blurb || ""}</div>
           <div class="mt-4 flex flex-wrap gap-2">
-            ${(r.tech || []).map(t => `<span class="tag"><svg class="h-4 w-4"><use href="#i-code"/></svg><span>${t}</span></span>`).join("")}
+            ${(r.tech || []).map(t => `<span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-300"><i class="fa-solid fa-tag mr-2"></i>${t}</span>`).join("")}
           </div>
-
-          <div class="mt-4 inline-flex items-center gap-2 text-sm text-violet-200">
-            <span>Open repo</span><svg class="h-4 w-4"><use href="#i-arrow"/></svg>
+          <div class="mt-4 text-sm text-violet-200">
+            Open repo <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
           </div>
         </a>
       `).join("");
