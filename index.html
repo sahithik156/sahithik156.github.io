@@ -1,387 +1,836 @@
-<!doctype html>
-<html lang="en" class="scroll-smooth">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Sree Sahithi Kantamneni | Portfolio</title>
-  <meta name="description" content="Software Engineer portfolio. Projects, experience, and certifications." />
-
-  <!-- Modern font -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sree Sahithi Kantamneni</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <!-- Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-  <!-- Tailwind -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Instrument+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: { sans: ["Inter", "ui-sans-serif", "system-ui"] },
-          boxShadow: { soft: "0 22px 70px rgba(0,0,0,.38)" }
-        }
-      }
+  <style>
+    :root {
+      --ink: #0e0e0e;
+      --cream: #f5f0e8;
+      --muted: #9a9080;
+      --accent-1: #e8533a; /* warm red-orange */
+      --accent-2: #3a8ce8; /* electric blue */
+      --accent-3: #38c49a; /* mint */
+      --tag-bg: #1a1a1a;
     }
-  </script>
-</head>
 
-<body class="bg-slate-950 text-slate-100 font-sans">
-  <!-- Background -->
-  <div class="pointer-events-none fixed inset-0 -z-10">
-    <div class="absolute -top-28 left-10 h-96 w-96 rounded-full bg-violet-500/18 blur-3xl"></div>
-    <div class="absolute top-10 right-10 h-96 w-96 rounded-full bg-cyan-400/12 blur-3xl"></div>
-    <div class="absolute bottom-0 left-1/3 h-96 w-96 rounded-full bg-emerald-400/10 blur-3xl"></div>
-    <div class="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,.06)_1px,transparent_0)] [background-size:26px_26px] opacity-[0.18]"></div>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    /* ── Custom cursor ─────────────────────────────── */
+    .cursor-dot {
+      width: 8px; height: 8px;
+      background: var(--accent-1);
+      border-radius: 50%;
+      position: fixed; top: 0; left: 0;
+      pointer-events: none;
+      z-index: 9999;
+      transition: transform .15s ease;
+    }
+    .cursor-ring {
+      width: 36px; height: 36px;
+      border: 1.5px solid var(--ink);
+      border-radius: 50%;
+      position: fixed; top: 0; left: 0;
+      pointer-events: none;
+      z-index: 9998;
+      transition: transform .08s ease, width .2s, height .2s, border-color .2s;
+    }
+    body:has(a:hover) .cursor-ring,
+    body:has(button:hover) .cursor-ring {
+      width: 56px; height: 56px;
+      border-color: var(--accent-1);
+    }
+
+    /* ── Noise overlay ─────────────────────────────── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 0; opacity: .35;
+    }
+
+    /* ── Typography ────────────────────────────────── */
+    .syne { font-family: 'Syne', sans-serif; }
+    .mono { font-family: 'DM Mono', monospace; }
+
+    /* ── Nav ───────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.25rem 3rem;
+      mix-blend-mode: multiply;
+    }
+    .nav-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800; font-size: 1.1rem;
+      letter-spacing: -.02em;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      font-family: 'DM Mono', monospace;
+      font-size: .75rem; letter-spacing: .1em;
+      text-transform: uppercase; text-decoration: none;
+      color: var(--ink); opacity: .6;
+      transition: opacity .2s;
+    }
+    .nav-links a:hover { opacity: 1; }
+
+    /* ── Hero ──────────────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 8rem 3rem 4rem;
+      position: relative; overflow: hidden;
+    }
+    .hero-left { position: relative; z-index: 1; }
+    .hero-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: .75rem; letter-spacing: .15em;
+      text-transform: uppercase; color: var(--accent-1);
+      margin-bottom: 1.2rem;
+    }
+    .hero-name {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      line-height: .95;
+      letter-spacing: -.03em;
+      margin-bottom: 1.5rem;
+    }
+    .hero-name .outline {
+      -webkit-text-stroke: 2px var(--ink);
+      color: transparent;
+    }
+    .hero-sub {
+      max-width: 420px;
+      font-size: 1.05rem; line-height: 1.7;
+      color: #444; margin-bottom: 2.5rem;
+    }
+    .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: var(--ink); color: var(--cream);
+      font-family: 'DM Mono', monospace;
+      font-size: .8rem; letter-spacing: .08em;
+      padding: .85rem 1.75rem; text-decoration: none;
+      transition: transform .2s, background .2s;
+    }
+    .btn-primary:hover { background: var(--accent-1); transform: translateY(-2px); }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: .5rem;
+      border: 1.5px solid var(--ink); color: var(--ink);
+      font-family: 'DM Mono', monospace;
+      font-size: .8rem; letter-spacing: .08em;
+      padding: .85rem 1.75rem; text-decoration: none;
+      transition: transform .2s, background .2s, color .2s;
+    }
+    .btn-outline:hover {
+      background: var(--ink); color: var(--cream);
+      transform: translateY(-2px);
+    }
+
+    /* hero right — big decorative text + blobs */
+    .hero-right {
+      position: relative;
+      display: flex; align-items: center; justify-content: center;
+      height: 100%;
+    }
+    .hero-bg-text {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(6rem, 14vw, 13rem);
+      line-height: 1;
+      letter-spacing: -.04em;
+      -webkit-text-stroke: 1.5px rgba(14,14,14,.1);
+      color: transparent;
+      user-select: none; pointer-events: none;
+      text-align: center;
+    }
+    .hero-badge {
+      position: absolute;
+      background: var(--ink); color: var(--cream);
+      font-family: 'DM Mono', monospace;
+      font-size: .7rem; letter-spacing: .1em;
+      padding: .6rem 1.1rem;
+      animation: float 3s ease-in-out infinite;
+    }
+    .hero-badge.b1 { top: 20%; right: 5%; }
+    .hero-badge.b2 { bottom: 25%; left: 5%; background: var(--accent-1); animation-delay: 1s; }
+    .hero-badge.b3 { top: 55%; right: 8%; background: var(--accent-2); animation-delay: 1.8s; }
+
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* ── Marquee ───────────────────────────────────── */
+    .marquee-wrap {
+      overflow: hidden; border-top: 1px solid rgba(14,14,14,.12);
+      border-bottom: 1px solid rgba(14,14,14,.12);
+      padding: .9rem 0; background: var(--ink);
+    }
+    .marquee-inner {
+      display: flex; gap: 3rem; width: max-content;
+      animation: marquee 22s linear infinite;
+    }
+    .marquee-item {
+      font-family: 'DM Mono', monospace;
+      font-size: .8rem; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--cream);
+      white-space: nowrap;
+    }
+    .marquee-dot { color: var(--accent-1); margin-right: 3rem; }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* ── Section shared ────────────────────────────── */
+    section { padding: 6rem 3rem; position: relative; }
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: .7rem; letter-spacing: .18em;
+      text-transform: uppercase; color: var(--muted);
+      margin-bottom: .75rem;
+    }
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      line-height: 1.05; letter-spacing: -.02em;
+      margin-bottom: 3rem;
+    }
+
+    /* ── About ─────────────────────────────────────── */
+    #about { background: var(--ink); color: var(--cream); }
+    #about .section-label { color: var(--accent-3); }
+    #about .section-title { color: var(--cream); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 5rem; align-items: start;
+    }
+    .about-text { font-size: 1.05rem; line-height: 1.8; color: #b8b0a0; }
+    .about-text p + p { margin-top: 1.2rem; }
+    .about-text strong { color: var(--cream); font-weight: 400; }
+    .about-right { display: flex; flex-direction: column; gap: 2rem; }
+    .stat-row {
+      display: flex; align-items: baseline; gap: 1rem;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      padding-bottom: 1.2rem;
+    }
+    .stat-num {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800; font-size: 3.5rem;
+      color: var(--accent-1); letter-spacing: -.03em;
+    }
+    .stat-label { font-size: .9rem; color: #7a7060; }
+
+    /* skills chips */
+    .skill-chips { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1rem; }
+    .chip {
+      font-family: 'DM Mono', monospace; font-size: .7rem;
+      letter-spacing: .08em; padding: .4rem .9rem;
+      border: 1px solid rgba(255,255,255,.15);
+      color: #aaa; transition: border-color .2s, color .2s;
+      cursor: default;
+    }
+    .chip:hover { border-color: var(--accent-3); color: var(--accent-3); }
+
+    /* ── Experience ────────────────────────────────── */
+    #experience { background: var(--cream); }
+    .exp-list { display: flex; flex-direction: column; gap: 0; }
+    .exp-item {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 2rem;
+      padding: 2rem 0;
+      border-bottom: 1px solid rgba(14,14,14,.1);
+      transition: background .2s;
+    }
+    .exp-item:hover { background: rgba(14,14,14,.03); padding-left: .5rem; }
+    .exp-date {
+      font-family: 'DM Mono', monospace;
+      font-size: .72rem; letter-spacing: .08em;
+      color: var(--muted); padding-top: .3rem;
+    }
+    .exp-role {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700; font-size: 1.15rem; margin-bottom: .15rem;
+    }
+    .exp-company { font-size: .85rem; color: var(--accent-1); margin-bottom: .6rem; }
+    .exp-desc { font-size: .9rem; line-height: 1.7; color: #555; }
+
+    /* ── Projects ──────────────────────────────────── */
+    #projects { background: #f0ebe0; }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 1.5px;
+    }
+    .proj-card {
+      background: var(--cream);
+      padding: 2.5rem 2rem;
+      border: 1px solid rgba(14,14,14,.08);
+      position: relative; overflow: hidden;
+      transition: transform .25s, box-shadow .25s;
+      cursor: pointer;
+    }
+    .proj-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--accent-1);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform .3s;
+    }
+    .proj-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(14,14,14,.1); }
+    .proj-card:hover::before { transform: scaleX(1); }
+    .proj-num {
+      font-family: 'DM Mono', monospace; font-size: .7rem;
+      color: var(--muted); margin-bottom: 1.2rem;
+    }
+    .proj-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700; font-size: 1.3rem;
+      letter-spacing: -.01em; margin-bottom: .75rem;
+    }
+    .proj-desc { font-size: .88rem; line-height: 1.7; color: #555; margin-bottom: 1.5rem; }
+    .proj-tags { display: flex; flex-wrap: wrap; gap: .4rem; }
+    .proj-tag {
+      font-family: 'DM Mono', monospace; font-size: .65rem;
+      letter-spacing: .06em; padding: .3rem .7rem;
+      background: var(--ink); color: var(--cream);
+    }
+    /* color accents per category */
+    .proj-card.security::before { background: var(--accent-1); }
+    .proj-card.ai::before { background: var(--accent-2); }
+    .proj-card.fullstack::before { background: var(--accent-3); }
+    .proj-card .proj-category {
+      position: absolute; top: 1.5rem; right: 1.5rem;
+      font-family: 'DM Mono', monospace; font-size: .6rem;
+      letter-spacing: .1em; text-transform: uppercase;
+    }
+    .security .proj-category { color: var(--accent-1); }
+    .ai .proj-category { color: var(--accent-2); }
+    .fullstack .proj-category { color: var(--accent-3); }
+
+    /* ── Certifications ────────────────────────────── */
+    #certs { background: var(--ink); color: var(--cream); }
+    #certs .section-title { color: var(--cream); }
+    #certs .section-label { color: var(--accent-2); }
+    .certs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1rem;
+    }
+    .cert-card {
+      border: 1px solid rgba(255,255,255,.1);
+      padding: 1.6rem;
+      transition: border-color .2s, background .2s;
+    }
+    .cert-card:hover { border-color: var(--accent-2); background: rgba(255,255,255,.03); }
+    .cert-issuer {
+      font-family: 'DM Mono', monospace;
+      font-size: .65rem; letter-spacing: .1em;
+      color: var(--accent-2); margin-bottom: .5rem;
+    }
+    .cert-name { font-size: .92rem; line-height: 1.4; margin-bottom: .5rem; }
+    .cert-date {
+      font-family: 'DM Mono', monospace;
+      font-size: .65rem; color: #666;
+    }
+
+    /* ── Contact ───────────────────────────────────── */
+    #contact {
+      background: var(--cream);
+      min-height: 60vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+    }
+    .contact-big {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(2.8rem, 7vw, 6rem);
+      line-height: .95; letter-spacing: -.04em;
+      margin: 1.5rem 0 2.5rem;
+    }
+    .contact-big .outline {
+      -webkit-text-stroke: 2px var(--ink);
+      color: transparent;
+    }
+    .contact-links { display: flex; gap: 1.5rem; flex-wrap: wrap; justify-content: center; }
+    .contact-link {
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-family: 'DM Mono', monospace;
+      font-size: .78rem; letter-spacing: .1em;
+      text-decoration: none; color: var(--ink);
+      border-bottom: 1px solid rgba(14,14,14,.25);
+      padding-bottom: .2rem;
+      transition: color .2s, border-color .2s;
+    }
+    .contact-link:hover { color: var(--accent-1); border-color: var(--accent-1); }
+
+    /* ── Footer ────────────────────────────────────── */
+    footer {
+      background: var(--ink); color: #555;
+      font-family: 'DM Mono', monospace;
+      font-size: .7rem; letter-spacing: .08em;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.5rem 3rem;
+    }
+    footer a { color: #555; text-decoration: none; }
+    footer a:hover { color: var(--cream); }
+
+    /* ── Animations ────────────────────────────────── */
+    .reveal {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ── Responsive ────────────────────────────────── */
+    @media (max-width: 900px) {
+      #hero { grid-template-columns: 1fr; padding: 6rem 1.5rem 3rem; }
+      .hero-right { display: none; }
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .exp-item { grid-template-columns: 1fr; gap: .5rem; }
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      section { padding: 4rem 1.5rem; }
+      footer { flex-direction: column; gap: .5rem; text-align: center; }
+    }
+
+    /* ── Blinking caret ────────────────────────────── */
+    .caret {
+      display: inline-block;
+      width: 3px; height: 1em;
+      background: var(--accent-1);
+      vertical-align: middle;
+      margin-left: 4px;
+      animation: blink 1s step-end infinite;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    /* ── Divider line ──────────────────────────────── */
+    .thin-line {
+      width: 48px; height: 2px;
+      background: var(--accent-1);
+      margin-bottom: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Custom cursor -->
+  <div class="cursor-dot" id="dot"></div>
+  <div class="cursor-ring" id="ring"></div>
+
+  <!-- Nav -->
+  <nav>
+    <a class="nav-logo" href="#hero">SSK</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#certs">Certs</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <section id="hero">
+    <div class="hero-left">
+      <p class="hero-eyebrow">✦ Software Engineer · FL, USA</p>
+      <h1 class="hero-name syne">
+        Sree<br>
+        <span class="outline">Sahithi</span><br>
+        Kantamneni<span class="caret"></span>
+      </h1>
+      <p class="hero-sub">
+        Full-stack engineer who also breaks things (intentionally) — 
+        building secure, AI-powered systems at the intersection of 
+        <strong>web development</strong>, <strong>cybersecurity</strong>, and <strong>machine learning</strong>.
+      </p>
+      <div class="hero-ctas">
+        <a href="#projects" class="btn-primary">View Work ↓</a>
+        <a href="https://www.linkedin.com/in/sree-sahithi-k" target="_blank" class="btn-outline">LinkedIn ↗</a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="hero-bg-text">DEV<br>&amp;<br>SEC</div>
+      <div class="hero-badge b1">MS · Computer Science</div>
+      <div class="hero-badge b2">USF Tampa ✦</div>
+      <div class="hero-badge b3">GICSP Certified</div>
+    </div>
+  </section>
+
+  <!-- Marquee -->
+  <div class="marquee-wrap">
+    <div class="marquee-inner">
+      <span class="marquee-item">Python <span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">React <span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Cybersecurity <span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">AWS <span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Machine Learning <span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">SQL <span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">REST APIs <span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">ICS/SCADA <span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Docker <span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">NLP <span class="marquee-dot">✦</span></span>
+      <!-- duplicate for seamless loop -->
+      <span class="marquee-item">Python <span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">React <span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Cybersecurity <span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">AWS <span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Machine Learning <span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">SQL <span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">REST APIs <span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">ICS/SCADA <span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Docker <span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">NLP <span class="marquee-dot">✦</span></span>
+    </div>
   </div>
 
-  <!-- Top nav -->
-  <header class="sticky top-0 z-50 border-b border-white/10 bg-slate-950/65 backdrop-blur">
-    <div class="mx-auto max-w-5xl px-4 py-3 flex items-center justify-between gap-3">
-      <a href="#top" class="flex items-center gap-3">
-        <span class="h-10 w-10 rounded-2xl border border-white/10 bg-white/5 grid place-items-center shadow-soft">
-          <i class="fa-solid fa-user text-violet-200"></i>
-        </span>
-        <div class="leading-tight">
-          <div class="font-semibold tracking-tight">Sree Sahithi Kantamneni</div>
-          <div class="text-sm text-slate-400">Software Engineer</div>
+  <!-- About -->
+  <section id="about">
+    <div class="reveal">
+      <p class="section-label">01 / About</p>
+      <h2 class="section-title">Code. Secure.<br>Repeat.</h2>
+    </div>
+    <div class="about-grid reveal">
+      <div class="about-text">
+        <p>
+          I'm a software engineer with a taste for the <strong>full stack</strong> and a healthy paranoia about security. 
+          Currently building production systems at <strong>Improvation LLC</strong> — slashing API latency, 
+          stabilizing backends, and shipping features for 10K+ users.
+        </p>
+        <p>
+          Before that, I was a <strong>Cybersecurity Intern at Cyber Florida (USF)</strong>, hunting anomalies 
+          across 500GB+ of telemetry with Splunk and Python. I hold a <strong>GIAC GICSP</strong> — the gold standard 
+          for industrial cybersecurity — plus certs in ICS/SCADA and Blue Team operations.
+        </p>
+        <p>
+          I graduated with an <strong>MS in Computer Science from USF, Tampa</strong>. 
+          When I'm not optimizing query plans, I'm probably tinkering with NLP pipelines or playing with AI APIs.
+          Allegedly also a human being.
+        </p>
+        <div class="skill-chips" style="margin-top:1.5rem;">
+          <span class="chip">C# / Python / JS</span>
+          <span class="chip">React</span>
+          <span class="chip">REST / Microservices</span>
+          <span class="chip">MySQL / PostgreSQL</span>
+          <span class="chip">Azure / AWS</span>
+          <span class="chip">Docker</span>
+          <span class="chip">Splunk</span>
+          <span class="chip">Wireshark</span>
+          <span class="chip">OpenAI / Claude API</span>
+          <span class="chip">ICS / SCADA</span>
+          <span class="chip">SIEM</span>
+          <span class="chip">CI/CD · Git</span>
         </div>
+      </div>
+      <div class="about-right">
+        <div class="stat-row">
+          <span class="stat-num">40%</span>
+          <span class="stat-label">API latency reduction at current role</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-num">500<span style="font-size:1.8rem">GB+</span></span>
+          <span class="stat-label">telemetry analyzed during cybersecurity internship</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-num">10K+</span>
+          <span class="stat-label">active users on systems I help maintain</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-num">9</span>
+          <span class="stat-label">certifications &amp; credentials earned</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section id="experience">
+    <div class="reveal">
+      <p class="section-label">02 / Experience</p>
+      <h2 class="section-title">Where I've<br>shipped things.</h2>
+    </div>
+    <div class="exp-list">
+      <div class="exp-item reveal">
+        <div class="exp-date">Jul 2025 – Present</div>
+        <div>
+          <p class="exp-role">Software Developer</p>
+          <p class="exp-company">Improvation LLC · USA</p>
+          <p class="exp-desc">Enhanced reporting accuracy by 28%, slashed API response latency by 40%, and stabilized backend services for 10K+ active users. Delivered REST endpoints for billing &amp; enrollment workflows on AWS using Python and PHP.</p>
+        </div>
+      </div>
+      <div class="exp-item reveal">
+        <div class="exp-date">Jan 2025 – Jun 2025</div>
+        <div>
+          <p class="exp-role">Cybersecurity Intern (NIST Grant)</p>
+          <p class="exp-company">Cyber Florida at USF · Tampa, FL</p>
+          <p class="exp-desc">Boosted investigation throughput by 30% via Python/SQL automation. Identified recurring anomaly patterns across 500GB+ telemetry using Splunk. Built BI-style dashboards to communicate findings to stakeholders.</p>
+        </div>
+      </div>
+      <div class="exp-item reveal">
+        <div class="exp-date">May 2022 – Dec 2022</div>
+        <div>
+          <p class="exp-role">Undergraduate Research Assistant</p>
+          <p class="exp-company">Shiv Nadar University · India</p>
+          <p class="exp-desc">Streamed sensor data every 10s into a MySQL central store, reduced historical query scan time by 50% via schema redesign, and built Python analytics dashboards for seasonal experiment comparison.</p>
+        </div>
+      </div>
+      <div class="exp-item reveal">
+        <div class="exp-date">May 2021 – Aug 2021</div>
+        <div>
+          <p class="exp-role">Software Engineer Intern</p>
+          <p class="exp-company">Jelly Glass Software Pvt Ltd · India</p>
+          <p class="exp-desc">Built monitoring dashboards for sprint velocity and API failure rates, processed JSON logs with Python batch pipelines, and integrated frontend modules with backend services.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+    <div class="reveal">
+      <p class="section-label">03 / Projects</p>
+      <h2 class="section-title">Things I've<br>actually built.</h2>
+    </div>
+    <div class="projects-grid">
+
+      <div class="proj-card security reveal">
+        <span class="proj-category">Security</span>
+        <p class="proj-num">001</p>
+        <h3 class="proj-title">PhishAlert</h3>
+        <p class="proj-desc">Python-based phishing detection tool that auto-analyzes URLs and domains. Reduced manual detection time by 60%, cut false positives by 25% and false negatives by 30% through spam filter optimization.</p>
+        <div class="proj-tags">
+          <span class="proj-tag">Python</span>
+          <span class="proj-tag">NLP</span>
+          <span class="proj-tag">Phishing Analysis</span>
+          <span class="proj-tag">Automation</span>
+        </div>
+      </div>
+
+      <div class="proj-card security reveal">
+        <span class="proj-category">Security</span>
+        <p class="proj-num">002</p>
+        <h3 class="proj-title">NetSleuth IDS</h3>
+        <p class="proj-desc">Analyzed network traffic with Wireshark, identifying 15+ security anomalies including DDoS patterns. Implemented 20+ Snort IDS rules detecting brute-force and port scanning with 85% accuracy.</p>
+        <div class="proj-tags">
+          <span class="proj-tag">Wireshark</span>
+          <span class="proj-tag">Snort</span>
+          <span class="proj-tag">Tcpdump</span>
+          <span class="proj-tag">Network Security</span>
+        </div>
+      </div>
+
+      <div class="proj-card security reveal">
+        <span class="proj-category">Security</span>
+        <p class="proj-num">003</p>
+        <h3 class="proj-title">SafeCodeCheck</h3>
+        <p class="proj-desc">In-depth analysis of critical software vulnerabilities (Shellshock, Apache Struts, PyPI typosquatting) with mitigation strategies via language-based security. Compared Rust, C, Python on type/memory/control-flow safety.</p>
+        <div class="proj-tags">
+          <span class="proj-tag">Rust</span>
+          <span class="proj-tag">Python</span>
+          <span class="proj-tag">Vulnerability Analysis</span>
+          <span class="proj-tag">USF Research</span>
+        </div>
+      </div>
+
+      <div class="proj-card ai reveal">
+        <span class="proj-category">AI / ML</span>
+        <p class="proj-num">004</p>
+        <h3 class="proj-title">AI Recipe Planner (FOON)</h3>
+        <p class="proj-desc">Formulated Python functions to interpret FOON graphs, achieving 70% accuracy on kitchen data. Applied Iterative Deepening, A* Search, and MCTS — lifting task tree extraction efficiency by 34%.</p>
+        <div class="proj-tags">
+          <span class="proj-tag">Python</span>
+          <span class="proj-tag">MCTS</span>
+          <span class="proj-tag">A* Search</span>
+          <span class="proj-tag">Graph AI</span>
+        </div>
+      </div>
+
+      <div class="proj-card ai reveal">
+        <span class="proj-category">AI / NLP</span>
+        <p class="proj-num">005</p>
+        <h3 class="proj-title">Smart Prescription Dictation</h3>
+        <p class="proj-desc">End-to-end speech-to-text pipeline using Transformer ASR + Google Cloud Speech API, reducing documentation effort by 32%. Fine-tuned domain-specific NLP models for medical language, boosting accuracy by 20%.</p>
+        <div class="proj-tags">
+          <span class="proj-tag">ASR</span>
+          <span class="proj-tag">Python</span>
+          <span class="proj-tag">React</span>
+          <span class="proj-tag">NLP</span>
+          <span class="proj-tag">Google Cloud</span>
+        </div>
+      </div>
+
+      <div class="proj-card fullstack reveal">
+        <span class="proj-category">Full Stack</span>
+        <p class="proj-num">006</p>
+        <h3 class="proj-title">QuickBite Food System</h3>
+        <p class="proj-desc">Full-featured food ordering platform with registration, menu browsing, billing, and real-time order tracking. Maximized user retention by 22% with a previous-orders feature and smart discount engine.</p>
+        <div class="proj-tags">
+          <span class="proj-tag">Java</span>
+          <span class="proj-tag">MySQL</span>
+          <span class="proj-tag">PHP</span>
+          <span class="proj-tag">Relational DB</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Certifications -->
+  <section id="certs">
+    <div class="reveal">
+      <p class="section-label">04 / Certifications</p>
+      <h2 class="section-title">Badges I've<br>actually earned.</h2>
+    </div>
+    <div class="certs-grid reveal">
+      <div class="cert-card">
+        <p class="cert-issuer">GIAC · SANS Institute</p>
+        <p class="cert-name">GIAC Global Industrial Cyber Security Professional (GICSP)</p>
+        <p class="cert-date">Aug 2025</p>
+      </div>
+      <div class="cert-card">
+        <p class="cert-issuer">SANS Institute</p>
+        <p class="cert-name">ICS410: ICS/SCADA Security Essentials</p>
+        <p class="cert-date">Jun 2025</p>
+      </div>
+      <div class="cert-card">
+        <p class="cert-issuer">SANS Institute</p>
+        <p class="cert-name">ICS310: ICS Cybersecurity Foundations</p>
+        <p class="cert-date">Apr 2025</p>
+      </div>
+      <div class="cert-card">
+        <p class="cert-issuer">Security Blue Team</p>
+        <p class="cert-name">Blue Team Level 1 (BTL1)</p>
+        <p class="cert-date">Mar 2025</p>
+      </div>
+      <div class="cert-card">
+        <p class="cert-issuer">Microsoft &amp; LinkedIn</p>
+        <p class="cert-name">Career Essentials in Data Analysis</p>
+        <p class="cert-date">Mar 2025</p>
+      </div>
+      <div class="cert-card">
+        <p class="cert-issuer">Udemy</p>
+        <p class="cert-name">The Ultimate MySQL Bootcamp</p>
+        <p class="cert-date">Feb 2025</p>
+      </div>
+      <div class="cert-card">
+        <p class="cert-issuer">HackerRank</p>
+        <p class="cert-name">SQL (Intermediate)</p>
+        <p class="cert-date">Feb 2025</p>
+      </div>
+      <div class="cert-card">
+        <p class="cert-issuer">Forage / PwC Switzerland</p>
+        <p class="cert-name">Power BI Job Simulation</p>
+        <p class="cert-date">Sep 2024</p>
+      </div>
+      <div class="cert-card">
+        <p class="cert-issuer">Coursera</p>
+        <p class="cert-name">Big Data Integration and Processing</p>
+        <p class="cert-date">Aug 2021</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="reveal">
+      <p class="section-label" style="color:var(--muted);">05 / Contact</p>
+    </div>
+    <div class="contact-big syne reveal">
+      Let's<br><span class="outline">build</span><br>something.
+    </div>
+    <div class="contact-links reveal">
+      <a href="mailto:sahithik156@gmail.com" class="contact-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+        sahithik156@gmail.com
       </a>
-
-      <nav class="hidden sm:flex flex-wrap gap-2 text-sm">
-        <a class="pillnav" href="#projects"><i class="fa-solid fa-layer-group mr-2"></i>Projects</a>
-        <a class="pillnav" href="#experience"><i class="fa-solid fa-briefcase mr-2"></i>Experience</a>
-        <a class="pillnav" href="#certs"><i class="fa-solid fa-certificate mr-2"></i>Certs</a>
-        <a class="pillnav" href="#contact"><i class="fa-solid fa-envelope mr-2"></i>Contact</a>
-      </nav>
-
-      <a class="hidden sm:inline-flex btnPrimary" href="#contact">
-        <i class="fa-solid fa-paper-plane mr-2"></i>Connect
+      <a href="https://www.linkedin.com/in/sree-sahithi-k" target="_blank" class="contact-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn ↗
+      </a>
+      <a href="https://github.com/sahithik156" target="_blank" class="contact-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+        GitHub ↗
       </a>
     </div>
-  </header>
+  </section>
 
-  <main id="top" class="mx-auto max-w-5xl px-4">
-    <!-- HERO (single column) -->
-    <section class="pt-12 pb-10">
-      <div class="inline-flex items-center gap-2 rounded-full border border-emerald-400/25 bg-emerald-400/10 px-3 py-1 text-sm text-emerald-200">
-        <span class="h-2 w-2 rounded-full bg-emerald-300"></span>
-        Available for roles
-      </div>
-
-      <h1 class="mt-4 text-4xl sm:text-6xl font-extrabold tracking-tight">
-        I build practical software that ships and holds up in production.
-      </h1>
-
-      <p class="mt-4 max-w-3xl text-lg leading-relaxed text-slate-300">
-        Full stack engineer with strong backend focus. I like clean APIs, SQL-first debugging, and building products that reduce manual work.
-      </p>
-
-      <div class="mt-6 flex flex-wrap gap-2">
-        <a class="btnPrimary" href="#projects"><i class="fa-solid fa-rocket mr-2"></i>See My Work</a>
-        <a class="btnGhost" href="https://github.com/sahithik156" target="_blank" rel="noreferrer">
-          <i class="fa-brands fa-github mr-2"></i>GitHub
-        </a>
-        <a class="btnGhost" href="https://www.linkedin.com/in/sree-sahithi-k" target="_blank" rel="noreferrer">
-          <i class="fa-brands fa-linkedin mr-2"></i>LinkedIn
-        </a>
-        <a class="btnGhost" href="mailto:sreesahithikapply@gmail.com">
-          <i class="fa-solid fa-at mr-2"></i>Email
-        </a>
-      </div>
-
-      <!-- small highlights -->
-      <div class="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-        <div class="metric">
-          <div class="text-2xl font-bold">Backend</div>
-          <div class="mt-1 text-sm text-slate-400">APIs · SQL · Debugging</div>
-        </div>
-        <div class="metric">
-          <div class="text-2xl font-bold">Data</div>
-          <div class="mt-1 text-sm text-slate-400">Pipelines · Dashboards</div>
-        </div>
-        <div class="metric">
-          <div class="text-2xl font-bold">Security</div>
-          <div class="mt-1 text-sm text-slate-400">ICS · Blue Team</div>
-        </div>
-        <div class="metric">
-          <div class="text-2xl font-bold">Ownership</div>
-          <div class="mt-1 text-sm text-slate-400">Build · Fix · Ship</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PROJECTS (single section, still can be cards in grid) -->
-    <section id="projects" class="section">
-      <div class="sectionHead">
-        <div class="kicker"><i class="fa-solid fa-layer-group mr-2"></i>Projects</div>
-        <h2 class="title">Things I built that you can click into</h2>
-        <p class="desc">Each card goes to the repo. No generic “Open” links.</p>
-      </div>
-
-      <!-- featured projects -->
-      <div class="mt-6 grid gap-4 lg:grid-cols-3">
-        <a class="card" href="https://github.com/sahithik156/Voice-prescription-system-for-doctors" target="_blank" rel="noreferrer">
-          <div class="badge"><i class="fa-solid fa-microphone-lines mr-2"></i>NLP</div>
-          <div class="mt-3 text-lg font-semibold">Voice Prescription System</div>
-          <div class="mt-2 text-sm text-slate-300">Speech-to-text pipeline that generates prescription output and reduces manual effort.</div>
-          <div class="mt-5 ctaLine">See how it works <i class="fa-solid fa-arrow-up-right-from-square ml-2"></i></div>
-        </a>
-
-        <a class="card" href="https://github.com/sahithik156/Global-Malnutrition-Analysis" target="_blank" rel="noreferrer">
-          <div class="badge"><i class="fa-solid fa-chart-line mr-2"></i>Data</div>
-          <div class="mt-3 text-lg font-semibold">Global Malnutrition Analysis</div>
-          <div class="mt-2 text-sm text-slate-300">Dashboards and notebooks to explore trends and drivers using real datasets.</div>
-          <div class="mt-5 ctaLine">Explore the dashboards <i class="fa-solid fa-arrow-up-right-from-square ml-2"></i></div>
-        </a>
-
-        <a class="card" href="https://github.com/sahithik156/SafeCodeCheck-Advancing-Software-Security-through-Language-Based-Approaches" target="_blank" rel="noreferrer">
-          <div class="badge"><i class="fa-solid fa-shield-halved mr-2"></i>Security</div>
-          <div class="mt-3 text-lg font-semibold">SafeCodeCheck</div>
-          <div class="mt-2 text-sm text-slate-300">Language-based security analysis and mitigation approaches for real world vulnerabilities.</div>
-          <div class="mt-5 ctaLine">Read the security approach <i class="fa-solid fa-arrow-up-right-from-square ml-2"></i></div>
-        </a>
-      </div>
-
-      <!-- all repos -->
-      <div class="mt-10 rounded-3xl border border-white/10 bg-white/5 p-5 shadow-soft">
-        <div class="flex flex-wrap items-end justify-between gap-3">
-          <div>
-            <div class="text-sm font-semibold text-slate-200"><i class="fa-brands fa-github mr-2 text-slate-300"></i>All repositories</div>
-            <div class="text-sm text-slate-400">Search and filter to quickly find what you care about.</div>
-          </div>
-
-          <div class="flex flex-wrap gap-2">
-            <div class="relative">
-              <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-500"></i>
-              <input id="q"
-                class="w-56 rounded-xl border border-white/10 bg-slate-950/40 pl-9 pr-3 py-2 text-sm outline-none placeholder:text-slate-500 focus:border-white/20"
-                placeholder="Search repos..." />
-            </div>
-
-            <select id="f" class="rounded-xl border border-white/10 bg-slate-950/40 px-3 py-2 text-sm outline-none focus:border-white/20">
-              <option value="all">All</option>
-              <option value="web">Web</option>
-              <option value="data">Data</option>
-              <option value="ml">ML</option>
-              <option value="security">Security</option>
-              <option value="games">Games</option>
-            </select>
-          </div>
-        </div>
-
-        <div id="repoGrid" class="mt-5 grid gap-3 md:grid-cols-2"></div>
-      </div>
-    </section>
-
-    <!-- EXPERIENCE -->
-    <section id="experience" class="section">
-      <div class="sectionHead">
-        <div class="kicker"><i class="fa-solid fa-briefcase mr-2"></i>Experience</div>
-        <h2 class="title">Work that shows ownership</h2>
-        <p class="desc">Not responsibilities. Outcomes and what I drove.</p>
-      </div>
-
-      <div class="mt-6 grid gap-4">
-        <div class="cardStatic">
-          <div class="flex flex-wrap items-start justify-between gap-3">
-            <div>
-              <div class="text-lg font-semibold"><i class="fa-solid fa-building mr-2 text-slate-300"></i>Easysuite Software</div>
-              <div class="text-sm text-slate-400">Software Developer</div>
-            </div>
-            <div class="text-sm text-slate-500"><i class="fa-regular fa-calendar mr-2"></i>Jul 2025 – Present</div>
-          </div>
-          <ul class="mt-4 list-disc space-y-2 pl-5 text-sm text-slate-300">
-            <li>Built and maintained backend workflows with heavy SQL usage and production debugging.</li>
-            <li>Improved reliability by tracing issues end to end and shipping clean fixes.</li>
-          </ul>
-          <div class="mt-5 ctaLine">
-            What I’m known for: fast root cause + practical fixes
-          </div>
-        </div>
-
-        <div class="cardStatic">
-          <div class="flex flex-wrap items-start justify-between gap-3">
-            <div>
-              <div class="text-lg font-semibold"><i class="fa-solid fa-building-columns mr-2 text-slate-300"></i>Cyber Florida at USF</div>
-              <div class="text-sm text-slate-400">NIST Grant Intern</div>
-            </div>
-            <div class="text-sm text-slate-500"><i class="fa-regular fa-calendar mr-2"></i>Jan 2025 – Jun 2025</div>
-          </div>
-          <ul class="mt-4 list-disc space-y-2 pl-5 text-sm text-slate-300">
-            <li>Automated telemetry processing workflows to speed up investigations.</li>
-            <li>Worked with large log datasets and created repeatable analysis patterns.</li>
-          </ul>
-          <div class="mt-5 ctaLine">
-            Built repeatable tooling instead of one off scripts
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CERTS -->
-    <section id="certs" class="section">
-      <div class="sectionHead">
-        <div class="kicker"><i class="fa-solid fa-certificate mr-2"></i>Certifications</div>
-        <h2 class="title">Security + data credentials</h2>
-        <p class="desc">Full credential links are on LinkedIn.</p>
-      </div>
-
-      <div class="mt-6 grid gap-3 sm:grid-cols-2">
-        <div class="cert"><i class="fa-solid fa-shield-halved mr-2 text-emerald-200"></i>GICSP <span class="sub">GIAC</span></div>
-        <div class="cert"><i class="fa-solid fa-industry mr-2 text-emerald-200"></i>ICS410 <span class="sub">SANS</span></div>
-        <div class="cert"><i class="fa-solid fa-industry mr-2 text-emerald-200"></i>ICS310 <span class="sub">SANS</span></div>
-        <div class="cert"><i class="fa-solid fa-user-shield mr-2 text-emerald-200"></i>BTL1 <span class="sub">Security Blue Team</span></div>
-        <div class="cert"><i class="fa-solid fa-database mr-2 text-emerald-200"></i>SQL (Intermediate) <span class="sub">HackerRank</span></div>
-        <div class="cert"><i class="fa-solid fa-chart-simple mr-2 text-emerald-200"></i>Data Analysis Essentials <span class="sub">Microsoft + LinkedIn</span></div>
-        <div class="cert"><i class="fa-solid fa-chart-pie mr-2 text-emerald-200"></i>Power BI Simulation <span class="sub">Forage</span></div>
-        <div class="cert"><i class="fa-brands fa-python mr-2 text-emerald-200"></i>Python Foundations <span class="sub">Coursera</span></div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" class="section mb-10">
-      <div class="sectionHead">
-        <div class="kicker"><i class="fa-solid fa-envelope mr-2"></i>Contact</div>
-        <h2 class="title">Let’s build something solid</h2>
-        <p class="desc">Email is best. LinkedIn has the full certification list.</p>
-      </div>
-
-      <div class="mt-6 rounded-3xl border border-white/10 bg-white/5 p-6 shadow-soft">
-        <div class="flex flex-wrap gap-2">
-          <a class="btnPrimary" href="mailto:sreesahithikapply@gmail.com">
-            <i class="fa-solid fa-paper-plane mr-2"></i>Email me
-          </a>
-          <a class="btnGhost" href="https://www.linkedin.com/in/sree-sahithi-k" target="_blank" rel="noreferrer">
-            <i class="fa-brands fa-linkedin mr-2"></i>Message on LinkedIn
-          </a>
-          <a class="btnGhost" href="https://github.com/sahithik156" target="_blank" rel="noreferrer">
-            <i class="fa-brands fa-github mr-2"></i>Browse my code
-          </a>
-        </div>
-
-        <div class="mt-5 text-sm text-slate-400">
-          <i class="fa-solid fa-location-dot mr-2"></i>Florida, USA
-          <span class="mx-2 text-slate-600">•</span>
-          <i class="fa-solid fa-at mr-2"></i>sreesahithikapply@gmail.com
-        </div>
-      </div>
-
-      <footer class="mt-8 text-sm text-slate-500">
-        © <span id="y"></span> Sree Sahithi Kantamneni
-      </footer>
-    </section>
-  </main>
-
-  <style>
-    .pillnav { @apply rounded-full border border-white/10 bg-white/5 px-3 py-1 text-slate-200 hover:border-white/20; }
-    .btnPrimary { @apply inline-flex items-center rounded-xl bg-gradient-to-br from-violet-500 to-emerald-400 px-4 py-2 text-sm font-semibold shadow-soft hover:opacity-95; }
-    .btnGhost { @apply inline-flex items-center rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold hover:border-white/20; }
-    .section { @apply border-t border-white/10 py-12; }
-    .sectionHead .kicker { @apply text-xs font-semibold uppercase tracking-widest text-slate-400; }
-    .sectionHead .title { @apply mt-2 text-3xl font-bold tracking-tight; }
-    .sectionHead .desc { @apply mt-2 text-slate-300; }
-    .metric { @apply rounded-2xl border border-white/10 bg-white/5 p-4 shadow-soft; }
-    .card { @apply block rounded-3xl border border-white/10 bg-slate-950/25 p-6 shadow-soft hover:border-white/20 hover:bg-slate-950/35 transition; }
-    .cardStatic { @apply rounded-3xl border border-white/10 bg-white/5 p-6 shadow-soft; }
-    .badge { @apply inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-300; }
-    .ctaLine { @apply text-sm font-semibold text-violet-200; }
-    .cert { @apply rounded-2xl border border-white/10 bg-white/5 p-5 text-sm text-slate-200 shadow-soft; }
-    .sub { @apply ml-2 text-xs text-slate-500; }
-  </style>
+  <!-- Footer -->
+  <footer>
+    <span>© 2025 Sree Sahithi Kantamneni</span>
+    <span>Built with ♥ &amp; too much caffeine</span>
+    <span><a href="https://github.com/sahithik156" target="_blank">sahithik156</a></span>
+  </footer>
 
   <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
-
-    const repos = [
-      { name:"TV-Show-Search", url:"https://github.com/sahithik156/TV-Show-Search", tech:["HTML"], group:"web", blurb:"Search UI for TV shows." },
-      { name:"food-ordering-system-PHP", url:"https://github.com/sahithik156/food-ordering-system-PHP", tech:["PHP"], group:"web", blurb:"Food ordering web app in PHP." },
-      { name:"SafeCodeCheck-Advancing-Software-Security-through-Language-Based-Approaches", url:"https://github.com/sahithik156/SafeCodeCheck-Advancing-Software-Security-through-Language-Based-Approaches", tech:["Security"], group:"security", blurb:"Language-based software security study materials." },
-      { name:"Voice-prescription-system-for-doctors", url:"https://github.com/sahithik156/Voice-prescription-system-for-doctors", tech:["Python"], group:"ml", blurb:"Voice prescription generator (speech to text → output)." },
-      { name:"Flight-price-prediction", url:"https://github.com/sahithik156/Flight-price-prediction", tech:["Jupyter"], group:"data", blurb:"Notebook-based flight fare prediction." },
-      { name:"Global-Malnutrition-Analysis", url:"https://github.com/sahithik156/Global-Malnutrition-Analysis", tech:["Jupyter","Tableau"], group:"data", blurb:"Dashboards + notebooks + datasets for analysis." },
-      { name:"DermaScan-Skin-Lesion-Classifier", url:"https://github.com/sahithik156/DermaScan-Skin-Lesion-Classifier", tech:["ML"], group:"ml", blurb:"Skin lesion classification project assets." },
-      { name:"Recipe-blog", url:"https://github.com/sahithik156/Recipe-blog", tech:["EJS"], group:"web", blurb:"Recipe blog web project." },
-      { name:"Hate-Speech-Detection", url:"https://github.com/sahithik156/Hate-Speech-Detection", tech:["NLP"], group:"ml", blurb:"Hate speech detection notebook." },
-      { name:"Checkers-Game", url:"https://github.com/sahithik156/Checkers-Game", tech:["Python"], group:"games", blurb:"Checkers game implementation." },
-      { name:"3D-Tic-tac-toe-game", url:"https://github.com/sahithik156/3D-Tic-tac-toe-game", tech:["Java"], group:"games", blurb:"3D tic-tac-toe in Java." },
-      { name:"snakes-and-ladders-game", url:"https://github.com/sahithik156/snakes-and-ladders-game", tech:["C"], group:"games", blurb:"Snakes and ladders in C." },
-      { name:"Food-ordering-system", url:"https://github.com/sahithik156/Food-ordering-system", tech:["Java"], group:"web", blurb:"Food ordering system in Java." },
-    ];
-
-    const q = document.getElementById("q");
-    const f = document.getElementById("f");
-    const grid = document.getElementById("repoGrid");
-
-    function groupIcon(group){
-      switch(group){
-        case "web": return `<i class="fa-solid fa-globe mr-2 text-cyan-200"></i>`;
-        case "data": return `<i class="fa-solid fa-chart-line mr-2 text-cyan-200"></i>`;
-        case "ml": return `<i class="fa-solid fa-brain mr-2 text-cyan-200"></i>`;
-        case "security": return `<i class="fa-solid fa-shield-halved mr-2 text-cyan-200"></i>`;
-        case "games": return `<i class="fa-solid fa-gamepad mr-2 text-cyan-200"></i>`;
-        default: return `<i class="fa-solid fa-code mr-2 text-cyan-200"></i>`;
-      }
+    // Cursor
+    const dot = document.getElementById('dot');
+    const ring = document.getElementById('ring');
+    let mx = 0, my = 0, rx = 0, ry = 0;
+    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+    function animateCursor() {
+      dot.style.transform = `translate(${mx - 4}px, ${my - 4}px)`;
+      rx += (mx - rx - 18) * 0.15;
+      ry += (my - ry - 18) * 0.15;
+      ring.style.transform = `translate(${rx}px, ${ry}px)`;
+      requestAnimationFrame(animateCursor);
     }
+    animateCursor();
 
-    function repoCTA(group){
-      switch(group){
-        case "web": return "See the interface choices";
-        case "data": return "Dive into the analysis";
-        case "ml": return "Check the model work";
-        case "security": return "Review the security notes";
-        case "games": return "Peek the game logic";
-        default: return "Explore the implementation";
-      }
-    }
-
-    function render() {
-      const query = (q.value || "").toLowerCase().trim();
-      const filter = f.value;
-
-      const items = repos.filter(r => {
-        const hitsQuery =
-          !query ||
-          r.name.toLowerCase().includes(query) ||
-          (r.blurb || "").toLowerCase().includes(query) ||
-          (r.tech || []).join(" ").toLowerCase().includes(query);
-
-        const hitsFilter = (filter === "all") || (r.group === filter);
-        return hitsQuery && hitsFilter;
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver(entries => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 80);
+          io.unobserve(e.target);
+        }
       });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => io.observe(el));
 
-      grid.innerHTML = items.map(r => `
-        <a class="block rounded-2xl border border-white/10 bg-slate-950/25 p-5 hover:border-white/20 hover:bg-slate-950/35 transition shadow-soft"
-           href="${r.url}" target="_blank" rel="noreferrer">
-          <div class="flex items-start justify-between gap-3">
-            <div class="font-semibold tracking-tight">${r.name}</div>
-            <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-300">
-              ${groupIcon(r.group)}${r.group}
-            </span>
-          </div>
-
-          <div class="mt-2 text-sm text-slate-300">${r.blurb || ""}</div>
-
-          <div class="mt-4 flex flex-wrap gap-2">
-            ${(r.tech || []).map(t => `<span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-300"><i class="fa-solid fa-tag mr-2"></i>${t}</span>`).join("")}
-          </div>
-
-          <div class="mt-5 text-sm font-semibold text-violet-200">
-            ${repoCTA(r.group)} <i class="fa-solid fa-arrow-up-right-from-square ml-2"></i>
-          </div>
-        </a>
-      `).join("");
-
-      if (!items.length) {
-        grid.innerHTML = `<div class="rounded-2xl border border-white/10 bg-slate-950/25 p-5 text-slate-300 shadow-soft">No matches. Try another search.</div>`;
-      }
-    }
-
-    q.addEventListener("input", render);
-    f.addEventListener("change", render);
-    render();
+    // Active nav highlight
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(s => {
+        if (window.scrollY >= s.offsetTop - 120) current = s.id;
+      });
+      navLinks.forEach(a => {
+        a.style.opacity = a.getAttribute('href') === `#${current}` ? '1' : '0.6';
+      });
+    });
   </script>
 </body>
 </html>
