@@ -26,35 +26,9 @@
     body {
       background: var(--cream);
       color: var(--ink);
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Instrument Sans', sans-serif;
       font-weight: 300;
       overflow-x: hidden;
-      cursor: none;
-    }
-
-    /* ── Custom cursor ─────────────────────────────── */
-    .cursor-dot {
-      width: 8px; height: 8px;
-      background: var(--accent-1);
-      border-radius: 50%;
-      position: fixed; top: 0; left: 0;
-      pointer-events: none;
-      z-index: 9999;
-      transition: transform .15s ease;
-    }
-    .cursor-ring {
-      width: 36px; height: 36px;
-      border: 1.5px solid var(--ink);
-      border-radius: 50%;
-      position: fixed; top: 0; left: 0;
-      pointer-events: none;
-      z-index: 9998;
-      transition: transform .08s ease, width .2s, height .2s, border-color .2s;
-    }
-    body:has(a:hover) .cursor-ring,
-    body:has(button:hover) .cursor-ring {
-      width: 56px; height: 56px;
-      border-color: var(--accent-1);
     }
 
     /* ── Noise overlay ─────────────────────────────── */
@@ -65,11 +39,10 @@
       pointer-events: none; z-index: 0; opacity: .35;
     }
 
-    /* ── Typography ────────────────────────────────── */
-    .syne { font-family: 'Syne', sans-serif; }
-    .mono { font-family: 'DM Mono', monospace; }
+    .display { font-family: 'Cormorant Garamond', serif; }
+    .serif { font-family: 'Instrument Serif', serif; }
+    .sans { font-family: 'Instrument Sans', sans-serif; }
 
-    /* ── Nav ───────────────────────────────────────── */
     nav {
       position: fixed; top: 0; left: 0; right: 0;
       z-index: 100;
@@ -77,19 +50,24 @@
       padding: 1.25rem 3rem;
       mix-blend-mode: multiply;
     }
-    .nav-logo {
-      font-family: 'Syne', sans-serif;
-      font-weight: 800; font-size: 1.1rem;
-      letter-spacing: -.02em;
-      color: var(--ink);
+    .nav-symbol {
+      width: 10px; height: 10px;
+      background: var(--accent-1);
+      border-radius: 50%;
+      display: block;
       text-decoration: none;
+      transition: transform .3s ease, background .3s;
+    }
+    .nav-symbol:hover {
+      transform: scale(1.7);
+      background: var(--ink);
     }
     .nav-links { display: flex; gap: 2.5rem; list-style: none; }
     .nav-links a {
-      font-family: 'DM Mono', monospace;
-      font-size: .75rem; letter-spacing: .1em;
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: .8rem; letter-spacing: .06em;
       text-transform: uppercase; text-decoration: none;
-      color: var(--ink); opacity: .6;
+      color: var(--ink); opacity: .5;
       transition: opacity .2s;
     }
     .nav-links a:hover { opacity: 1; }
@@ -105,17 +83,17 @@
     }
     .hero-left { position: relative; z-index: 1; }
     .hero-eyebrow {
-      font-family: 'DM Mono', monospace;
-      font-size: .75rem; letter-spacing: .15em;
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: .78rem; letter-spacing: .14em;
       text-transform: uppercase; color: var(--accent-1);
       margin-bottom: 1.2rem;
     }
     .hero-name {
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: clamp(3rem, 6vw, 5.5rem);
-      line-height: .95;
-      letter-spacing: -.03em;
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      font-size: clamp(3.5rem, 7vw, 6.5rem);
+      line-height: .92;
+      letter-spacing: -.02em;
       margin-bottom: 1.5rem;
     }
     .hero-name .outline {
@@ -124,15 +102,16 @@
     }
     .hero-sub {
       max-width: 420px;
-      font-size: 1.05rem; line-height: 1.7;
+      font-size: 1rem; line-height: 1.75;
       color: #444; margin-bottom: 2.5rem;
+      font-family: 'Instrument Sans', sans-serif;
     }
     .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
     .btn-primary {
       display: inline-flex; align-items: center; gap: .5rem;
       background: var(--ink); color: var(--cream);
-      font-family: 'DM Mono', monospace;
-      font-size: .8rem; letter-spacing: .08em;
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: .8rem; letter-spacing: .07em;
       padding: .85rem 1.75rem; text-decoration: none;
       transition: transform .2s, background .2s;
     }
@@ -140,8 +119,8 @@
     .btn-outline {
       display: inline-flex; align-items: center; gap: .5rem;
       border: 1.5px solid var(--ink); color: var(--ink);
-      font-family: 'DM Mono', monospace;
-      font-size: .8rem; letter-spacing: .08em;
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: .8rem; letter-spacing: .07em;
       padding: .85rem 1.75rem; text-decoration: none;
       transition: transform .2s, background .2s, color .2s;
     }
@@ -157,8 +136,8 @@
       height: 100%;
     }
     .hero-bg-text {
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
       font-size: clamp(6rem, 14vw, 13rem);
       line-height: 1;
       letter-spacing: -.04em;
@@ -170,7 +149,7 @@
     .hero-badge {
       position: absolute;
       background: var(--ink); color: var(--cream);
-      font-family: 'DM Mono', monospace;
+      font-family: 'Instrument Sans', sans-serif;
       font-size: .7rem; letter-spacing: .1em;
       padding: .6rem 1.1rem;
       animation: float 3s ease-in-out infinite;
@@ -195,7 +174,7 @@
       animation: marquee 22s linear infinite;
     }
     .marquee-item {
-      font-family: 'DM Mono', monospace;
+      font-family: 'Instrument Sans', sans-serif;
       font-size: .8rem; letter-spacing: .1em;
       text-transform: uppercase; color: var(--cream);
       white-space: nowrap;
@@ -209,17 +188,36 @@
     /* ── Section shared ────────────────────────────── */
     section { padding: 6rem 3rem; position: relative; }
     .section-label {
-      font-family: 'DM Mono', monospace;
-      font-size: .7rem; letter-spacing: .18em;
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: .72rem; letter-spacing: .16em;
       text-transform: uppercase; color: var(--muted);
       margin-bottom: .75rem;
     }
     .section-title {
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: clamp(2.2rem, 4vw, 3.5rem);
-      line-height: 1.05; letter-spacing: -.02em;
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      font-size: clamp(2.4rem, 4.5vw, 4rem);
+      line-height: 1; letter-spacing: -.01em;
       margin-bottom: 3rem;
+    }
+
+    /* stat pills */
+    .stat-pills { display: flex; flex-direction: column; gap: .8rem; }
+    .stat-pill {
+      display: flex; align-items: center; gap: 1rem;
+      border: 1px solid rgba(255,255,255,.12);
+      padding: .9rem 1.2rem;
+      transition: border-color .2s, background .2s;
+    }
+    .stat-pill:hover { border-color: var(--accent-3); background: rgba(255,255,255,.03); }
+    .stat-pill-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem; font-weight: 700;
+      color: var(--accent-1); line-height: 1;
+      min-width: 70px;
+    }
+    .stat-pill-label {
+      font-size: .82rem; color: #888; line-height: 1.4;
     }
 
     /* ── About ─────────────────────────────────────── */
@@ -250,8 +248,8 @@
     /* skills chips */
     .skill-chips { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1rem; }
     .chip {
-      font-family: 'DM Mono', monospace; font-size: .7rem;
-      letter-spacing: .08em; padding: .4rem .9rem;
+      font-family: 'Instrument Sans', sans-serif; font-size: .7rem;
+      letter-spacing: .07em; padding: .4rem .9rem;
       border: 1px solid rgba(255,255,255,.15);
       color: #aaa; transition: border-color .2s, color .2s;
       cursor: default;
@@ -271,13 +269,13 @@
     }
     .exp-item:hover { background: rgba(14,14,14,.03); padding-left: .5rem; }
     .exp-date {
-      font-family: 'DM Mono', monospace;
-      font-size: .72rem; letter-spacing: .08em;
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: .72rem; letter-spacing: .06em;
       color: var(--muted); padding-top: .3rem;
     }
     .exp-role {
-      font-family: 'Syne', sans-serif;
-      font-weight: 700; font-size: 1.15rem; margin-bottom: .15rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700; font-size: 1.25rem; margin-bottom: .15rem;
     }
     .exp-company { font-size: .85rem; color: var(--accent-1); margin-bottom: .6rem; }
     .exp-desc { font-size: .9rem; line-height: 1.7; color: #555; }
@@ -308,18 +306,18 @@
     .proj-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(14,14,14,.1); }
     .proj-card:hover::before { transform: scaleX(1); }
     .proj-num {
-      font-family: 'DM Mono', monospace; font-size: .7rem;
+      font-family: 'Instrument Sans', sans-serif; font-size: .7rem;
       color: var(--muted); margin-bottom: 1.2rem;
     }
     .proj-title {
-      font-family: 'Syne', sans-serif;
-      font-weight: 700; font-size: 1.3rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700; font-size: 1.5rem;
       letter-spacing: -.01em; margin-bottom: .75rem;
     }
     .proj-desc { font-size: .88rem; line-height: 1.7; color: #555; margin-bottom: 1.5rem; }
     .proj-tags { display: flex; flex-wrap: wrap; gap: .4rem; }
     .proj-tag {
-      font-family: 'DM Mono', monospace; font-size: .65rem;
+      font-family: 'Instrument Sans', sans-serif; font-size: .65rem;
       letter-spacing: .06em; padding: .3rem .7rem;
       background: var(--ink); color: var(--cream);
     }
@@ -329,7 +327,7 @@
     .proj-card.fullstack::before { background: var(--accent-3); }
     .proj-card .proj-category {
       position: absolute; top: 1.5rem; right: 1.5rem;
-      font-family: 'DM Mono', monospace; font-size: .6rem;
+      font-family: 'Instrument Sans', sans-serif; font-size: .6rem;
       letter-spacing: .1em; text-transform: uppercase;
     }
     .security .proj-category { color: var(--accent-1); }
@@ -352,13 +350,13 @@
     }
     .cert-card:hover { border-color: var(--accent-2); background: rgba(255,255,255,.03); }
     .cert-issuer {
-      font-family: 'DM Mono', monospace;
+      font-family: 'Instrument Sans', sans-serif;
       font-size: .65rem; letter-spacing: .1em;
       color: var(--accent-2); margin-bottom: .5rem;
     }
-    .cert-name { font-size: .92rem; line-height: 1.4; margin-bottom: .5rem; }
+    .cert-name { font-size: .92rem; line-height: 1.4; margin-bottom: .5rem; font-family: 'Instrument Sans', sans-serif; }
     .cert-date {
-      font-family: 'DM Mono', monospace;
+      font-family: 'Instrument Sans', sans-serif;
       font-size: .65rem; color: #666;
     }
 
@@ -371,10 +369,10 @@
       text-align: center;
     }
     .contact-big {
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
       font-size: clamp(2.8rem, 7vw, 6rem);
-      line-height: .95; letter-spacing: -.04em;
+      line-height: .95; letter-spacing: -.02em;
       margin: 1.5rem 0 2.5rem;
     }
     .contact-big .outline {
@@ -384,7 +382,7 @@
     .contact-links { display: flex; gap: 1.5rem; flex-wrap: wrap; justify-content: center; }
     .contact-link {
       display: inline-flex; align-items: center; gap: .5rem;
-      font-family: 'DM Mono', monospace;
+      font-family: 'Instrument Sans', sans-serif;
       font-size: .78rem; letter-spacing: .1em;
       text-decoration: none; color: var(--ink);
       border-bottom: 1px solid rgba(14,14,14,.25);
@@ -396,8 +394,8 @@
     /* ── Footer ────────────────────────────────────── */
     footer {
       background: var(--ink); color: #555;
-      font-family: 'DM Mono', monospace;
-      font-size: .7rem; letter-spacing: .08em;
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: .7rem; letter-spacing: .07em;
       display: flex; justify-content: space-between; align-items: center;
       padding: 1.5rem 3rem;
     }
@@ -444,13 +442,9 @@
 </head>
 <body>
 
-  <!-- Custom cursor -->
-  <div class="cursor-dot" id="dot"></div>
-  <div class="cursor-ring" id="ring"></div>
-
   <!-- Nav -->
   <nav>
-    <a class="nav-logo" href="#hero">SSK</a>
+    <a href="#hero" class="nav-symbol"></a>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#experience">Experience</a></li>
@@ -463,8 +457,8 @@
   <!-- Hero -->
   <section id="hero">
     <div class="hero-left">
-      <p class="hero-eyebrow">✦ Software Engineer · FL, USA</p>
-      <h1 class="hero-name syne">
+      <p class="hero-eyebrow">Software Engineer · FL, USA</p>
+      <h1 class="hero-name display">
         Sree<br>
         <span class="outline">Sahithi</span><br>
         Kantamneni<span class="caret"></span>
@@ -481,7 +475,7 @@
     </div>
 
     <div class="hero-right">
-      <div class="hero-bg-text">DEV<br>&amp;<br>SEC</div>
+      <div class="hero-bg-text display">DEV<br>&amp;<br>SEC</div>
       <div class="hero-badge b1">MS · Computer Science</div>
       <div class="hero-badge b2">USF Tampa ✦</div>
       <div class="hero-badge b3">GICSP Certified</div>
@@ -518,9 +512,8 @@
   <!-- About -->
   <section id="about">
     <div class="reveal">
-      <p class="section-label">01 / About</p>
+      <p class="section-label">About</p>
       <h2 class="section-title">Code. Secure.<br>Repeat.</h2>
-    </div>
     <div class="about-grid reveal">
       <div class="about-text">
         <p>
@@ -538,6 +531,26 @@
           When I'm not optimizing query plans, I'm probably tinkering with NLP pipelines or playing with AI APIs.
           Allegedly also a human being.
         </p>
+      </div>
+      <div class="about-right">
+        <div class="stat-pills">
+          <div class="stat-pill">
+            <span class="stat-pill-num">40%</span>
+            <span class="stat-pill-label">API latency reduction at current role</span>
+          </div>
+          <div class="stat-pill">
+            <span class="stat-pill-num">500GB+</span>
+            <span class="stat-pill-label">telemetry analyzed during cybersecurity internship</span>
+          </div>
+          <div class="stat-pill">
+            <span class="stat-pill-num">10K+</span>
+            <span class="stat-pill-label">active users on systems I help maintain</span>
+          </div>
+          <div class="stat-pill">
+            <span class="stat-pill-num">9</span>
+            <span class="stat-pill-label">certifications &amp; credentials earned</span>
+          </div>
+        </div>
         <div class="skill-chips" style="margin-top:1.5rem;">
           <span class="chip">C# / Python / JS</span>
           <span class="chip">React</span>
@@ -553,31 +566,13 @@
           <span class="chip">CI/CD · Git</span>
         </div>
       </div>
-      <div class="about-right">
-        <div class="stat-row">
-          <span class="stat-num">40%</span>
-          <span class="stat-label">API latency reduction at current role</span>
-        </div>
-        <div class="stat-row">
-          <span class="stat-num">500<span style="font-size:1.8rem">GB+</span></span>
-          <span class="stat-label">telemetry analyzed during cybersecurity internship</span>
-        </div>
-        <div class="stat-row">
-          <span class="stat-num">10K+</span>
-          <span class="stat-label">active users on systems I help maintain</span>
-        </div>
-        <div class="stat-row">
-          <span class="stat-num">9</span>
-          <span class="stat-label">certifications &amp; credentials earned</span>
-        </div>
-      </div>
     </div>
   </section>
 
   <!-- Experience -->
   <section id="experience">
     <div class="reveal">
-      <p class="section-label">02 / Experience</p>
+      <p class="section-label">Experience</p>
       <h2 class="section-title">Where I've<br>shipped things.</h2>
     </div>
     <div class="exp-list">
@@ -619,7 +614,7 @@
   <!-- Projects -->
   <section id="projects">
     <div class="reveal">
-      <p class="section-label">03 / Projects</p>
+      <p class="section-label">Projects</p>
       <h2 class="section-title">Things I've<br>actually built.</h2>
     </div>
     <div class="projects-grid">
@@ -709,7 +704,7 @@
   <!-- Certifications -->
   <section id="certs">
     <div class="reveal">
-      <p class="section-label">04 / Certifications</p>
+      <p class="section-label">Certifications</p>
       <h2 class="section-title">Badges I've<br>actually earned.</h2>
     </div>
     <div class="certs-grid reveal">
@@ -764,9 +759,9 @@
   <!-- Contact -->
   <section id="contact">
     <div class="reveal">
-      <p class="section-label" style="color:var(--muted);">05 / Contact</p>
+      <p class="section-label" style="color:var(--muted);">Get in Touch</p>
     </div>
-    <div class="contact-big syne reveal">
+    <div class="contact-big display reveal">
       Let's<br><span class="outline">build</span><br>something.
     </div>
     <div class="contact-links reveal">
@@ -793,20 +788,6 @@
   </footer>
 
   <script>
-    // Cursor
-    const dot = document.getElementById('dot');
-    const ring = document.getElementById('ring');
-    let mx = 0, my = 0, rx = 0, ry = 0;
-    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
-    function animateCursor() {
-      dot.style.transform = `translate(${mx - 4}px, ${my - 4}px)`;
-      rx += (mx - rx - 18) * 0.15;
-      ry += (my - ry - 18) * 0.15;
-      ring.style.transform = `translate(${rx}px, ${ry}px)`;
-      requestAnimationFrame(animateCursor);
-    }
-    animateCursor();
-
     // Scroll reveal
     const reveals = document.querySelectorAll('.reveal');
     const io = new IntersectionObserver(entries => {
