@@ -265,58 +265,79 @@
     .exp-desc { font-size: .9rem; line-height: 1.7; color: #555; }
 
     /* ── Projects ──────────────────────────────────────── */
-#projects { background: var(--ink); }
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-      gap: 1.5px;
-    }
-    .proj-card {
-      background: 
-#1a1a1a;
-      border: 1px solid rgba(255,255,255,.06);
-      padding: 2.5rem 2rem;
-      border: 1px solid rgba(14,14,14,.08);
-      position: relative; overflow: hidden;
-      transition: transform .25s, box-shadow .25s;
-      cursor: pointer;
-    }
-    .proj-card::before {
-      content: '';
-      position: absolute; top: 0; left: 0; right: 0;
-      height: 3px; background: var(--accent-1);
-      transform: scaleX(0); transform-origin: left;
-      transition: transform .3s;
-    }
-    .proj-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(14,14,14,.1); }
-    .proj-card:hover::before { transform: scaleX(1); }
-    .proj-num {
-      font-family: 'Instrument Sans', sans-serif;
-      font-size: .7rem; color: var(--muted); margin-bottom: 1.2rem;
-    }
-    .proj-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 700; font-size: 1.5rem;
-      letter-spacing: -.01em; margin-bottom: .75rem;
-    }
-    .proj-desc { font-size: .88rem; line-height: 1.7; color: #555; margin-bottom: 1.5rem; }
-    .proj-tags { display: flex; flex-wrap: wrap; gap: .4rem; }
-    .proj-tag {
-      font-family: 'Instrument Sans', sans-serif; font-size: .65rem;
-      letter-spacing: .06em; padding: .3rem .7rem;
-      background: var(--ink); color: var(--cream);
-    }
-    .proj-card.security::before { background: var(--accent-1); }
-    .proj-card.ai::before      { background: var(--accent-2); }
-    .proj-card.fullstack::before { background: var(--accent-3); }
-    .proj-card .proj-category {
-      position: absolute; top: 1.5rem; right: 1.5rem;
-      font-family: 'Instrument Sans', sans-serif;
-      font-size: .6rem; letter-spacing: .1em; text-transform: uppercase;
-    }
-    .security .proj-category { color: var(--accent-1); }
-    .ai .proj-category       { color: var(--accent-2); }
-    .fullstack .proj-category { color: var(--accent-3); }
+#projects {
+  background: var(--ink);
+  padding: 6rem 3rem;
+}
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: rgba(255,255,255,.06);
+}
+.proj-card {
+  background: #1a1a1a;
+  padding: 2.5rem 2rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform .25s, box-shadow .25s;
+  cursor: pointer;
+}
+.proj-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 3px;
+  transform: scaleX(0); transform-origin: left;
+  transition: transform .3s;
+}
+.proj-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(0,0,0,.4);
+  background: #222;
+}
+.proj-card:hover::before { transform: scaleX(1); }
+.proj-num {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: .7rem;
+  color: #444;
+  margin-bottom: 1.2rem;
+}
+.proj-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: -.01em;
+  margin-bottom: .75rem;
+  color: var(--cream);
+}
+.proj-desc {
+  font-size: .88rem;
+  line-height: 1.7;
+  color: #888;
+  margin-bottom: 1.5rem;
+}
+.proj-tags { display: flex; flex-wrap: wrap; gap: .4rem; }
+.proj-tag {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: .65rem;
+  letter-spacing: .06em;
+  padding: .3rem .7rem;
+  background: rgba(255,255,255,.08);
+  color: #999;
+}
+.proj-card.security::before { background: var(--accent-1); }
+.proj-card.ai::before       { background: var(--accent-2); }
+.proj-card.fullstack::before { background: var(--accent-3); }
+.proj-card .proj-category {
+  position: absolute; top: 1.5rem; right: 1.5rem;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: .6rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+.security .proj-category { color: var(--accent-1); }
+.ai .proj-category       { color: var(--accent-2); }
+.fullstack .proj-category { color: var(--accent-3); }
 /* skills */
   .skill-tag {
   font-family: 'Instrument Sans', sans-serif;
