@@ -315,7 +315,20 @@
     .security .proj-category { color: var(--accent-1); }
     .ai .proj-category       { color: var(--accent-2); }
     .fullstack .proj-category { color: var(--accent-3); }
-
+/* skills */
+    .skill-tag {
+        font-family: 'Instrument Sans', sans-serif;
+        font-size: .7rem; letter-spacing: .05em;
+        padding: .38rem .8rem;
+        border: 1px solid rgba(14,14,14,.12);
+        color: #555;
+        transition: border-color .2s, color .2s, background .2s;
+      }
+    .skill-tag:hover {
+      border-color: var(--ink);
+      color: var(--ink);
+      background: rgba(14,14,14,.04);
+    }
     /* ── Certifications ────────────────────────────────── */
     #certs { background: var(--ink); color: var(--cream); }
     #certs .section-title { color: var(--cream); }
@@ -426,6 +439,7 @@
       <li><a href="#about">About</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
       <li><a href="#certs">Certifications</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -677,7 +691,73 @@
 
     </div>
   </section>
+<!-- Skills -->
+<section id="skills" style="background: var(--cream); padding: 6rem 3rem;">
+  <p class="section-label">Skills</p>
+  <h2 class="section-title">What I work<br>with.</h2>
 
+  <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1px; background: rgba(14,14,14,.08);">
+
+    <div style="background: var(--cream); padding: 2rem 1.8rem;">
+      <p style="font-family:'Instrument Sans',sans-serif; font-size:.62rem; letter-spacing:.18em; text-transform:uppercase; color: var(--accent-1); margin-bottom:1rem; display:flex; align-items:center; gap:.4rem;">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        Development
+      </p>
+      <div style="display:flex; flex-wrap:wrap; gap:.4rem;">
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">C#</span>
+        <span class="skill-tag">JavaScript</span>
+        <span class="skill-tag">React</span>
+        <span class="skill-tag">PHP</span>
+        <span class="skill-tag">REST APIs</span>
+        <span class="skill-tag">MySQL</span>
+        <span class="skill-tag">PostgreSQL</span>
+        <span class="skill-tag">AWS</span>
+        <span class="skill-tag">Azure</span>
+        <span class="skill-tag">Docker</span>
+        <span class="skill-tag">CI/CD</span>
+        <span class="skill-tag">Git</span>
+      </div>
+    </div>
+
+    <div style="background: var(--cream); padding: 2rem 1.8rem;">
+      <p style="font-family:'Instrument Sans',sans-serif; font-size:.62rem; letter-spacing:.18em; text-transform:uppercase; color: var(--accent-2); margin-bottom:1rem; display:flex; align-items:center; gap:.4rem;">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Security
+      </p>
+      <div style="display:flex; flex-wrap:wrap; gap:.4rem;">
+        <span class="skill-tag">Splunk</span>
+        <span class="skill-tag">SIEM</span>
+        <span class="skill-tag">Wireshark</span>
+        <span class="skill-tag">Snort IDS</span>
+        <span class="skill-tag">ICS / SCADA</span>
+        <span class="skill-tag">Blue Team Ops</span>
+        <span class="skill-tag">Incident Response</span>
+        <span class="skill-tag">Network Analysis</span>
+        <span class="skill-tag">Tcpdump</span>
+      </div>
+    </div>
+
+    <div style="background: var(--cream); padding: 2rem 1.8rem;">
+      <p style="font-family:'Instrument Sans',sans-serif; font-size:.62rem; letter-spacing:.18em; text-transform:uppercase; color: var(--accent-3); margin-bottom:1rem; display:flex; align-items:center; gap:.4rem;">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M3 12h3M18 12h3M12 3v3M12 18v3"/><path d="m5.6 5.6 2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/></svg>
+        AI &amp; Data
+      </p>
+      <div style="display:flex; flex-wrap:wrap; gap:.4rem;">
+        <span class="skill-tag">NLP</span>
+        <span class="skill-tag">OpenAI API</span>
+        <span class="skill-tag">Claude API</span>
+        <span class="skill-tag">ASR / Transformers</span>
+        <span class="skill-tag">A* Search</span>
+        <span class="skill-tag">MCTS</span>
+        <span class="skill-tag">Power BI</span>
+        <span class="skill-tag">Big Data</span>
+        <span class="skill-tag">Google Cloud</span>
+      </div>
+    </div>
+
+  </div>
+</section>
   <!-- Certifications -->
   <section id="certs">
     <div class="reveal">
