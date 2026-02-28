@@ -7,20 +7,18 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Instrument+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
   <style>
     :root {
       --ink: #0e0e0e;
       --cream: #f5f0e8;
       --muted: #9a9080;
-      --accent-1: #e8533a; /* warm red-orange */
-      --accent-2: #3a8ce8; /* electric blue */
-      --accent-3: #38c49a; /* mint */
+      --accent-1: #e8533a;
+      --accent-2: #3a8ce8;
+      --accent-3: #38c49a;
       --tag-bg: #1a1a1a;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
 
     body {
@@ -31,7 +29,7 @@
       overflow-x: hidden;
     }
 
-    /* ── Noise overlay ─────────────────────────────── */
+    /* Noise overlay */
     body::before {
       content: '';
       position: fixed; inset: 0;
@@ -40,43 +38,51 @@
     }
 
     .display { font-family: 'Cormorant Garamond', serif; }
-    .serif { font-family: 'Instrument Serif', serif; }
-    .sans { font-family: 'Instrument Sans', sans-serif; }
+    .serif   { font-family: 'Instrument Serif', serif; }
+    .sans    { font-family: 'Instrument Sans', sans-serif; }
 
+    /* ── NAV — fixed + frosted glass ──────────────────── */
     nav {
       position: fixed; top: 0; left: 0; right: 0;
       z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
-      padding: 1.25rem 3rem;
-      mix-blend-mode: multiply;
+      padding: 1.1rem 3rem;
+      /* frosted glass */
+      background: rgba(245, 240, 232, 0.72);
+      backdrop-filter: blur(18px) saturate(1.4);
+      -webkit-backdrop-filter: blur(18px) saturate(1.4);
+      border-bottom: 1px solid rgba(14, 14, 14, 0.07);
+      transition: background .3s, box-shadow .3s;
     }
+    /* slightly more opaque once user scrolls */
+    nav.scrolled {
+      background: rgba(245, 240, 232, 0.88);
+      box-shadow: 0 1px 24px rgba(14,14,14,.06);
+    }
+
     .nav-symbol {
       width: 10px; height: 10px;
       background: var(--accent-1);
       border-radius: 50%;
-      display: block;
-      text-decoration: none;
+      display: block; text-decoration: none;
       transition: transform .3s ease, background .3s;
     }
-    .nav-symbol:hover {
-      transform: scale(1.7);
-      background: var(--ink);
-    }
+    .nav-symbol:hover { transform: scale(1.7); background: var(--ink); }
+
     .nav-links { display: flex; gap: 2.5rem; list-style: none; }
     .nav-links a {
       font-family: 'Instrument Sans', sans-serif;
-      font-size: .8rem; letter-spacing: .06em;
+      font-size: .78rem; letter-spacing: .07em;
       text-transform: uppercase; text-decoration: none;
       color: var(--ink); opacity: .5;
       transition: opacity .2s;
     }
     .nav-links a:hover { opacity: 1; }
 
-    /* ── Hero ──────────────────────────────────────── */
+    /* ── Hero ──────────────────────────────────────────── */
     #hero {
       min-height: 100vh;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+      display: grid; grid-template-columns: 1fr 1fr;
       align-items: center;
       padding: 8rem 3rem 4rem;
       position: relative; overflow: hidden;
@@ -92,8 +98,7 @@
       font-family: 'Cormorant Garamond', serif;
       font-weight: 700;
       font-size: clamp(3.5rem, 7vw, 6.5rem);
-      line-height: .92;
-      letter-spacing: -.02em;
+      line-height: .92; letter-spacing: -.02em;
       margin-bottom: 1.5rem;
     }
     .hero-name .outline {
@@ -124,12 +129,9 @@
       padding: .85rem 1.75rem; text-decoration: none;
       transition: transform .2s, background .2s, color .2s;
     }
-    .btn-outline:hover {
-      background: var(--ink); color: var(--cream);
-      transform: translateY(-2px);
-    }
+    .btn-outline:hover { background: var(--ink); color: var(--cream); transform: translateY(-2px); }
 
-    /* hero right — big decorative text + blobs */
+    /* hero right */
     .hero-right {
       position: relative;
       display: flex; align-items: center; justify-content: center;
@@ -139,8 +141,7 @@
       font-family: 'Cormorant Garamond', serif;
       font-weight: 700;
       font-size: clamp(6rem, 14vw, 13rem);
-      line-height: 1;
-      letter-spacing: -.04em;
+      line-height: 1; letter-spacing: -.04em;
       -webkit-text-stroke: 1.5px rgba(14,14,14,.1);
       color: transparent;
       user-select: none; pointer-events: none;
@@ -157,15 +158,15 @@
     .hero-badge.b1 { top: 20%; right: 5%; }
     .hero-badge.b2 { bottom: 25%; left: 5%; background: var(--accent-1); animation-delay: 1s; }
     .hero-badge.b3 { top: 55%; right: 8%; background: var(--accent-2); animation-delay: 1.8s; }
-
     @keyframes float {
       0%,100% { transform: translateY(0); }
       50% { transform: translateY(-10px); }
     }
 
-    /* ── Marquee ───────────────────────────────────── */
+    /* ── Marquee ───────────────────────────────────────── */
     .marquee-wrap {
-      overflow: hidden; border-top: 1px solid rgba(14,14,14,.12);
+      overflow: hidden;
+      border-top: 1px solid rgba(14,14,14,.12);
       border-bottom: 1px solid rgba(14,14,14,.12);
       padding: .9rem 0; background: var(--ink);
     }
@@ -182,10 +183,10 @@
     .marquee-dot { color: var(--accent-1); margin-right: 3rem; }
     @keyframes marquee {
       from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
+      to   { transform: translateX(-50%); }
     }
 
-    /* ── Section shared ────────────────────────────── */
+    /* ── Section shared ────────────────────────────────── */
     section { padding: 6rem 3rem; position: relative; }
     .section-label {
       font-family: 'Instrument Sans', sans-serif;
@@ -216,36 +217,21 @@
       color: var(--accent-1); line-height: 1;
       min-width: 70px;
     }
-    .stat-pill-label {
-      font-size: .82rem; color: #888; line-height: 1.4;
-    }
+    .stat-pill-label { font-size: .82rem; color: #888; line-height: 1.4; }
 
-    /* ── About ─────────────────────────────────────── */
+    /* ── About ─────────────────────────────────────────── */
     #about { background: var(--ink); color: var(--cream); }
     #about .section-label { color: var(--accent-3); }
     #about .section-title { color: var(--cream); }
     .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.4fr;
+      display: grid; grid-template-columns: 1fr 1.4fr;
       gap: 5rem; align-items: start;
     }
     .about-text { font-size: 1.05rem; line-height: 1.8; color: #b8b0a0; }
     .about-text p + p { margin-top: 1.2rem; }
     .about-text strong { color: var(--cream); font-weight: 400; }
     .about-right { display: flex; flex-direction: column; gap: 2rem; }
-    .stat-row {
-      display: flex; align-items: baseline; gap: 1rem;
-      border-bottom: 1px solid rgba(255,255,255,.08);
-      padding-bottom: 1.2rem;
-    }
-    .stat-num {
-      font-family: 'Syne', sans-serif;
-      font-weight: 800; font-size: 3.5rem;
-      color: var(--accent-1); letter-spacing: -.03em;
-    }
-    .stat-label { font-size: .9rem; color: #7a7060; }
 
-    /* skills chips */
     .skill-chips { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1rem; }
     .chip {
       font-family: 'Instrument Sans', sans-serif; font-size: .7rem;
@@ -256,16 +242,14 @@
     }
     .chip:hover { border-color: var(--accent-3); color: var(--accent-3); }
 
-    /* ── Experience ────────────────────────────────── */
+    /* ── Experience ────────────────────────────────────── */
     #experience { background: var(--cream); }
-    .exp-list { display: flex; flex-direction: column; gap: 0; }
+    .exp-list { display: flex; flex-direction: column; }
     .exp-item {
-      display: grid;
-      grid-template-columns: 200px 1fr;
-      gap: 2rem;
-      padding: 2rem 0;
+      display: grid; grid-template-columns: 200px 1fr;
+      gap: 2rem; padding: 2rem 0;
       border-bottom: 1px solid rgba(14,14,14,.1);
-      transition: background .2s;
+      transition: background .2s, padding-left .2s;
     }
     .exp-item:hover { background: rgba(14,14,14,.03); padding-left: .5rem; }
     .exp-date {
@@ -280,7 +264,7 @@
     .exp-company { font-size: .85rem; color: var(--accent-1); margin-bottom: .6rem; }
     .exp-desc { font-size: .9rem; line-height: 1.7; color: #555; }
 
-    /* ── Projects ──────────────────────────────────── */
+    /* ── Projects ──────────────────────────────────────── */
     #projects { background: #f0ebe0; }
     .projects-grid {
       display: grid;
@@ -298,16 +282,15 @@
     .proj-card::before {
       content: '';
       position: absolute; top: 0; left: 0; right: 0;
-      height: 3px;
-      background: var(--accent-1);
+      height: 3px; background: var(--accent-1);
       transform: scaleX(0); transform-origin: left;
       transition: transform .3s;
     }
     .proj-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(14,14,14,.1); }
     .proj-card:hover::before { transform: scaleX(1); }
     .proj-num {
-      font-family: 'Instrument Sans', sans-serif; font-size: .7rem;
-      color: var(--muted); margin-bottom: 1.2rem;
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: .7rem; color: var(--muted); margin-bottom: 1.2rem;
     }
     .proj-title {
       font-family: 'Cormorant Garamond', serif;
@@ -321,20 +304,19 @@
       letter-spacing: .06em; padding: .3rem .7rem;
       background: var(--ink); color: var(--cream);
     }
-    /* color accents per category */
     .proj-card.security::before { background: var(--accent-1); }
-    .proj-card.ai::before { background: var(--accent-2); }
+    .proj-card.ai::before      { background: var(--accent-2); }
     .proj-card.fullstack::before { background: var(--accent-3); }
     .proj-card .proj-category {
       position: absolute; top: 1.5rem; right: 1.5rem;
-      font-family: 'Instrument Sans', sans-serif; font-size: .6rem;
-      letter-spacing: .1em; text-transform: uppercase;
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: .6rem; letter-spacing: .1em; text-transform: uppercase;
     }
     .security .proj-category { color: var(--accent-1); }
-    .ai .proj-category { color: var(--accent-2); }
+    .ai .proj-category       { color: var(--accent-2); }
     .fullstack .proj-category { color: var(--accent-3); }
 
-    /* ── Certifications ────────────────────────────── */
+    /* ── Certifications ────────────────────────────────── */
     #certs { background: var(--ink); color: var(--cream); }
     #certs .section-title { color: var(--cream); }
     #certs .section-label { color: var(--accent-2); }
@@ -354,13 +336,16 @@
       font-size: .65rem; letter-spacing: .1em;
       color: var(--accent-2); margin-bottom: .5rem;
     }
-    .cert-name { font-size: .92rem; line-height: 1.4; margin-bottom: .5rem; font-family: 'Instrument Sans', sans-serif; }
+    .cert-name {
+      font-size: .92rem; line-height: 1.4; margin-bottom: .5rem;
+      font-family: 'Instrument Sans', sans-serif;
+    }
     .cert-date {
       font-family: 'Instrument Sans', sans-serif;
       font-size: .65rem; color: #666;
     }
 
-    /* ── Contact ───────────────────────────────────── */
+    /* ── Contact ───────────────────────────────────────── */
     #contact {
       background: var(--cream);
       min-height: 60vh;
@@ -391,7 +376,7 @@
     }
     .contact-link:hover { color: var(--accent-1); border-color: var(--accent-1); }
 
-    /* ── Footer ────────────────────────────────────── */
+    /* ── Footer ────────────────────────────────────────── */
     footer {
       background: var(--ink); color: #555;
       font-family: 'Instrument Sans', sans-serif;
@@ -402,14 +387,14 @@
     footer a { color: #555; text-decoration: none; }
     footer a:hover { color: var(--cream); }
 
-    /* ── Animations ────────────────────────────────── */
+    /* ── Animations ────────────────────────────────────── */
     .reveal {
       opacity: 0; transform: translateY(28px);
       transition: opacity .7s ease, transform .7s ease;
     }
     .reveal.visible { opacity: 1; transform: none; }
 
-    /* ── Responsive ────────────────────────────────── */
+    /* ── Responsive ────────────────────────────────────── */
     @media (max-width: 900px) {
       #hero { grid-template-columns: 1fr; padding: 6rem 1.5rem 3rem; }
       .hero-right { display: none; }
@@ -421,29 +406,21 @@
       footer { flex-direction: column; gap: .5rem; text-align: center; }
     }
 
-    /* ── Blinking caret ────────────────────────────── */
+    /* ── Caret ─────────────────────────────────────────── */
     .caret {
       display: inline-block;
       width: 3px; height: 1em;
       background: var(--accent-1);
-      vertical-align: middle;
-      margin-left: 4px;
+      vertical-align: middle; margin-left: 4px;
       animation: blink 1s step-end infinite;
     }
     @keyframes blink { 50% { opacity: 0; } }
-
-    /* ── Divider line ──────────────────────────────── */
-    .thin-line {
-      width: 48px; height: 2px;
-      background: var(--accent-1);
-      margin-bottom: 2rem;
-    }
   </style>
 </head>
 <body>
 
   <!-- Nav -->
-  <nav>
+  <nav id="main-nav">
     <a href="#hero" class="nav-symbol"></a>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
@@ -464,8 +441,8 @@
         Kantamneni<span class="caret"></span>
       </h1>
       <p class="hero-sub">
-        Full-stack engineer who also breaks things (intentionally) — 
-        building secure, AI-powered systems at the intersection of 
+        Full-stack engineer who also breaks things (intentionally) —
+        building secure, AI-powered systems at the intersection of
         <strong>web development</strong>, <strong>cybersecurity</strong>, and <strong>machine learning</strong>.
       </p>
       <div class="hero-ctas">
@@ -478,7 +455,6 @@
       <div class="hero-bg-text display">DEV<br>&amp;<br>SEC</div>
       <div class="hero-badge b1">MS · Computer Science</div>
       <div class="hero-badge b2">USF Tampa ✦</div>
-      <div class="hero-badge b3">GICSP Certified</div>
     </div>
   </section>
 
@@ -495,7 +471,6 @@
       <span class="marquee-item">ICS/SCADA <span class="marquee-dot">✦</span></span>
       <span class="marquee-item">Docker <span class="marquee-dot">✦</span></span>
       <span class="marquee-item">NLP <span class="marquee-dot">✦</span></span>
-      <!-- duplicate for seamless loop -->
       <span class="marquee-item">Python <span class="marquee-dot">✦</span></span>
       <span class="marquee-item">React <span class="marquee-dot">✦</span></span>
       <span class="marquee-item">Cybersecurity <span class="marquee-dot">✦</span></span>
@@ -514,20 +489,21 @@
     <div class="reveal">
       <p class="section-label">About</p>
       <h2 class="section-title">Code. Secure.<br>Repeat.</h2>
+    </div>
     <div class="about-grid reveal">
       <div class="about-text">
         <p>
-          I'm a software engineer with a taste for the <strong>full stack</strong> and a healthy paranoia about security. 
-          Currently building production systems at <strong>Improvation LLC</strong> — slashing API latency, 
+          I'm a software engineer with a taste for the <strong>full stack</strong> and a healthy paranoia about security.
+          Currently building production systems at <strong>Improvation LLC</strong> — slashing API latency,
           stabilizing backends, and shipping features for 10K+ users.
         </p>
         <p>
-          Before that, I was a <strong>Cybersecurity Intern at Cyber Florida (USF)</strong>, hunting anomalies 
-          across 500GB+ of telemetry with Splunk and Python. I hold a <strong>GIAC GICSP</strong> — the gold standard 
+          Before that, I was a <strong>Cybersecurity Intern at Cyber Florida (USF)</strong>, hunting anomalies
+          across 500GB+ of telemetry with Splunk and Python. I hold a <strong>GIAC GICSP</strong> — the gold standard
           for industrial cybersecurity — plus certs in ICS/SCADA and Blue Team operations.
         </p>
         <p>
-          I graduated with an <strong>MS in Computer Science from USF, Tampa</strong>. 
+          I graduated with an <strong>MS in Computer Science from USF, Tampa</strong>.
           When I'm not optimizing query plans, I'm probably tinkering with NLP pipelines or playing with AI APIs.
           Allegedly also a human being.
         </p>
@@ -800,16 +776,20 @@
     }, { threshold: 0.12 });
     reveals.forEach(el => io.observe(el));
 
-    // Active nav highlight
+    // Nav: add .scrolled class + active link highlight
+    const nav = document.getElementById('main-nav');
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.nav-links a');
     window.addEventListener('scroll', () => {
+      // frosted glass gets slightly more opaque after scrolling
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+      // active link
       let current = '';
       sections.forEach(s => {
         if (window.scrollY >= s.offsetTop - 120) current = s.id;
       });
       navLinks.forEach(a => {
-        a.style.opacity = a.getAttribute('href') === `#${current}` ? '1' : '0.6';
+        a.style.opacity = a.getAttribute('href') === `#${current}` ? '1' : '0.5';
       });
     });
   </script>
