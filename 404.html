@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>404 | Sree Sahithi Kantamneni</title>
+<meta name="robots" content="noindex">
+<script>try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="/css/main.css">
+<style>
+  .lost { min-height: 100vh; min-height: 100svh; display: grid; place-items: center; padding: 40px 20px; }
+  .lost-in { max-width: 620px; }
+  .lost svg { width: 100%; max-width: 420px; height: auto; display: block; margin-bottom: 28px; }
+  .lost .code { color: var(--danger); font-size: 1.2rem; font-weight: 600; margin: 0 0 14px; }
+  .lost h1 { font-size: clamp(2.4rem, 6vw, 4rem); line-height: 1; font-weight: 700; margin-bottom: 18px; }
+  .lost p { color: var(--muted); font-size: 1.1rem; max-width: 46ch; }
+  .lost .hero-actions { margin-top: 26px; }
+  .drift { animation: drift 3.6s ease-in-out infinite alternate; transform-box: fill-box; transform-origin: center; }
+  @keyframes drift { to { transform: translate(26px, 18px); } }
+</style>
+</head>
+<body>
+<main class="lost">
+  <div class="lost-in">
+    <svg viewBox="0 0 420 140" role="img" aria-label="A packet that wandered off the network path">
+      <path d="M20 70 C 110 70, 140 30, 230 30" fill="none" stroke="var(--line2)" stroke-width="2"/>
+      <path d="M230 30 C 290 30, 300 70, 330 70" fill="none" stroke="var(--line2)" stroke-width="2" stroke-dasharray="4 8"/>
+      <circle cx="20" cy="70" r="16" fill="var(--bg2)" stroke="var(--accent)" stroke-width="2"/>
+      <circle cx="230" cy="30" r="16" fill="var(--bg2)" stroke="var(--accent)" stroke-width="2"/>
+      <circle cx="330" cy="70" r="16" fill="var(--bg2)" stroke="var(--line2)" stroke-width="2" stroke-dasharray="3 5"/>
+      <g class="drift"><circle cx="350" cy="112" r="12" fill="var(--danger)" opacity=".18"/><circle cx="350" cy="112" r="5" fill="var(--danger)"/></g>
+    </svg>
+    <p class="code mono">HTTP/1.1 404 Not Found</p>
+    <h1>This packet took a wrong turn.</h1>
+    <p>The page you asked for isn't on this server. The route might have changed, or the link has a typo.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="/">Back to the homepage</a>
+      <a class="btn btn-ghost" href="/#summary">Read the 30-second summary</a>
+    </div>
+  </div>
+</main>
+</body>
+</html>
